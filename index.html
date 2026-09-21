@@ -1,1008 +1,310 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IF ONLY - Game Design Overview Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #080b13;
-            --bg-card: rgba(14, 20, 33, 0.75);
-            --bg-card-hover: rgba(22, 31, 50, 0.9);
-            --border-color: rgba(255, 255, 255, 0.12);
-            
-            /* Visual Language Colors */
-            --warm-tweed: #e08a3e;
-            --warm-glow: #f3a661;
-            --cyan-glow: #00f2fe;
-            --cyan-deep: #4facfe;
-            --grey-clinical: #8a99ad;
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
-            --highlight-color: rgba(0, 242, 254, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Typography */
-        h1, h2, h3, .brand-title {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-        }
-
-        /* Navigation & Universal Live Search */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(8, 11, 19, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.8rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--warm-tweed), var(--cyan-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--cyan-glow);
-        }
-
-        .nav-search-container {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            position: relative;
-        }
-
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            padding: 0.4rem 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-box:focus-within {
-            border-color: var(--cyan-glow);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
-        }
-
-        .search-box input {
-            background: transparent;
-            border: none;
-            color: #fff;
-            outline: none;
-            font-family: inherit;
-            font-size: 0.85rem;
-            width: 200px;
-            transition: width 0.3s ease;
-        }
-
-        .search-box input:focus {
-            width: 280px;
-        }
-
-        .search-box button {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .search-status {
-            font-size: 0.75rem;
-            color: var(--cyan-glow);
-            white-space: nowrap;
-        }
-
-        .quick-tags {
-            display: flex;
-            gap: 0.4rem;
-        }
-
-        .tag-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.72rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .tag-btn:hover {
-            background: rgba(0, 242, 254, 0.15);
-            color: #fff;
-            border-color: var(--cyan-glow);
-        }
-
-        /* Layout Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Section Specific Background Images (San Francisco Context) */
-        section, header.hero {
-            position: relative;
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border-color);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-
-        /* 1. Hero Background - Golden Gate Bridge Fog */
-        header.hero {
-            padding-top: 10rem;
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.75) 0%, rgba(8, 11, 19, 0.92) 100%),
-                              url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2070&auto=format&fit=crop');
-        }
-
-        /* 2. Section Overview - SF Victorian Houses */
-        #overview {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.90) 0%, rgba(8, 11, 19, 0.88) 100%),
-                              url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?q=80&w=2070&auto=format&fit=crop');
-        }
-
-        /* 3. Section Gameplay - SF Night Cityscape */
-        #gameplay {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.92) 0%, rgba(8, 11, 19, 0.88) 100%),
-                              url('https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* 4. Section Characters - SF Bay & Foggy Mood */
-        #characters {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.90) 0%, rgba(8, 11, 19, 0.92) 100%),
-                              url('https://images.unsplash.com/photo-1534050359320-0be60830689c?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* 5. Section Story & Storyboard - Sutter Street Atmosphere */
-        #storyboard {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.92) 0%, rgba(8, 11, 19, 0.90) 100%),
-                              url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* 6. Section World Building - Carmel Coast & SF Bridges */
-        #world {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.90) 0%, rgba(8, 11, 19, 0.92) 100%),
-                              url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* 7. Section Game Art & Experience - SF Architecture */
-        #art {
-            background-image: linear-gradient(180deg, rgba(8, 11, 19, 0.92) 0%, rgba(8, 11, 19, 0.95) 100%),
-                              url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* Hero Styling */
-        .hero-tag {
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            background: rgba(0, 242, 254, 0.1);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            color: var(--cyan-glow);
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero h1 {
-            font-size: 4.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(180deg, #ffffff 40%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .hero p.subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Section Headers */
-        .section-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-num {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--warm-tweed);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.4rem;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-        }
-
-        /* Cards & Glassmorphism */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.8rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
-
-        .card, .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-        }
-
-        .stat-card { padding: 1.2rem; }
-
-        .card:hover, .stat-card:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-4px);
-        }
-
-        .card.search-hidden {
-            display: none !important;
-        }
-
-        .card.search-match {
-            border-color: var(--cyan-glow) !important;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25) !important;
-        }
-
-        .card-header {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .card-list {
-            list-style: none;
-        }
-
-        .card-list li {
-            position: relative;
-            padding-left: 1.4rem;
-            margin-bottom: 0.7rem;
-            color: var(--text-muted);
-            font-size: 0.92rem;
-        }
-
-        .card-list li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--cyan-glow);
-            font-size: 0.75rem;
-        }
-
-        /* Dedicated Placeholders: Character Avatars */
-        .character-card {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            border: 1px solid var(--border-color);
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            backdrop-filter: blur(12px);
-        }
-
-        .avatar-box {
-            width: 100%;
-            height: 280px;
-            border-radius: 12px;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 1rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .avatar-box:hover {
-            border-color: var(--cyan-glow);
-            background: rgba(0, 242, 254, 0.05);
-        }
-
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .avatar-icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.6;
-        }
-
-        /* Dedicated Placeholders: Storyboard Frames */
-        .storyboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .storyboard-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem;
-            backdrop-filter: blur(12px);
-        }
-
-        .storyboard-frame {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .storyboard-frame:hover {
-            border-color: var(--warm-tweed);
-            background: rgba(224, 138, 62, 0.08);
-        }
-
-        /* Controls & Keybindings Table */
-        .keybind-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .key-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--border-color);
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-family: monospace;
-            color: var(--cyan-glow);
-        }
-
-        /* Flow Diagrams */
-        .flow-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            background: rgba(0,0,0,0.5);
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1px dashed var(--border-color);
-            margin-top: 1rem;
-        }
-
-        .flow-step {
-            background: rgba(255,255,255,0.08);
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-align: center;
-            flex: 1;
-            min-width: 100px;
-        }
-
-        .flow-arrow {
-            color: var(--cyan-glow);
-            font-weight: 800;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            background: #05070d;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .quick-tags { display: none; }
-            .nav-links { display: none; }
-            .search-box input:focus { width: 180px; }
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            nav { padding: 0.8rem 1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IF ONLY - Game Design Overview Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg-main:#080b13;--bg-card:rgba(14,20,33,.78);--bg-card-hover:rgba(22,31,50,.92);
+--border-color:rgba(255,255,255,.12);--warm-tweed:#e08a3e;--warm-glow:#f3a661;
+--cyan-glow:#00f2fe;--cyan-deep:#4facfe;--grey-clinical:#8a99ad;
+--text-main:#f8fafc;--text-muted:#cbd5e1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#080b13;color:var(--text-main);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.brand-title{font-family:'Cinzel',serif;letter-spacing:1px}
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,11,19,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-color);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.nav-left{display:flex;align-items:center;gap:2rem}.nav-logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--warm-tweed),var(--cyan-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.2rem;list-style:none}.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.78rem;font-weight:600;transition:.3s;text-transform:uppercase;letter-spacing:1px}.nav-links a:hover{color:var(--cyan-glow)}
+.nav-search-container{display:flex;align-items:center;gap:.7rem}.quick-tags{display:flex;gap:.35rem}.tag-btn{background:rgba(255,255,255,.05);border:1px solid var(--border-color);color:var(--text-muted);padding:.3rem .55rem;border-radius:6px;font-size:.68rem;cursor:pointer}.tag-btn:hover{background:rgba(0,242,254,.15);color:#fff;border-color:var(--cyan-glow)}
+.search-box{display:flex;align-items:center;background:rgba(0,0,0,.6);border:1px solid var(--border-color);border-radius:50px;padding:.35rem .8rem}.search-box:focus-within{border-color:var(--cyan-glow);box-shadow:0 0 12px rgba(0,242,254,.25)}.search-box input{background:transparent;border:none;color:#fff;outline:none;font:inherit;font-size:.78rem;width:190px}.search-box input:focus{width:270px}.search-box button{background:transparent;border:none;color:var(--text-muted);cursor:pointer}.search-status{font-size:.68rem;color:var(--cyan-glow);white-space:nowrap}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+section,header.hero{position:relative;padding:6rem 0;border-bottom:1px solid var(--border-color);background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
+header.hero{padding-top:10rem;background-image:linear-gradient(180deg,rgba(8,11,19,.75),rgba(8,11,19,.92)),url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2070&auto=format&fit=crop')}
+#overview{background-image:linear-gradient(180deg,rgba(8,11,19,.9),rgba(8,11,19,.9)),url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?q=80&w=2070&auto=format&fit=crop')}
+#gameplay{background-image:linear-gradient(180deg,rgba(8,11,19,.92),rgba(8,11,19,.9)),url('https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=2000&auto=format&fit=crop')}
+#story{background-image:linear-gradient(180deg,rgba(8,11,19,.92),rgba(8,11,19,.91)),url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?q=80&w=2000&auto=format&fit=crop')}
+#world{background-image:linear-gradient(180deg,rgba(8,11,19,.9),rgba(8,11,19,.93)),url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2000&auto=format&fit=crop')}
+#art{background-image:linear-gradient(180deg,rgba(8,11,19,.92),rgba(8,11,19,.95)),url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=2000&auto=format&fit=crop')}
+#experience{background-image:linear-gradient(180deg,rgba(8,11,19,.92),rgba(8,11,19,.95)),url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=2000&auto=format&fit=crop')}
+.hero{text-align:center}.hero-tag{display:inline-block;padding:.4rem 1.2rem;border-radius:50px;background:rgba(0,242,254,.1);border:1px solid rgba(0,242,254,.3);color:var(--cyan-glow);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+.hero h1{font-size:4.8rem;margin:1rem 0;background:linear-gradient(180deg,#fff 40%,var(--text-muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 10px 30px rgba(0,0,0,.8)}
+.hero p.subtitle{font-size:1.2rem;color:var(--text-muted);max-width:800px;margin:0 auto 3rem;text-shadow:0 2px 4px #000}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+.stat-card,.card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:1.6rem;transition:.3s;position:relative;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.35)}
+.stat-card:hover,.card:hover{background:var(--bg-card-hover);border-color:rgba(255,255,255,.24);transform:translateY(-4px)}
+.stat-card .label{font-size:.7rem;color:var(--grey-clinical);text-transform:uppercase;letter-spacing:1px}.stat-card .val{font-weight:700;margin-top:.35rem}
+.section-header{margin-bottom:2rem}.section-num{font-size:.85rem;font-weight:800;color:var(--warm-tweed);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}.section-title{font-size:2.2rem;color:#fff;text-shadow:0 2px 10px #000a}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem}
+.card-header{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}.card-list{list-style:none}.card-list li{position:relative;padding-left:1.3rem;margin-bottom:.65rem;color:var(--text-muted);font-size:.88rem}.card-list li::before{content:'✦';position:absolute;left:0;color:var(--cyan-glow);font-size:.7rem}
+.card p{color:var(--text-muted);font-size:.9rem;margin:.55rem 0}.subhead{font-size:.82rem;color:#fff;margin:1rem 0 .35rem;font-weight:700}
+.feature-card{background:linear-gradient(135deg,rgba(224,138,62,.12),rgba(0,242,254,.1));border:1px solid rgba(0,242,254,.18);border-radius:16px;padding:1.5rem}
+.flow-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;background:rgba(0,0,0,.42);padding:1rem;border-radius:12px;border:1px dashed var(--border-color);margin-top:1rem}.flow-step{background:rgba(255,255,255,.08);padding:.55rem .8rem;border-radius:8px;font-size:.78rem;font-weight:600;text-align:center;flex:1;min-width:110px}.flow-arrow{color:var(--cyan-glow);font-weight:800}
+.keybind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}.keybind{font-size:.78rem;color:var(--text-muted)}.key-badge{background:rgba(255,255,255,.1);border:1px solid var(--border-color);padding:.3rem .55rem;border-radius:6px;font-weight:700;font-family:monospace;color:var(--cyan-glow);display:inline-block;margin-right:.35rem}
+.chapters{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}.chapter{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1rem;min-height:150px;position:relative}.chapter:before{content:'';position:absolute;left:12px;right:12px;top:0;height:2px;background:linear-gradient(90deg,var(--warm-tweed),var(--cyan-glow))}.chapter small{display:block;color:var(--cyan-glow);font-size:.67rem;letter-spacing:1px;margin-bottom:.7rem}.chapter h3{font-size:.95rem;margin-bottom:.45rem}.chapter p{font-size:.76rem;color:var(--text-muted)}
+.palette-box{height:72px;border-radius:10px;display:flex;align-items:center;padding:0 1rem;font-weight:800;font-size:.8rem;margin-bottom:1rem}.tweed{background:linear-gradient(135deg,#a85619,#e08a3e)}.cyan{background:linear-gradient(135deg,#00d8df,#4facfe)}.clinical{background:linear-gradient(135deg,#4a596d,#263447)}.contrast{background:linear-gradient(135deg,#111,#454545)}
+.world-table{overflow:auto}.world-table table{width:100%;min-width:950px;border-collapse:collapse}.world-table th,.world-table td{padding:.85rem;border:1px solid var(--border-color);vertical-align:top;text-align:left;font-size:.82rem}.world-table th{color:var(--cyan-glow);background:rgba(255,255,255,.05)}
+.search-hidden{display:none!important}.search-match{border-color:var(--cyan-glow)!important;box-shadow:0 0 22px rgba(0,242,254,.18)!important}
+footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center;color:var(--text-muted);font-size:.8rem;background:#05070d}
+@media(max-width:1000px){.hero-stats{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:1fr 1fr}.chapters{grid-template-columns:1fr 1fr}.keybind-grid{grid-template-columns:1fr 1fr}.quick-tags{display:none}}
+@media(max-width:768px){.nav-links{display:none}.nav-left{gap:0}.search-box input{width:160px}.search-box input:focus{width:180px}.container{padding:0 1rem}section,header.hero{background-attachment:scroll}.hero h1{font-size:3rem}.hero p.subtitle{font-size:1rem}.grid-2,.grid-3,.grid-4,.chapters,.keybind-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
-    <!-- Navigation Bar with Universal Search -->
-    <nav>
-        <div class="nav-left">
-            <div class="nav-logo">IF ONLY</div>
-            <ul class="nav-links">
-                <li><a href="#overview">Tổng Quan</a></li>
-                <li><a href="#gameplay">Gameplay</a></li>
-                <li><a href="#characters">Nhân Vật</a></li>
-                <li><a href="#storyboard">Storyboard</a></li>
-                <li><a href="#world">Thế Giới</a></li>
-                <li><a href="#art">Game Art</a></li>
-            </ul>
-        </div>
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">IF ONLY</div>
+    <ul class="nav-links">
+      <li><a href="#overview">Tổng Quan</a></li>
+      <li><a href="#gameplay">Gameplay</a></li>
+      <li><a href="#story">Cốt Truyện</a></li>
+      <li><a href="#world">Thế Giới</a></li>
+      <li><a href="#art">Game Art</a></li>
+      <li><a href="#experience">Trải Nghiệm</a></li>
+    </ul>
+  </div>
+  <div class="nav-search-container">
+    <div class="quick-tags">
+      <button class="tag-btn" onclick="quickSearch('Arthur')">Arthur</button>
+      <button class="tag-btn" onclick="quickSearch('Lauren')">Lauren</button>
+      <button class="tag-btn" onclick="quickSearch('72h')">72h</button>
+      <button class="tag-btn" onclick="quickSearch('Sutter')">Sutter</button>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" oninput="executeSearch()" placeholder="Tìm kiếm...">
+      <button onclick="executeSearch()" title="Tìm kiếm">⌕</button>
+    </div>
+    <span class="search-status" id="searchStatus"></span>
+  </div>
+</nav>
 
-        <div class="nav-search-container">
-            <div class="quick-tags">
-                <button class="tag-btn" onclick="quickSearch('Arthur')">Arthur</button>
-                <button class="tag-btn" onclick="quickSearch('Lauren')">Lauren</button>
-                <button class="tag-btn" onclick="quickSearch('72h')">72h</button>
-                <button class="tag-btn" onclick="quickSearch('Sutter')">Sutter</button>
-            </div>
-            <div class="search-box">
-                <input type="text" id="searchInput" onkeyup="executeSearch()" placeholder="Tìm kiếm từng chi tiết...">
-                <button onclick="executeSearch()" title="Tìm kiếm">🔍</button>
-            </div>
-            <span class="search-status" id="searchStatus"></span>
-        </div>
-    </nav>
+<header class="hero">
+  <div class="container">
+    <span class="hero-tag">Game Design Overview Document</span>
+    <h1>IF ONLY</h1>
+    <p class="subtitle">HÌNH TƯỢNG ARTHUR & LAUREN · CHÂN THẬT (REALSTIC) · THÀNH PHỐ SƯƠNG MỜ & THẾ GIỚI TÂM LINH</p>
+    <div class="hero-stats">
+      <div class="stat-card searchable-item"><div class="label">Game Concept</div><div class="val">Cinematic Narrative Adventure</div></div>
+      <div class="stat-card searchable-item"><div class="label">Góc Nhìn</div><div class="val">Dual-Perspective</div></div>
+      <div class="stat-card searchable-item"><div class="label">Góc Quay</div><div class="val">One-Shot Camera</div></div>
+      <div class="stat-card searchable-item"><div class="label">Người Chơi</div><div class="val">18-40 Tuổi</div></div>
+    </div>
+  </div>
+</header>
 
-    <!-- Header / Hero Section (Golden Gate Bridge Fog Background) -->
-    <header class="hero">
-        <div class="container" style="text-align: center;">
-            <span class="hero-tag">Game Design Overview Document</span>
-            <h1>IF ONLY</h1>
-            <p class="subtitle">Dự án Game Phiêu lưu Điện ảnh & Hiện thực Kỳ ảo chuyển thể cảm hứng từ tiểu thuyết "Nếu Em Không Phải Một Giấc Mơ" của Marc Levy.</p>
-            
-            <div class="hero-stats">
-                <div class="stat-card searchable-item">
-                    <div class="label">Thể Loại</div>
-                    <div class="val">Cinematic Narrative Adventure</div>
-                </div>
-                <div class="stat-card searchable-item">
-                    <div class="label">Góc Quay</div>
-                    <div class="val">One-Shot Camera (Không Cắt Cảnh)</div>
-                </div>
-                <div class="stat-card searchable-item">
-                    <div class="label">Đồ Họa</div>
-                    <div class="val">Stylized Semi-Realism</div>
-                </div>
-                <div class="stat-card searchable-item">
-                    <div class="label">Độ Tuổi</div>
-                    <div class="val">18 – 40 Tuổi</div>
-                </div>
-            </div>
-        </div>
-    </header>
+<section id="overview">
+<div class="container">
+  <div class="section-header"><div class="section-num">01 — 03</div><h2 class="section-title">Game Idea · Game Concept · Player</h2></div>
+  <div class="grid-3">
+    <div class="card searchable-item"><div class="card-header" style="color:var(--warm-glow)">01. GAME IDEA</div><ul class="card-list">
+      <li>HÌNH TƯỢNG ARTHUR & LAUREN</li><li>NẾU EM KHÔNG PHẢI MỘT GIẤC MƠ (MARC LEVY)</li><li>CHÂN THẬT (REALSTIC)</li><li>THÀNH PHỐ SƯƠNG MỜ & THẾ GIỚI TÂM LINH</li>
+    </ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:var(--cyan-glow)">02. GAME CONCEPT</div><ul class="card-list">
+      <li>CINEMATIC NARRATIVE ADVENTURE (PHIÊU LƯU ĐIỆN ẢNH)</li><li>DUAL-PERSPECTIVE (GÓC NHÌN ĐÔI)</li><li>EXPLORATION (KHÁM PHÁ)</li><li>PUZZLE (GIẢI ĐỐ SONG SONG)</li><li>ONE-SHOT CAMERA (KHÔNG CẮT CẢNH)</li><li>CHARACTER SWITCH (THỰC THỂ & LINH HỒN)</li>
+    </ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:#a7f3d0">03. PLAYER</div><ul class="card-list">
+      <li>NGƯỜI CHƠI YÊU THÍCH GAME ĐIỆN ẢNH & DẪN TRUYỆN</li><li>YÊU THÍCH KỲ ẢO & TÌNH CẢM SÂU LẮNG</li><li>18-40 TUỔI</li>
+    </ul></div>
+  </div>
+</div>
+</section>
 
-    <!-- SECTION 01: GAME IDEA & CONCEPT -->
-    <section id="overview">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">01 - 03</div>
-                <h2 class="section-title">Idea, Concept & Người Chơi</h2>
-            </div>
-            <div class="grid-3">
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: var(--warm-glow);">01. Game Idea</div>
-                    <ul class="card-list">
-                        <li><strong>Hình tượng:</strong> Arthur & Lauren</li>
-                        <li><strong>Cảm hứng:</strong> Tiểu thuyết "Nếu em không phải một giấc mơ" (Marc Levy)</li>
-                        <li><strong>Phong cách:</strong> Chân thật (Realistic) & Hiện thực kỳ ảo</li>
-                        <li><strong>Bối cảnh:</strong> Thành phố sương mờ San Francisco & Thế giới tâm linh</li>
-                    </ul>
-                </div>
+<section id="gameplay">
+<div class="container">
+  <div class="section-header"><div class="section-num">GAMEPLAY</div><h2 class="section-title">Player Actions · Game Loop · Game Systems</h2></div>
 
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: var(--cyan-glow);">02. Game Concept</div>
-                    <ul class="card-list">
-                        <li>Cinematic Narrative Adventure (Phiêu lưu điện ảnh)</li>
-                        <li>Dual-Perspective (Góc nhìn đôi) & Exploration (Khám phá)</li>
-                        <li>Parallel Puzzle (Giải đố song song)</li>
-                        <li>One-Shot Camera (Không cắt cảnh liền mạch)</li>
-                        <li>Character Switch (Thực thể & Linh hồn)</li>
-                    </ul>
-                </div>
+  <div class="card searchable-item">
+    <div class="card-header" style="color:var(--cyan-glow)">PLAYER ACTIONS / GAME MECHANICS</div>
+    <div class="keybind-grid">
+      <div class="keybind"><span class="key-badge">A S D W</span> di chuyển</div>
+      <div class="keybind"><span class="key-badge">CHUỘT TRÁI</span> tương tác vật lý</div>
+      <div class="keybind"><span class="key-badge">GIỮ Z</span> xuyên tường</div>
+      <div class="keybind"><span class="key-badge">F</span> kích hoạt thiết bị</div>
+      <div class="keybind"><span class="key-badge">V</span> chuyển đổi góc nhìn</div>
+    </div>
+    <p>phím tương tác, switch nhân vật, đọc bản vẽ/ký ức, phasing, dùng vật phẩm</p>
+  </div>
 
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: #a7f3d0;">03. Đối Tượng Người Chơi</div>
-                    <ul class="card-list">
-                        <li>Người chơi yêu thích game điện ảnh và lối dẫn chuyện sâu lắng</li>
-                        <li>Đam mê yếu tố kỳ ảo kết hợp tình cảm sâu sắc</li>
-                        <li>Độ tuổi mục tiêu: 18 – 40 tuổi</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="grid-2" style="margin-top:1.3rem">
+    <div class="card searchable-item"><div class="card-header">GAME LOOP</div><div class="flow-container">
+      <div class="flow-step">Explore</div><span class="flow-arrow">→</span><div class="flow-step">Encounter Obstacle</div><span class="flow-arrow">→</span><div class="flow-step">Switch / Co-op</div><span class="flow-arrow">→</span><div class="flow-step">Solve Puzzle</div><span class="flow-arrow">→</span><div class="flow-step">Unlock Memory / Area</div><span class="flow-arrow">→</span><div class="flow-step">Explore</div>
+    </div></div>
+    <div class="card searchable-item"><div class="card-header">GAME SYSTEMS · INTERACTION & PUZZLE SYSTEM</div>
+      <p><strong>Arthur:</strong> Tương tác vật lý, đẩy/mở cửa, lén lút (Stealth), đọc bản vẽ, lái xe</p>
+      <p><strong>Lauren dạng người:</strong> Tương tác vật lý, đẩy/mở cửa, lén lút (Stealth), đọc bản vẽ, lái xe</p>
+      <p><strong>Lauren:</strong> Đi xuyên tường (Phasing), phát sáng (Emissive Glow), làm nhiễu thiết bị điện, soi ký ức</p>
+    </div>
+  </div>
 
-    <!-- SECTION 04: GAMEPLAY & MECHANICS -->
-    <section id="gameplay">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">04</div>
-                <h2 class="section-title">Gameplay, Controls & Hệ Thống Game</h2>
-            </div>
+  <div class="grid-2" style="margin-top:1.3rem">
+    <div class="card searchable-item"><div class="card-header">ECONOMY (TÀI NGUYÊN)</div><ul class="card-list">
+      <li>Mảnh ghép ký ức (Memory Shards)</li><li>Chỉ số hy vọng (Hope Level)</li><li>Thu thập manh mối & di vật</li><li>Nâng cấp phạm vi di chuyển linh hồn</li><li>Mở khóa khả năng tương tác tâm linh</li>
+    </ul></div>
+    <div class="card searchable-item"><div class="card-header">PROGRESSION / LEVEL DESIGN</div><ul class="card-list">
+      <li>Tiến triển thế nào?</li><li>Mở rộng phạm vi di chuyển của Lauren</li><li>Mở khu vực mới (Căn hộ Victorian → Bệnh viện Memorial → Bờ biển Carmel → Sutter St)</li><li>Giải đố không gian & lén lút qua bảo vệ/y bác sĩ để tiếp tục</li><li>Mở khóa ký ức & chuyển tiếp cốt truyện</li>
+    </ul></div>
+  </div>
+</div>
+</section>
 
-            <!-- Controls & Keybindings Card -->
-            <div class="card searchable-item" style="margin-bottom: 2rem;">
-                <div class="card-header" style="color: var(--cyan-glow);">Phím Điều Khiển & Phím Tắt (Game Mechanics Controls)</div>
-                <div class="keybind-grid">
-                    <div><span class="key-badge">W A S D</span> Di chuyển</div>
-                    <div><span class="key-badge">Chuột Trái</span> Tương tác vật lý</div>
-                    <div><span class="key-badge">Giữ Z</span> Xuyên tường (Phasing)</div>
-                    <div><span class="key-badge">F</span> Kích hoạt thiết bị</div>
-                    <div><span class="key-badge">V</span> Chuyển đổi góc nhìn</div>
-                </div>
-            </div>
+<section id="story">
+<div class="container">
+  <div class="section-header"><div class="section-num">STORY</div><h2 class="section-title">Story · Character · Quest / Dialogue</h2></div>
 
-            <!-- Gameplay Loop & Actions -->
-            <div class="grid-2" style="margin-bottom: 2rem;">
-                <div class="card searchable-item">
-                    <div class="card-header">Chuỗi Hành Động Người Chơi</div>
-                    <div class="flow-container">
-                        <div class="flow-step">Di chuyển (WASD)</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Tương tác vật lý</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Xuyên tường (Z)</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Kích hoạt (F)</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Chuyển góc nhìn (V)</div>
-                    </div>
-                </div>
+  <div class="feature-card searchable-item">
+    <div class="card-header">STORY</div>
+    <p style="color:#fff;font-size:1rem">CĂN HỘ VICTORIAN → PHÁT HIỆN LINH HỒN LAUREN → HÀNH TRÌNH BẢO VỆ THỂ XÁC & GIẢI MÃ TAI NẠN → LÉN LÚT KHÁM PHÁ BỆNH VIỆN & SUTTER STREET → HÉ LỘ BÍ MẬT QUÁ KHỨ → ĐỐI DIỆN QUYẾT ĐỊNH SINH TỬ (72H).</p>
+  </div>
 
-                <div class="card searchable-item">
-                    <div class="card-header">Game Loop (Vòng Lặp Gameplay)</div>
-                    <div class="flow-container">
-                        <div class="flow-step">Explore</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Encounter Obstacle</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Switch / Co-op</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Solve Puzzle</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step">Unlock Memory / Area</div>
-                    </div>
-                </div>
-            </div>
+  <div class="grid-2" style="margin-top:1.3rem">
+    <div class="card searchable-item"><div class="card-header" style="color:var(--warm-glow)">CHARACTER</div><p>ARTHUR (THỰC THỂ DUY NHẤT NHÌN THẤY LINH HỒN) & LAUREN (THỰC THỂ TÂM LINH BÁN TRONG SUỐT)</p></div>
+    <div class="card searchable-item"><div class="card-header" style="color:var(--cyan-glow)">QUEST/ DIALOGUE</div><ul class="card-list">
+      <li>MAIN QUEST (NHIỆM VỤ CHÍNH)</li><li>MISSION</li><li>OBJECTIVE</li><li>DIALOGUE</li><li>CHOICE</li><li>BRANCHING</li><li>EVENT</li>
+    </ul></div>
+  </div>
 
-            <!-- Character Skills -->
-            <div class="section-header" style="margin-top: 1.5rem; margin-bottom: 1rem;">
-                <div class="section-num">INTERACTION & PUZZLE SYSTEM</div>
-                <h3 class="section-title" style="font-size: 1.6rem;">Kỹ Năng Nhân Vật</h3>
-            </div>
+  <div class="card searchable-item" style="margin-top:1.3rem"><div class="card-header">Tóm tắt</div><p>Câu chuyện diễn ra tại San Francisco sương mù. Người chơi luân phiên vào vai Arthur và linh hồn Lauren thực hiện hành trình giải mã bí ẩn vụ tai nạn tại Sutter Street, đồng thời từng bước chạy đua với thời gian để cứu Lauren trước khi bị rút thiết bị duy trì sự sống.</p></div>
 
-            <div class="grid-3" style="margin-bottom: 2rem;">
-                <div class="card searchable-item" style="border-color: rgba(224, 138, 62, 0.4);">
-                    <div class="card-header" style="color: var(--warm-glow);">Kỹ Năng Nhân Vật: Arthur</div>
-                    <ul class="card-list">
-                        <li>Tương tác vật lý, đẩy/mở cửa không gian thực</li>
-                        <li>Lén lút (Stealth) né tránh bảo vệ & bác sĩ</li>
-                        <li>Đọc bản vẽ kỹ thuật kiến trúc</li>
-                        <li>Điều khiển phương tiện (Lái xe)</li>
-                    </ul>
-                </div>
+  <div style="margin-top:2rem"><div class="section-num">LEVEL/ AREA HÀNH TRÌNH GAME</div><h3 style="font-size:1.5rem;margin:.4rem 0 1rem">5 CHAPTERS</h3></div>
+  <div class="chapters">
+    <div class="chapter searchable-item"><small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p></div>
+    <div class="chapter searchable-item"><small>CHAPTER 2</small><h3>Ranh Giới Hôn Mê</h3><p>Memorial Hospital - Phòng 712</p></div>
+    <div class="chapter searchable-item"><small>CHAPTER 3</small><h3>Mảnh Ghép Sutter</h3><p>Sutter Street & Ký Ức</p></div>
+    <div class="chapter searchable-item"><small>CHAPTER 4</small><h3>Hoàng Hôn Bình Yên</h3><p>Carmel Beach House</p></div>
+    <div class="chapter searchable-item"><small>CHAPTER 5</small><h3>Cuộc Chạy Đua 72 Giờ</h3><p>Chuyển Hướng Sinh Tử</p></div>
+  </div>
 
-                <div class="card searchable-item" style="border-color: rgba(167, 243, 208, 0.4);">
-                    <div class="card-header" style="color: #a7f3d0;">Kỹ Năng Nhân Vật: Lauren Dạng Người</div>
-                    <ul class="card-list">
-                        <li>Tương tác vật lý, đẩy/mở cửa</li>
-                        <li>Lén lút (Stealth)</li>
-                        <li>Đọc bản vẽ</li>
-                        <li>Lái xe</li>
-                    </ul>
-                </div>
+  <div class="grid-2" style="margin-top:1.3rem">
+    <div class="card searchable-item"><div class="card-header">ENVIRONMENT</div><p>Căn hộ Victorian, Bệnh viện Memorial lạnh, Phố sương mờ San Francisco, Bờ biển Carmel</p></div>
+    <div class="card searchable-item"><div class="card-header">MAP</div><p>Russian Hill Apartment, Memorial Hospital (Phòng 712), Sutter Street, Carmel Beach House</p></div>
+  </div>
+</div>
+</section>
 
-                <div class="card searchable-item" style="border-color: rgba(0, 242, 254, 0.4);">
-                    <div class="card-header" style="color: var(--cyan-glow);">Kỹ Năng Nhân Vật: Lauren</div>
-                    <ul class="card-list">
-                        <li>Đi xuyên tường & vật thể (Phasing)</li>
-                        <li>Phát sáng tâm linh (Emissive Glow) chiếu sáng khu vực tối</li>
-                        <li>Gây nhiễu các thiết bị điện tử</li>
-                        <li>Soi thấu và tái hiện ký ức ẩn</li>
-                    </ul>
-                </div>
-            </div>
+<section id="world">
+<div class="container">
+  <div class="section-header"><div class="section-num">06. WORLD BUILDING</div><h2 class="section-title">History · Culture · Mythology · Map</h2></div>
 
-            <!-- Economy & Progression -->
-            <div class="grid-2">
-                <div class="card searchable-item">
-                    <div class="card-header">Economy (Hệ Thống Tài Nguyên)</div>
-                    <ul class="card-list">
-                        <li><strong>Mảnh ghép ký ức (Memory Shards):</strong> Di vật tích tụ năng lượng quá khứ</li>
-                        <li><strong>Chỉ số hy vọng (Hope Level):</strong> Mở rộng bán kính di chuyển linh hồn</li>
-                        <li>Thu thập manh mối & di vật ẩn</li>
-                        <li>Nâng cấp khả năng tương tác tâm linh</li>
-                    </ul>
-                </div>
+  <div class="grid-3">
+    <div class="card searchable-item"><div class="card-header">6.1. HISTORY & LORE</div>
+      <div class="subhead">Biến cố tai nạn phố Sutter (Sutter Street Accident)</div><p>Vụ va chạm xe bí ẩn vào một đêm sương mờ tại giao lộ Sutter St, khiến bác sĩ tập sự Lauren rơi vào trạng thái hôn mê sâu tại Bệnh viện Memorial.</p>
+      <p>Đây không phải tai nạn ngẫu nhiên mà liên quan đến một manh mối bị che giấu trong tài liệu y khoa.</p>
+      <div class="subhead">Dự án Kiến trúc Victory (Victory Project):</div><p>Dự án thiết kế đô thị lớn mà Arthur từng đảm nhận. Các bản vẽ kỹ thuật của dự án này chứa đựng chìa khóa và sơ đồ kiến trúc bị ẩn giấu, liên kết trực tiếp với hiện trường tai nạn.</p>
+      <div class="subhead">Mối liên kết định mệnh:</div><p>Căn hộ kiến trúc Victorian tại Russian Hill vốn là nơi ở của Lauren trước tai nạn, sau đó được Arthur thuê lại. Sự giao thoa không gian này trở thành "cổng kết nối" đầu tiên giữa Arthur và linh hồn Lauren.</p>
+    </div>
 
-                <div class="card searchable-item">
-                    <div class="card-header">Progression & Level Design</div>
-                    <ul class="card-list">
-                        <li>Mở rộng phạm vi di chuyển của linh hồn Lauren</li>
-                        <li>Mở khu vực mới (Căn hộ Victorian → Bệnh viện Memorial → Sutter St → Bờ biển Carmel)</li>
-                        <li>Giải đố không gian & lén lút (Stealth) qua bảo vệ / y bác sĩ</li>
-                        <li>Mở khóa ký ức & chuyển tiếp cốt truyện</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="card searchable-item"><div class="card-header">6.2. CULTURE & SOCIETY</div>
+      <div class="subhead">Sự đối lập giữa Cổ điển và Hiện đại San Francisco:</div>
+      <p>Thực tại ấm áp & hoài niệm:Khu phố Russian Hill với các căn hộ nhà gỗ Victorian cổ điển, đường dốc sương mù, đại diện cho ký ức và sự kết nối cảm xúc.</p>
+      <p>Thực tại lạnh lẽo & vô trùng: Hệ thống Bệnh viện Memorial hiện đại, quản lý nghiêm ngặt bởi quy trình y tế khắt khe và lực lượng an ninh gác đêm.</p>
+      <div class="subhead">Quy tắc Y tế & Áp lực 72h:</div><p>Hội đồng y khoa Bệnh viện Memorial đưa ra thời hạn 72 giờ trước khi tiến hành hội chẩn tháo thiết bị duy trì sự sống của Lauren.</p>
+      <p>Y tố xã hội này tạo nên động lực và áp lực thời gian (Time-pressure) đè nặng lên mọi hành động của Arthur.</p>
+    </div>
 
-    <!-- SECTION 05: CHARACTER AVATARS & ABILITIES -->
-    <section id="characters">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">05</div>
-                <h2 class="section-title">Nhân Vật & Ảnh Đại Diện (Avatars)</h2>
-            </div>
+    <div class="card searchable-item"><div class="card-header">6.3. MYTHOLOGY & SPIRITUAL LAWS</div>
+      <div class="subhead">Trường Năng Lượng & Bán Kính Hy Vọng (Hope Radius)</div><p>Linh hồn Lauren không thể tồn tại vô hạn định. Phạm vi di chuyển của cô bị giới hạn xung quanh Arthur hoặc thể xác tại bệnh viện.</p>
+      <div class="subhead">Chỉ số Hy Vọng (Hope Level):</div><p>Tăng lên khi hai người giải mã thành công ký ức hoặc củng cố niềm tin; giảm đi khi gặp căng thẳng hoặc cãi vã. Chỉ số này mở rộng bán kính di chuyển và năng lượng xuyên vật thể cho Lauren.</p>
+      <div class="subhead">Mảnh Ghép Ký Ức (Memory Shards):</div><p>Các di vật cá nhân (chùm chìa khóa, ống nghe y tế, bản vẽ cũ) tích tụ năng lượng cảm xúc quá khứ. Khi Lauren lại gần, các di vật này sẽ phát sáng và kích hoạt phân cảnh hồi tưởng (Flashback).</p>
+      <div class="subhead">Ranh Giới Sinh - Tử (The 72h Boundary):</div><p>Ranh giới giữa sự sống và cái chết không phải một bức tường, mà là một đồng hồ đếm ngược tâm linh. Khi đồng hồ chạm mốc 0, thể xác tháo máy thở, linh hồn Lauren sẽ tan biến hoàn toàn thành các hạt năng lượng.</p>
+    </div>
+  </div>
 
-            <div class="grid-2">
-                <!-- Arthur Avatar Placeholder -->
-                <div class="character-card searchable-item">
-                    <div class="avatar-box">
-                        <div class="avatar-icon">👤</div>
-                        <strong>ARTHUR</strong>
-                        <span style="font-size: 0.75rem;">(Khung ảnh đại diện Arthur)</span>
-                        <!-- Khi có ảnh, bạn thay thế bằng: <img src="duong_dan_anh.jpg" alt="Arthur Avatar"> -->
-                    </div>
-                    <div class="card-header" style="color: var(--warm-glow);">Arthur - Thực Thể Sống</div>
-                    <ul class="card-list">
-                        <li><strong>Vai trò:</strong> Kiến trúc sư; thực thể duy nhất nhìn thấy linh hồn Lauren</li>
-                        <li><strong>Tương tác vật lý:</strong> Đẩy / mở cửa không gian thực</li>
-                        <li><strong>Kỹ năng Stealth:</strong> Lén lút né tránh bảo vệ & bác sĩ</li>
-                        <li><strong>Đặc quyền:</strong> Đọc bản vẽ kỹ thuật kiến trúc & Lái xe</li>
-                    </ul>
-                </div>
+  <div style="margin-top:2rem"><div class="section-num">6.4.</div><h3 style="font-size:1.6rem;margin:.4rem 0 1rem">WORLD DESIGN & MAP</h3></div>
+  <div class="world-table card">
+    <table>
+      <thead><tr><th>Địa điểm (Map Location)</th><th>Bầu không khí (Visual Vibe)</th><th>Cơ chế Gameplay chính</th><th>Vai trò Cốt truyện</th></tr></thead>
+      <tbody>
+        <tr><td>1. Căn hộ Victorian (Russian Hill)</td><td>Ấm áp, tông màu nâu cam Tweed, ánh sáng đèn vàng dịu nhẹ.</td><td>Tutorial chuyển đổi nhân vật; Arthur di chuyển đồ đạc, Lauren xuyên tường tìm chìa khóa.</td><td>Điểm khởi đầu; Arthur phát hiện sự tồn tại của linh hồn Lauren.</td></tr>
+        <tr><td>2. Bệnh viện Memorial (Phòng 712)</td><td>Xám lạnh vô trùng (Clinical Grey), đèn huỳnh quang nhấp nháy.</td><td>Lén lút (Stealth) tránh bảo vệ; Lauren làm nhiễu camera & khóa điện tử để Arthur đột nhập.</td><td>Bảo vệ thể xác Lauren khỏi nguy cơ tháo máy thở.</td></tr>
+        <tr><td>3. Sutter Street</td><td>Sương mù đặc quánh, đèn đường vàng khuếch tán, hiện trường vụ án.</td><td>Điều tra góc nhìn đôi; Lauren soi vết máu/dấu vết ẩn, Arthur giải đố hiện trường.</td><td>Thu thập mảnh ghép quá khứ và tìm nguyên nhân tai nạn.</td></tr>
+        <tr><td>4. Carmel Beach House</td><td>Bờ biển lộng gió, hoàng hôn tím cam, không gian mở tĩnh lặng.</td><td>Giải đố tâm lý; củng cố <strong>Chỉ số Hy Vọng (Hope Level)</strong> lên mức tối đa.</td><td>Nơi nghỉ ngơi lắng đọng, thấu hiểu tình cảm sâu sắc giữa hai nhân vật.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-                <!-- Lauren Avatar Placeholder -->
-                <div class="character-card searchable-item">
-                    <div class="avatar-box">
-                        <div class="avatar-icon">👻</div>
-                        <strong>LAUREN</strong>
-                        <span style="font-size: 0.75rem;">(Khung ảnh đại diện Lauren)</span>
-                        <!-- Khi có ảnh, bạn thay thế bằng: <img src="duong_dan_anh.jpg" alt="Lauren Avatar"> -->
-                    </div>
-                    <div class="card-header" style="color: var(--cyan-glow);">Lauren - Thực Thể Tâm Linh</div>
-                    <ul class="card-list">
-                        <li><strong>Vai trò:</strong> Bác sĩ tập sự; linh hồn bán trong suốt rơi vào hôn mê</li>
-                        <li><strong>Dạng Linh Hồn:</strong> Đi xuyên tường (Phasing - Giữ Z)</li>
-                        <li><strong>Phát sáng tâm linh:</strong> Emissive Glow chiếu sáng khu vực tối</li>
-                        <li><strong>Năng lực đặc biệt:</strong> Làm nhiễu thiết bị điện & soi ký ức ẩn</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div style="margin-top:2rem"><div class="section-num">6.5.</div><h3 style="font-size:1.6rem;margin:.4rem 0 1rem">LEVEL JOURNEY & NARRATIVE ARC</h3></div>
+  <div class="feature-card searchable-item">
+    <div class="flow-container">
+      <div class="flow-step">Chapter 1<br>Russian Hill<br>(Khởi đầu)</div><span class="flow-arrow">→</span>
+      <div class="flow-step">Chapter 2<br>Memorial Hosp.<br>(Lén lút)</div><span class="flow-arrow">→</span>
+      <div class="flow-step">Chapter 3<br>Sutter St.<br>(Điều tra)</div><span class="flow-arrow">→</span>
+      <div class="flow-step">Chapter 4<br>Carmel Beach<br>(Tăng Hy Vọng)</div><span class="flow-arrow">→</span>
+      <div class="flow-step">Chapter 5<br>Final Countdown<br>(Quyết định)</div>
+    </div>
+  </div>
+  <div class="grid-3" style="margin-top:1.3rem">
+    <div class="card searchable-item"><div class="card-header">Chapter 1: Cuộc Gặp Kỳ Ảo (Russian Hill Apartment)</div><p>Nhiệm vụ:Khám phá căn hộ, làm quen với cơ chế nhìn thấy linh hồn và điều khiển song song.</p></div>
+    <div class="card searchable-item"><div class="card-header">Chapter 2: Ranh Giới Hôn Mê (Memorial Hospital - Phòng 712)</div><p>Nhiệm vụ:Đột nhập bệnh viện đêm gác; bảo vệ thể xác Lauren trước đợt kiểm tra y tế đột xuất.</p></div>
+    <div class="card searchable-item"><div class="card-header">Chapter 3: Mảnh Ghép Sutter (Sutter Street & Ký Ức)</div><p>Nhiệm vụ Truy vết vụ tai nạn trong đêm sương mù; đối chiếu bản vẽ Victory với hiện trường thực tế.</p></div>
+    <div class="card searchable-item"><div class="card-header">Chapter 4: Hoàng Hôn Bình Yên (Carmel Beach House)</div><p>Nhiệm vụ:Tìm lại kỷ vật bị lãng quên; hồi phục năng lượng linh hồn chuẩn bị cho trận chạy đua cuối.</p></div>
+    <div class="card searchable-item"><div class="card-header">Chapter 5: Cuộc Chạy Đua 72 Giờ (Chuyển Hướng Sinh Tử)</div><p>Nhiệm vụ:Tổng lực thâm nhập phòng cấp cứu cao cấp; đưa ra lựa chọn nhánh (Branching Choices) quyết định Lauren tỉnh lại hay tan biến.</p></div>
+  </div>
+</div>
+</section>
 
-    <!-- SECTION 06: STORYBOARD & CHAPTERS GALLERY -->
-    <section id="storyboard">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">06</div>
-                <h2 class="section-title">Storyboard & Phân Cảnh Cốt Truyện</h2>
-            </div>
+<section id="art">
+<div class="container">
+  <div class="section-header"><div class="section-num">GAME ART</div><h2 class="section-title">Shape · Color · Light · Material</h2></div>
+  <div class="grid-4">
+    <div class="card searchable-item"><div class="card-header" style="color:var(--warm-glow)">SHAPE</div><ul class="card-list"><li>ARCHITECTURAL LINES (Đường nét hình học kiến trúc của Arthur)</li><li>ETHEREAL & FLUID FORMS (Hình khối mềm mại, vô hình của Lauren)</li><li>URBAN STRUCTURES (Kiến trúc Victorian cổ điển & Bệnh viện hiện đại)</li></ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:var(--cyan-glow)">COLOR</div><div class="palette-box tweed">Warm Tweed & Earth Tones</div><ul class="card-list"><li>WARM TWEED & EARTH TONES (Sắc nâu cam, gỗ ấm - Thực tại Arthur)</li><li>EMISSIVE CYAN GLOW (Sắc xanh ngọc phát sáng - Tâm linh Lauren)</li><li>CLINICAL GREYS & MONOCHROME (Tông xám lạnh bệnh viện & Sương mù)</li></ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:#f3a661">LIGHT</div><div class="palette-box contrast">Dramatic Temperature Contrast</div><ul class="card-list"><li>DRAMATIC TEMPERATURE CONTRAST (Tương phản gắt giữa Ấm & Lạnh)</li><li>SAN FRANCISCO FOG (ATMOSPHERIC) (Sương mù khuếch tán ánh sáng)</li><li>VOLUMETRIC LIGHTING (Luồng sáng thể tích qua khe cửa, khung kính)</li></ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:#a7f3d0">MATERIAL</div><div class="palette-box clinical">Sterile Metal & Glass</div><ul class="card-list"><li>WOOD / BRICK / HEAVY FABRIC (Gỗ, gạch nung, vải dạ - Thế giới thực)</li><li>TRANSLUCENT / GLITCHED ETHER (Chất liệu bán trong suốt, hiệu ứng nhiễu sóng)</li><li>STERILE METAL & GLASS (Kim loại y tế lạnh & kính bệnh viện)</li></ul></div>
+  </div>
+</div>
+</section>
 
-            <div class="card searchable-item" style="margin-bottom: 2rem;">
-                <div class="card-header">Cốt Truyện Tổng Quan</div>
-                <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.8;">
-                    Câu chuyện diễn ra tại thành phố San Francisco sương mù. Người chơi luân phiên vào vai Arthur và linh hồn Lauren thực hiện hành trình giải mã bí ẩn vụ tai nạn tại Sutter Street, đồng thời từng bước chạy đua với thời gian đếm ngược <strong>72 giờ sinh tử</strong> để cứu Lauren trước khi cô bị tháo thiết bị duy trì sự sống.
-                </p>
-            </div>
+<section id="experience">
+<div class="container">
+  <div class="section-header"><div class="section-num">GAME EXPERIENCE</div><h2 class="section-title">Emotion · Immersion · Engagement</h2></div>
+  <div class="grid-3">
+    <div class="card searchable-item"><div class="card-header" style="color:#f43f5e">EMOTION – CẢM XÚC</div><ul class="card-list">
+      <li>CẮNG THẲNG khi lén lút né tránh bảo vệ/bác sĩ & áp lực đếm ngược 72 giờ sinh tử</li>
+      <li>CẢM ĐỘNG & SÂU LẮNG trước mối liên kết giữa Arthur và linh hồn Lauren</li>
+      <li>TÒ MÒ khi kết nối các manh mối và mảnh ghép ký ức ẩn</li>
+      <li>THỎA MÃN khi giải thành công các câu đố tương tác song song (Dual-Perspective Puzzle)</li>
+      <li>HỒI HỘP trước các quyết định đối diện với ranh giới sinh tử</li>
+    </ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:#38bdf8">IMMERSION – SỰ ĐẮM CHÌM</div><ul class="card-list">
+      <li>ENVIRONMENT CHI TIẾT: Căn hộ Victorian ấm cúng, Bệnh viện Memorial lạnh lẽo, Bờ biển Carmel</li>
+      <li>ÁNH SÁNG, SƯƠNG, ÂM THANH: Tương phản Cyan vs Tweed, sương mù San Francisco, âm thanh tĩnh lặng điện ảnh</li>
+      <li>KIẾN TRÚC & MÔI TRƯỜNG: Đô thị San Francisco cổ điển kết hợp yếu tố hiện thực kỳ ảo</li>
+      <li>ANIMATION & CINEMATIC: Góc quay One-Shot Camera liền mạch không cắt cảnh</li>
+      <li>WORLDBUILDING / LORE: Ranh giới giữa thực tại, tâm linh và ký ức ẩn</li>
+    </ul></div>
+    <div class="card searchable-item"><div class="card-header" style="color:#facc15">ENGAGEMENT – SỰ GẮN KẾT</div><ul class="card-list">
+      <li>MUỐN KHÁM PHÁ KHU VỰC TIẾP THEO (Mở rộng hành trình từ Căn hộ → Bệnh viện → Sutter Street)</li>
+      <li>MUỐN NÂNG CẤP KHẢ NĂNG TÂM LINH (Mở rộng phạm vi di chuyển & tương tác của Lauren)</li>
+      <li>MUỐN TÌM BÍ MẬT & DI VẬT (Thu thập trọn bộ Mảnh ghép ký ức - Memory Shards)</li>
+      <li>MUỐN BIẾT TIẾP CÂU CHUYỆN (Giải mã vụ tai nạn Sutter Street & chạy đua giải cứu Lauren)</li>
+      <li>MUỐN KHÁM PHÁ CÁC KẾT THÚC KHÁC NHAU (Thử nghiệm các lựa chọn nhánh - Branching Choices)</li>
+    </ul></div>
+  </div>
+</div>
+</section>
 
-            <h3 style="font-family: 'Cinzel', serif; margin-bottom: 1rem;">Khung Phân Cảnh Storyboard Theo Chương</h3>
-            
-            <div class="storyboard-grid">
-                <!-- Chapter 1 Storyboard -->
-                <div class="storyboard-card searchable-item">
-                    <div class="storyboard-frame">
-                        <span>🖼️ STORYBOARD FRAME 01</span>
-                        <span style="font-size:0.7rem; opacity:0.7;">(Để trống chèn ảnh phân cảnh)</span>
-                    </div>
-                    <strong style="color: var(--warm-glow);">Chapter 1: Cuộc Gặp Kỳ Ảo</strong>
-                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        <strong>Map:</strong> Russian Hill Apartment<br>
-                        Khám phá căn hộ Victorian, làm quen cơ chế nhìn thấy linh hồn và tương tác song song.
-                    </p>
-                </div>
+<footer><div class="container"><p><strong>IF ONLY</strong> - Game Design Document Presentation</p><p style="margin-top:.4rem;color:#64707d">Nội dung theo tài liệu PDF nguồn.</p></div></footer>
 
-                <!-- Chapter 2 Storyboard -->
-                <div class="storyboard-card searchable-item">
-                    <div class="storyboard-frame">
-                        <span>🖼️ STORYBOARD FRAME 02</span>
-                        <span style="font-size:0.7rem; opacity:0.7;">(Để trống chèn ảnh phân cảnh)</span>
-                    </div>
-                    <strong style="color: var(--cyan-glow);">Chapter 2: Ranh Giới Hôn Mê</strong>
-                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        <strong>Map:</strong> Memorial Hospital (Phòng 712)<br>
-                        Thâm nhập bệnh viện đêm gác; lén lút bảo vệ thể xác Lauren trước đợt kiểm tra y tế.
-                    </p>
-                </div>
-
-                <!-- Chapter 3 Storyboard -->
-                <div class="storyboard-card searchable-item">
-                    <div class="storyboard-frame">
-                        <span>🖼️ STORYBOARD FRAME 03</span>
-                        <span style="font-size:0.7rem; opacity:0.7;">(Để trống chèn ảnh phân cảnh)</span>
-                    </div>
-                    <strong style="color: var(--warm-glow);">Chapter 3: Mảnh Ghép Sutter</strong>
-                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        <strong>Map:</strong> Sutter Street & Ký Ức<br>
-                        Truy vết vụ tai nạn trong đêm sương mù; đối chiếu bản vẽ Dự án Victory với hiện trường.
-                    </p>
-                </div>
-
-                <!-- Chapter 4 Storyboard -->
-                <div class="storyboard-card searchable-item">
-                    <div class="storyboard-frame">
-                        <span>🖼️ STORYBOARD FRAME 04</span>
-                        <span style="font-size:0.7rem; opacity:0.7;">(Để trống chèn ảnh phân cảnh)</span>
-                    </div>
-                    <strong style="color: var(--cyan-glow);">Chapter 4: Hoàng Hôn Bình Yên</strong>
-                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        <strong>Map:</strong> Carmel Beach House<br>
-                        Tìm lại kỷ vật bị lãng quên; hồi phục Chỉ số Hy Vọng (Hope Level) củng cố năng lượng.
-                    </p>
-                </div>
-
-                <!-- Chapter 5 Storyboard -->
-                <div class="storyboard-card searchable-item">
-                    <div class="storyboard-frame">
-                        <span>🖼️ STORYBOARD FRAME 05</span>
-                        <span style="font-size:0.7rem; opacity:0.7;">(Để trống chèn ảnh phân cảnh)</span>
-                    </div>
-                    <strong style="color: #f43f5e;">Chapter 5: Cuộc Chạy Đua 72 Giờ</strong>
-                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        <strong>Map:</strong> Final Countdown / Emergency Room<br>
-                        Thâm nhập phòng cấp cứu cao cấp; đưa ra lựa chọn nhánh (Branching Choices) quyết định sinh tử.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 07: WORLD BUILDING & LOCATIONS -->
-    <section id="world">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">07</div>
-                <h2 class="section-title">World Building & Quy Luật Thế Giới</h2>
-            </div>
-
-            <div class="grid-3" style="margin-bottom: 2rem;">
-                <div class="card searchable-item">
-                    <div class="card-header">History & Lore</div>
-                    <ul class="card-list">
-                        <li><strong>Biến cố Sutter Street:</strong> Vụ va chạm xe đêm sương mờ khiến Lauren hôn mê.</li>
-                        <li><strong>Dự án Victory:</strong> Bản vẽ kỹ thuật đô thị chứa chìa khóa bí ẩn.</li>
-                        <li><strong>Cổng kết nối:</strong> Căn hộ Victorian tại Russian Hill giao thoa không gian.</li>
-                    </ul>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header">Culture & Society</div>
-                    <ul class="card-list">
-                        <li><strong>Đối lập:</strong> Căn hộ hoài niệm ấm áp vs Bệnh viện Memorial vô trùng.</li>
-                        <li><strong>Quy tắc y tế:</strong> Áp lực thời gian đếm ngược 72 giờ tháo máy thở.</li>
-                        <li>Sương mù đô thị San Francisco quyến rũ và bí ẩn.</li>
-                    </ul>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header">Spiritual Laws</div>
-                    <ul class="card-list">
-                        <li><strong>Bán kính Hy Vọng (Hope Radius):</strong> Phạm vi linh hồn di chuyển quanh Arthur.</li>
-                        <li><strong>Memory Shards:</strong> Di vật phát sáng khi Lauren lại gần.</li>
-                        <li><strong>Ranh giới 72h:</strong> Đồng hồ tâm linh đếm ngược trước khi tan biến.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 08: GAME ART & EXPERIENCE -->
-    <section id="art">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-num">08</div>
-                <h2 class="section-title">Game Art & Visual Language</h2>
-            </div>
-
-            <div class="grid-4" style="margin-bottom: 2rem;">
-                <div class="card searchable-item">
-                    <div class="card-header" style="font-size:1rem; color:var(--warm-glow);">SHAPE</div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Architectural Lines (Arthur) & Ethereal Fluid Forms (Lauren).</p>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header" style="font-size:1rem; color:var(--cyan-glow);">COLOR</div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Warm Tweed & Earth Tones vs Emissive Cyan Glow & Clinical Greys.</p>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header" style="font-size:1rem; color:#f3a661;">LIGHT</div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Volumetric Lighting xuyên qua khe cửa, San Francisco Atmospheric Fog.</p>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header" style="font-size:1rem; color:#a7f3d0;">MATERIAL</div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Gỗ, gạch nung, Translucent Glitched Ether & Kim loại y tế lạnh.</p>
-                </div>
-            </div>
-
-            <!-- Game Experience Grid -->
-            <div class="grid-3">
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: #f43f5e;">Emotion (Cảm Xúc)</div>
-                    <ul class="card-list">
-                        <li>Căng thẳng khi né tránh bảo vệ & áp lực 72 giờ</li>
-                        <li>Cảm động trước mối liên kết giữa Arthur & Lauren</li>
-                        <li>Tò mò kết nối manh mối & Memory Shards</li>
-                        <li>Thỏa mãn khi giải câu đố Dual-Perspective</li>
-                    </ul>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: #38bdf8;">Immersion (Sự Đắm Chìm)</div>
-                    <ul class="card-list">
-                        <li>Environment chi tiết (Căn hộ, Bệnh viện, Bờ biển)</li>
-                        <li>Tương phản Cyan vs Tweed & Sương mù San Francisco</li>
-                        <li>Góc quay One-Shot Camera liền mạch không cắt cảnh</li>
-                    </ul>
-                </div>
-
-                <div class="card searchable-item">
-                    <div class="card-header" style="color: #facc15;">Engagement (Sự Gắn Kết)</div>
-                    <ul class="card-list">
-                        <li>Muốn mở rộng hành trình khám phá khu vực mới</li>
-                        <li>Nâng cấp khả năng di chuyển tâm linh</li>
-                        <li>Khám phá các kết thúc khác nhau (Branching Choices)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p><strong>IF ONLY</strong> - Game Design Document Presentation</p>
-            <p style="margin-top: 0.4rem; color: rgba(255,255,255,0.4);">Thiết kế theo chuẩn Web21.9 • Chuyển thể cảm hứng từ tác phẩm của Marc Levy</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript Live Search System -->
-    <script>
-        function executeSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const items = document.querySelectorAll('.searchable-item');
-            const statusLabel = document.getElementById('searchStatus');
-            let matchCount = 0;
-
-            if (query === "") {
-                items.forEach(item => {
-                    item.classList.remove('search-hidden', 'search-match');
-                });
-                statusLabel.innerText = "";
-                return;
-            }
-
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    item.classList.remove('search-hidden');
-                    item.classList.add('search-match');
-                    matchCount++;
-                } else {
-                    item.classList.add('search-hidden');
-                    item.classList.remove('search-match');
-                }
-            });
-
-            statusLabel.innerText = `Tìm thấy ${matchCount} kết quả`;
-        }
-
-        function quickSearch(keyword) {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = keyword;
-            executeSearch();
-        }
-    </script>
+<script>
+function executeSearch(){
+ const query=document.getElementById('searchInput').value.toLowerCase().trim();
+ const items=document.querySelectorAll('.searchable-item');
+ const status=document.getElementById('searchStatus');
+ let count=0;
+ items.forEach(item=>{
+   const ok=query===""||item.innerText.toLowerCase().includes(query);
+   item.classList.toggle('search-hidden',!ok);
+   item.classList.toggle('search-match',query!==""&&ok);
+   if(ok&&query)count++;
+ });
+ status.textContent=query?('Tìm thấy '+count+' kết quả'):'';
+}
+function quickSearch(keyword){const input=document.getElementById('searchInput');input.value=keyword;executeSearch()}
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement.id!=='searchInput'){e.preventDefault();document.getElementById('searchInput').focus()}if(e.key==='Escape'){document.getElementById('searchInput').value='';executeSearch()}})
+</script>
 </body>
 </html>
