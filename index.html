@@ -59,6 +59,11 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 #world{background-position:center 58%}
 #art{background-position:center 42%}
 #experience{background-position:center 60%}
+
+.character-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+.character-card{overflow:hidden}
+.character-image{width:100%;aspect-ratio:16/9;display:block;object-fit:cover;border-radius:12px;border:1px solid var(--border-color);margin-bottom:1.2rem;background:#05070d}
+@media(max-width:768px){.character-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -69,6 +74,7 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
     <ul class="nav-links">
       <li><a href="#overview">Tổng Quan</a></li>
       <li><a href="#gameplay">Gameplay</a></li>
+      <li><a href="#characters">Nhân Vật</a></li>
       <li><a href="#story">Cốt Truyện</a></li>
       <li><a href="#world">Thế Giới</a></li>
       <li><a href="#art">Game Art</a></li>
@@ -155,6 +161,41 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
     <div class="card searchable-item"><div class="card-header">PROGRESSION / LEVEL DESIGN</div><ul class="card-list">
       <li>Tiến triển thế nào?</li><li>Mở rộng phạm vi di chuyển của Lauren</li><li>Mở khu vực mới (Căn hộ Victorian → Bệnh viện Memorial → Bờ biển Carmel → Sutter St)</li><li>Giải đố không gian & lén lút qua bảo vệ/y bác sĩ để tiếp tục</li><li>Mở khóa ký ức & chuyển tiếp cốt truyện</li>
     </ul></div>
+  </div>
+</div>
+</section>
+
+
+<section id="characters">
+<div class="container">
+  <div class="section-header"><div class="section-num">CHARACTERS</div><h2 class="section-title">Arthur & Lauren</h2></div>
+  <div class="character-grid">
+    <article class="character-card card searchable-item" style="border-color:rgba(224,138,62,.4)">
+      <img class="character-image" src="images/arthur.webp" alt="Arthur">
+      <div class="card-header" style="color:var(--warm-glow)">Arthur — Thực thể</div>
+      <ul class="card-list">
+        <li>Thực thể duy nhất nhìn thấy linh hồn Lauren</li>
+        <li>Tương tác vật lý, đẩy/mở cửa</li>
+        <li>Lén lút (Stealth)</li>
+        <li>Đọc bản vẽ</li>
+        <li>Lái xe</li>
+      </ul>
+    </article>
+    <article class="character-card card searchable-item" style="border-color:rgba(0,242,254,.4)">
+      <img class="character-image" src="images/lauren.webp" alt="Lauren — Linh hồn">
+      <div class="card-header" style="color:var(--cyan-glow)">Lauren — Linh hồn</div>
+      <ul class="card-list">
+        <li>Thực thể tâm linh bán trong suốt</li>
+        <li>Đi xuyên tường (Phasing)</li>
+        <li>Phát sáng (Emissive Glow)</li>
+        <li>Làm nhiễu thiết bị điện</li>
+        <li>Soi ký ức</li>
+      </ul>
+    </article>
+  </div>
+  <div class="card searchable-item" style="margin-top:1.3rem;border-color:rgba(167,243,208,.35)">
+    <div class="card-header" style="color:#a7f3d0">Lauren dạng người</div>
+    <p>Tương tác vật lý, đẩy/mở cửa, lén lút (Stealth), đọc bản vẽ, lái xe</p>
   </div>
 </div>
 </section>
