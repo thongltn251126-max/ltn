@@ -66,6 +66,9 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 .character-gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.2rem}
 .character-gallery .character-card{overflow:hidden}
 .character-gallery .character-image{aspect-ratio:4/5;object-fit:cover}
+.lauren-image-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin-bottom:1.2rem}
+.lauren-image-pair .character-image{aspect-ratio:4/5;object-fit:cover;margin-bottom:.35rem}
+.image-caption{text-align:center;color:var(--text-muted);font-size:.68rem;letter-spacing:.5px}
 .chapter-image{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:10px;margin:-.15rem 0 1rem;border:1px solid var(--border-color);background:#05070d}
 .chapter{overflow:hidden}
 .visual-reference-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1.3rem}
@@ -192,7 +195,16 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
       </ul>
     </article>
     <article class="character-card card searchable-item" style="border-color:rgba(0,242,254,.4)">
-      <img class="character-image" src="images/lauren dạng linh hồn.png" alt="Lauren — Linh hồn">
+      <div class="lauren-image-pair">
+        <div>
+          <img class="character-image" src="images/lauren dạng linh hồn.png" alt="Lauren — Linh hồn">
+          <div class="image-caption">Dạng linh hồn</div>
+        </div>
+        <div>
+          <img class="character-image" src="images/lauren dạng thực thể.png" alt="Lauren — Dạng thực thể">
+          <div class="image-caption">Dạng thực thể</div>
+        </div>
+      </div>
       <div class="card-header" style="color:var(--cyan-glow)">Lauren — Linh hồn</div>
       <ul class="card-list">
         <li>Thực thể tâm linh bán trong suốt</li>
