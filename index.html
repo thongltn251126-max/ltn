@@ -45,8 +45,6 @@ header.hero{padding-top:10rem;background-image:linear-gradient(180deg,rgba(8,11,
 .flow-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;background:rgba(0,0,0,.42);padding:1rem;border-radius:12px;border:1px dashed var(--border-color);margin-top:1rem}.flow-step{background:rgba(255,255,255,.08);padding:.55rem .8rem;border-radius:8px;font-size:.78rem;font-weight:600;text-align:center;flex:1;min-width:110px}.flow-arrow{color:var(--cyan-glow);font-weight:800}
 .keybind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}.keybind{font-size:.78rem;color:var(--text-muted)}.key-badge{background:rgba(255,255,255,.1);border:1px solid var(--border-color);padding:.3rem .55rem;border-radius:6px;font-weight:700;font-family:monospace;color:var(--cyan-glow);display:inline-block;margin-right:.35rem}
 .chapters{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}.chapter{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1rem;min-height:150px;position:relative}.chapter:before{content:'';position:absolute;left:12px;right:12px;top:0;height:2px;background:linear-gradient(90deg,var(--warm-tweed),var(--cyan-glow))}.chapter small{display:block;color:var(--cyan-glow);font-size:.67rem;letter-spacing:1px;margin-bottom:.7rem}.chapter h3{font-size:.95rem;margin-bottom:.45rem}.chapter p{font-size:.76rem;color:var(--text-muted)}
-.chapter-feature{max-width:980px;margin:0 auto 2rem;background:rgba(5,7,13,.72);border:1px solid var(--border-color);border-radius:18px;padding:1rem;display:flex;justify-content:center;box-shadow:0 18px 50px rgba(0,0,0,.35)}
-.chapter-feature img{display:block;width:100%;max-height:760px;object-fit:contain;border-radius:12px;border:1px solid var(--border-color);background:#05070d}
 .palette-box{height:72px;border-radius:10px;display:flex;align-items:center;padding:0 1rem;font-weight:800;font-size:.8rem;margin-bottom:1rem}.tweed{background:linear-gradient(135deg,#a85619,#e08a3e)}.cyan{background:linear-gradient(135deg,#00d8df,#4facfe)}.clinical{background:linear-gradient(135deg,#4a596d,#263447)}.contrast{background:linear-gradient(135deg,#111,#454545)}
 .world-table{overflow:auto}.world-table table{width:100%;min-width:950px;border-collapse:collapse}.world-table th,.world-table td{padding:.85rem;border:1px solid var(--border-color);vertical-align:top;text-align:left;font-size:.82rem}.world-table th{color:var(--cyan-glow);background:rgba(255,255,255,.05)}
 .search-hidden{display:none!important}.search-match{border-color:var(--cyan-glow)!important;box-shadow:0 0 22px rgba(0,242,254,.18)!important}
@@ -224,105 +222,6 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
     <div class="card-header" style="color:#a7f3d0">Lauren dạng người</div>
     <p>Tương tác vật lý, đẩy/mở cửa, lén lút (Stealth), đọc bản vẽ, lái xe</p>
   </div>
-
-  <div style="margin-top:2rem">
-    <div class="section-num">3.1 — CHARACTER SYSTEM</div>
-    <h3 style="font-size:1.6rem;margin:.4rem 0 1rem">Hệ thống nhân vật đầy đủ</h3>
-    <div class="world-table card searchable-item">
-      <table>
-        <thead><tr><th>Nhóm nhân vật</th><th>Tên nhân vật</th><th>Vai trò</th><th>Tác dụng trong Gameplay</th></tr></thead>
-        <tbody>
-          <tr><td>Nhân vật chính<br>(Playable Characters)</td><td><strong>Arthur Pendleton</strong></td><td>Kiến trúc sư · Thực thể sống</td><td>Giao diện tương tác vật lý, Stealth, giải đố không gian, lái xe, đọc bản vẽ kỹ thuật.</td></tr>
-          <tr><td>Nhân vật chính<br>(Playable Characters)</td><td><strong>Lauren Kline</strong></td><td>Bác sĩ · Thực thể tâm linh</td><td>Phasing, làm nhiễu thiết bị điện, soi vết máu/ký ức, phát sáng nội tại.</td></tr>
-          <tr><td>Nhân vật hỗ trợ<br>(Support NPC)</td><td><strong>Paul Pendleton</strong></td><td>Bạn thân & đối tác kiến trúc</td><td>Cung cấp thiết bị hỗ trợ điều tra, thiết kế phương án hành động, dẫn đường kỹ thuật cho Arthur.</td></tr>
-          <tr><td>Nhân vật hỗ trợ<br>(Support NPC)</td><td><strong>Suzanne</strong></td><td>Mẹ của Lauren</td><td>Điểm mấu chốt Narrative; đại diện cho xung đột tình cảm và quyết định rút ống thở, tạo Time Pressure.</td></tr>
-          <tr><td>Nhân vật tạo xung đột<br>(Antagonist NPC)</td><td><strong>Thanh tra Pilguez</strong></td><td>Đối thủ điều tra vụ mất tích cơ thể bệnh nhân</td><td>Tạo áp lực đuổi bắt, Stealth chướng ngại vật tuần tra, đối đầu về mặt điều tra pháp lý.</td></tr>
-          <tr><td>Nhân vật phụ / Chướng ngại vật<br>(Environment NPC)</td><td><strong>Đội ngũ y khoa & Bảo vệ</strong></td><td>NPC tuần tra tại Bệnh viện Memorial</td><td>Chướng ngại vật Stealth, tạo áp lực phát hiện trong các khu vực lạnh vô trùng.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div style="margin-top:2rem">
-    <div class="section-num">3.2 — CHARACTER PROFILES</div>
-    <h3 style="font-size:1.6rem;margin:.4rem 0 1rem">Character Profile đầy đủ</h3>
-    <div class="grid-2">
-      <article class="card searchable-item" style="border-color:rgba(224,138,62,.4)">
-        <div class="card-header" style="color:var(--warm-glow)">01. ARTHUR PENDLETON — THE LIVING</div>
-        <p><strong>Vai trò:</strong> Nhân vật chính (Playable · Thực thể sống).</p>
-        <p><strong>Tác dụng Gameplay:</strong> Di chuyển đồ vật, mở cửa, lén lút (Stealth), lái xe, đọc bản vẽ kỹ thuật Victory Project.</p>
-        <p><strong>Shape Language:</strong> Hình khối vuông vức, chắc chắn (Architectural Lines).</p>
-        <p><strong>Visual Key:</strong> Tông ấm, nâu tweed, earth tone, gỗ/gạch.</p>
-        <p><strong>Mục tiêu:</strong> Giải mã nguyên nhân tai nạn, cứu cơ thể Lauren trước hạn 72h, tăng Hope Level.</p>
-        <p><strong>Động cơ:</strong> Tình cảm dành cho Lauren, niềm tin vào hy vọng sống, muốn sửa chữa sai lầm Victory Project.</p>
-        <p><strong>Xung đột:</strong> Niềm tin tâm linh vs áp lực điều tra của cảnh sát/bệnh viện; quá khứ thiết kế vs hiện tại cứu chữa.</p>
-      </article>
-
-      <article class="card searchable-item" style="border-color:rgba(0,242,254,.4)">
-        <div class="card-header" style="color:var(--cyan-glow)">02. LAUREN KLINE — THE SPIRIT</div>
-        <p><strong>Vai trò:</strong> Nhân vật chính (Playable · Linh hồn bán trong suốt).</p>
-        <p><strong>Tác dụng Gameplay:</strong> Phasing, Emissive Glow, làm nhiễu thiết bị, soi ký ức.</p>
-        <p><strong>Shape Language:</strong> Đường cong mềm mại, nhẹ, không ổn định (Fluid Forms).</p>
-        <p><strong>Visual Key:</strong> Lạnh, phát sáng Cyan Glow.</p>
-        <p><strong>Mục tiêu:</strong> Mở khóa tất cả Memory Shards, duy trì Hope Level để mở rộng Hope Radius, truyền đạt tâm nguyện cuối cho mẹ.</p>
-        <p><strong>Động cơ:</strong> Mong muốn được sống, thấu hiểu quá khứ, giải tỏa nỗi oan ức.</p>
-        <p><strong>Xung đột:</strong> Sống và Chết (Timer 72h); năng lượng tâm linh suy yếu vs nhu cầu giải mã ký ức.</p>
-      </article>
-
-      <article class="card searchable-item">
-        <div class="card-header">03. PAUL PENDLETON — THE TECHNICIAN</div>
-        <p><strong>Vai trò:</strong> Nhân vật hỗ trợ.</p>
-        <p><strong>Tính cách:</strong> Thực tế, tháo vát, logic, đáng tin cậy.</p>
-        <p><strong>Gameplay:</strong> Cung cấp thiết bị hỗ trợ, lên kế hoạch thâm nhập/đánh cắp, liên lạc trong Stealth màn chơi.</p>
-        <p><strong>Động cơ:</strong> Trung thành bạn bè, tin tưởng Arthur, có trách nhiệm với Victory Project.</p>
-        <p><strong>Xung đột:</strong> Ranh giới hành động hợp pháp vs hỗ trợ Arthur.</p>
-      </article>
-
-      <article class="card searchable-item">
-        <div class="card-header">04. SUZANNE — THE MOTHER</div>
-        <p><strong>Vai trò:</strong> Nhân vật hỗ trợ · Mẹ của Lauren.</p>
-        <p><strong>Gameplay/Narrative:</strong> Điểm mấu chốt của tuyến cảm xúc; đại diện cho xung đột giữa hy vọng, thực tế y khoa và quyết định liên quan đến thiết bị duy trì sự sống.</p>
-        <p><strong>Động cơ:</strong> Bảo vệ con gái và đối diện với quyết định sinh tử trong giới hạn 72 giờ.</p>
-        <p><strong>Xung đột:</strong> Tình mẫu tử vs áp lực thời gian và quy trình bệnh viện.</p>
-      </article>
-
-      <article class="card searchable-item">
-        <div class="card-header">05. THANH TRA PILGUEZ — THE HUNTER</div>
-        <p><strong>Vai trò:</strong> Đối thủ chính (Antagonist).</p>
-        <p><strong>Tính cách:</strong> Lão luyện, sắc bén, nghiêm nghị nhưng giàu lòng thấu cảm.</p>
-        <p><strong>Gameplay:</strong> NPC Stealth chướng ngại vật tuần tra, điều tra manh mối hiện trường, tạo countdown tâm lý.</p>
-        <p><strong>Visual Key:</strong> Sương mù và đèn vàng mờ.</p>
-        <p><strong>Động cơ:</strong> Trách nhiệm thực thi pháp luật và bổn phận cảnh sát.</p>
-        <p><strong>Xung đột:</strong> Chân lý pháp lý vs chân lý nhân văn đằng sau hành động của Arthur.</p>
-      </article>
-
-      <article class="card searchable-item">
-        <div class="card-header">06. ĐỘI NGŨ Y KHOA & BẢO VỆ</div>
-        <p><strong>Vai trò:</strong> Nhân vật phụ / Chướng ngại vật môi trường.</p>
-        <p><strong>Gameplay:</strong> Tuần tra hành lang, giám sát phòng bệnh, camera và khu vực hạn chế; tạo áp lực Stealth trong Memorial Hospital.</p>
-      </article>
-    </div>
-  </div>
-
-  <div style="margin-top:2rem">
-    <div class="section-num">3.3 — CHARACTER MAP</div>
-    <h3 style="font-size:1.6rem;margin:.4rem 0 1rem">Tương tác và Mối quan hệ</h3>
-    <div class="grid-3">
-      <div class="card searchable-item">
-        <div class="card-header" style="color:var(--warm-glow)">CỔNG KẾT NỐI · CĂN HỘ VICTORIAN</div>
-        <p>Nơi gắn kết định mệnh giữa Arthur và Lauren, nơi hai thế giới vật chất và tâm linh đặt cạnh nhau.</p>
-      </div>
-      <div class="card searchable-item">
-        <div class="card-header" style="color:var(--cyan-glow)">TƯƠNG TÁC SONG SONG · PUZZLE CO-OP</div>
-        <p>Arthur đẩy đồ vật và xử lý tương tác vật lý ↔ Lauren xuyên tường, kích hoạt cơ chế; người chơi switch liên tục để giải puzzle.</p>
-      </div>
-      <div class="card searchable-item">
-        <div class="card-header">ĐỐI LẬP VISUAL / VỊ TRÍ</div>
-        <p><strong>Classic SF:</strong> Arthur / Căn hộ Victorian ↔ ký ức + cảm xúc + kết nối.</p>
-        <p><strong>Modern SF:</strong> Bệnh viện Memorial / Đội ngũ y khoa ↔ thực tế + sinh tử + áp lực.</p>
-      </div>
-    </div>
-  </div>
 </div>
 </section>
 
@@ -345,15 +244,27 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
   <div class="card searchable-item" style="margin-top:1.3rem"><div class="card-header">Tóm tắt</div><p>Câu chuyện diễn ra tại San Francisco sương mù. Người chơi luân phiên vào vai Arthur và linh hồn Lauren thực hiện hành trình giải mã bí ẩn vụ tai nạn tại Sutter Street, đồng thời từng bước chạy đua với thời gian để cứu Lauren trước khi bị rút thiết bị duy trì sự sống.</p></div>
 
   <div style="margin-top:2rem"><div class="section-num">LEVEL/ AREA HÀNH TRÌNH GAME</div><h3 style="font-size:1.5rem;margin:.4rem 0 1rem">5 CHAPTERS</h3></div>
-  <div class="chapter-feature">
-    <img src="images/chapter phần.png" alt="Tổng quan 5 Chapter của IF ONLY" onerror="this.style.display='none'">
-  </div>
   <div class="chapters">
-    <div class="chapter searchable-item"><small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 2</small><h3>Ranh Giới Hôn Mê</h3><p>Memorial Hospital - Phòng 712</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 3</small><h3>Mảnh Ghép Sutter</h3><p>Sutter Street & Ký Ức</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 4</small><h3>Hoàng Hôn Bình Yên</h3><p>Carmel Beach House</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 5</small><h3>Cuộc Chạy Đua 72 Giờ</h3><p>Chuyển Hướng Sinh Tử</p></div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_aydfaiaydfaiaydf.png" alt="Chapter 1 — Russian Hill Apartment">
+      <small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_kw76uekw76uekw76.png" alt="Chapter 2 — Memorial Hospital">
+      <small>CHAPTER 2</small><h3>Ranh Giới Hôn Mê</h3><p>Memorial Hospital - Phòng 712</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_vzkognvzkognvzko.png" alt="Chapter 3 — Sutter Street">
+      <small>CHAPTER 3</small><h3>Mảnh Ghép Sutter</h3><p>Sutter Street & Ký Ức</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_w9jso3w9jso3w9js.png" alt="Chapter 4 — Carmel Beach House">
+      <small>CHAPTER 4</small><h3>Hoàng Hôn Bình Yên</h3><p>Carmel Beach House</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/ChatGPT Image 22_30_20 26 thg 9, 2026 (2).png" alt="Chapter 5 — Final Countdown">
+      <small>CHAPTER 5</small><h3>Cuộc Chạy Đua 72 Giờ</h3><p>Chuyển Hướng Sinh Tử</p>
+    </div>
   </div>
 
   <div class="grid-2" style="margin-top:1.3rem">
@@ -394,6 +305,8 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
   <div style="margin-top:2rem"><div class="section-num">6.4.</div><h3 style="font-size:1.6rem;margin:.4rem 0 1rem">WORLD DESIGN & MAP</h3></div>
   <div class="visual-reference-grid">
     <div class="card searchable-item"><img src="images/924acbcd-d333-4de1-b22e-fde067699191.jpg" alt="Tư liệu hình ảnh IF ONLY"><div class="card-header" style="margin-top:1rem">Tư liệu hình ảnh</div></div>
+    <div class="card searchable-item"><img src="images/Gemini_Generated_Image_aydfaiaydfaiaydf.png" alt="Russian Hill"><div class="card-header" style="margin-top:1rem">Russian Hill · Chapter 1</div></div>
+    <div class="card searchable-item"><img src="images/ChatGPT Image 22_30_20 26 thg 9, 2026 (2).png" alt="Final Countdown"><div class="card-header" style="margin-top:1rem">Final Countdown · Chapter 5</div></div>
   </div>
 
   <div class="world-table card">
