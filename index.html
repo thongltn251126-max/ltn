@@ -63,6 +63,16 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 .character-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
 .character-card{overflow:hidden}
 .character-image{width:100%;aspect-ratio:16/9;display:block;object-fit:cover;border-radius:12px;border:1px solid var(--border-color);margin-bottom:1.2rem;background:#05070d}
+.character-gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.2rem}
+.character-gallery .character-card{overflow:hidden}
+.character-gallery .character-image{aspect-ratio:4/5;object-fit:cover}
+.chapter-image{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:10px;margin:-.15rem 0 1rem;border:1px solid var(--border-color);background:#05070d}
+.chapter{overflow:hidden}
+.visual-reference-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1.3rem}
+.visual-reference-grid img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:12px;border:1px solid var(--border-color)}
+@media(max-width:1100px){.character-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.character-gallery,.visual-reference-grid{grid-template-columns:1fr}.chapters{grid-template-columns:1fr}}
+
 @media(max-width:768px){.character-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -169,9 +179,9 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 <section id="characters">
 <div class="container">
   <div class="section-header"><div class="section-num">CHARACTERS</div><h2 class="section-title">Arthur & Lauren</h2></div>
-  <div class="character-grid">
+  <div class="character-gallery">
     <article class="character-card card searchable-item" style="border-color:rgba(224,138,62,.4)">
-      <img class="character-image" src="images/arthur.webp" alt="Arthur">
+      <img class="character-image" src="images/auther.png" alt="Arthur">
       <div class="card-header" style="color:var(--warm-glow)">Arthur — Thực thể</div>
       <ul class="card-list">
         <li>Thực thể duy nhất nhìn thấy linh hồn Lauren</li>
@@ -182,7 +192,7 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
       </ul>
     </article>
     <article class="character-card card searchable-item" style="border-color:rgba(0,242,254,.4)">
-      <img class="character-image" src="images/lauren.webp" alt="Lauren — Linh hồn">
+      <img class="character-image" src="images/lauren dạng thực thể.png" alt="Lauren — Linh hồn">
       <div class="card-header" style="color:var(--cyan-glow)">Lauren — Linh hồn</div>
       <ul class="card-list">
         <li>Thực thể tâm linh bán trong suốt</li>
@@ -191,6 +201,21 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
         <li>Làm nhiễu thiết bị điện</li>
         <li>Soi ký ức</li>
       </ul>
+    </article>
+    <article class="character-card card searchable-item">
+      <img class="character-image" src="images/paul pendltion.jpg" alt="Paul">
+      <div class="card-header">Paul</div>
+      <p>Nhân vật trong tuyến nhân vật của IF ONLY.</p>
+    </article>
+    <article class="character-card card searchable-item">
+      <img class="character-image" src="images/suzamne.jpg" alt="Suzanne">
+      <div class="card-header">Suzanne</div>
+      <p>Nhân vật trong tuyến nhân vật của IF ONLY.</p>
+    </article>
+    <article class="character-card card searchable-item">
+      <img class="character-image" src="images/thanh tra Pilguez.png" alt="Thanh tra Pilguez">
+      <div class="card-header">Thanh tra Pilguez</div>
+      <p>Nhân vật trong tuyến nhân vật của IF ONLY.</p>
     </article>
   </div>
   <div class="card searchable-item" style="margin-top:1.3rem;border-color:rgba(167,243,208,.35)">
@@ -220,11 +245,26 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 
   <div style="margin-top:2rem"><div class="section-num">LEVEL/ AREA HÀNH TRÌNH GAME</div><h3 style="font-size:1.5rem;margin:.4rem 0 1rem">5 CHAPTERS</h3></div>
   <div class="chapters">
-    <div class="chapter searchable-item"><small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 2</small><h3>Ranh Giới Hôn Mê</h3><p>Memorial Hospital - Phòng 712</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 3</small><h3>Mảnh Ghép Sutter</h3><p>Sutter Street & Ký Ức</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 4</small><h3>Hoàng Hôn Bình Yên</h3><p>Carmel Beach House</p></div>
-    <div class="chapter searchable-item"><small>CHAPTER 5</small><h3>Cuộc Chạy Đua 72 Giờ</h3><p>Chuyển Hướng Sinh Tử</p></div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_aydfaiaydfaiaydf.png" alt="Chapter 1 — Russian Hill Apartment">
+      <small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_kw76uekw76uekw76.png" alt="Chapter 2 — Memorial Hospital">
+      <small>CHAPTER 2</small><h3>Ranh Giới Hôn Mê</h3><p>Memorial Hospital - Phòng 712</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_vzkognvzkognvzko.png" alt="Chapter 3 — Sutter Street">
+      <small>CHAPTER 3</small><h3>Mảnh Ghép Sutter</h3><p>Sutter Street & Ký Ức</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/Gemini_Generated_Image_w9jso3w9jso3w9js.png" alt="Chapter 4 — Carmel Beach House">
+      <small>CHAPTER 4</small><h3>Hoàng Hôn Bình Yên</h3><p>Carmel Beach House</p>
+    </div>
+    <div class="chapter searchable-item">
+      <img class="chapter-image" src="images/ChatGPT Image 22_30_20 26 thg 9, 2026 (2).png" alt="Chapter 5 — Final Countdown">
+      <small>CHAPTER 5</small><h3>Cuộc Chạy Đua 72 Giờ</h3><p>Chuyển Hướng Sinh Tử</p>
+    </div>
   </div>
 
   <div class="grid-2" style="margin-top:1.3rem">
@@ -263,6 +303,12 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
   </div>
 
   <div style="margin-top:2rem"><div class="section-num">6.4.</div><h3 style="font-size:1.6rem;margin:.4rem 0 1rem">WORLD DESIGN & MAP</h3></div>
+  <div class="visual-reference-grid">
+    <div class="card searchable-item"><img src="images/924acbcd-d333-4de1-b22e-fde067699191.jpg" alt="Tư liệu hình ảnh IF ONLY"><div class="card-header" style="margin-top:1rem">Tư liệu hình ảnh</div></div>
+    <div class="card searchable-item"><img src="images/Gemini_Generated_Image_aydfaiaydfaiaydf.png" alt="Russian Hill"><div class="card-header" style="margin-top:1rem">Russian Hill · Chapter 1</div></div>
+    <div class="card searchable-item"><img src="images/ChatGPT Image 22_30_20 26 thg 9, 2026 (2).png" alt="Final Countdown"><div class="card-header" style="margin-top:1rem">Final Countdown · Chapter 5</div></div>
+  </div>
+
   <div class="world-table card">
     <table>
       <thead><tr><th>Địa điểm (Map Location)</th><th>Bầu không khí (Visual Vibe)</th><th>Cơ chế Gameplay chính</th><th>Vai trò Cốt truyện</th></tr></thead>
