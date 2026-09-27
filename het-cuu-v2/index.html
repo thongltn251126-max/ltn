@@ -3,69 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HẾT CỨU V2</title>
+<title>HẾT CỨU V2 — IF ONLY</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#070a12;--card:rgba(14,20,33,.82);--line:rgba(255,255,255,.12);--warm:#e08a3e;--cyan:#00f2fe;--text:#f8fafc;--muted:#cbd5e1;--grey:#8a99ad}
+:root{--bg:#070a12;--card:rgba(14,20,33,.82);--card2:rgba(22,30,47,.92);--line:rgba(255,255,255,.12);--warm:#e08a3e;--warm2:#f3a661;--cyan:#00f2fe;--cyan2:#4facfe;--text:#f8fafc;--muted:#cbd5e1;--grey:#8a99ad}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 h1,h2,h3{font-family:'Cinzel',serif;letter-spacing:1px}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,10,18,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav-brand{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#f3a661,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+a{color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,10,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-brand{font-size:1.45rem;font-weight:800;background:linear-gradient(135deg,var(--warm2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
 .nav-links{display:flex;gap:1rem;list-style:none;overflow:auto}
-.nav-links a{text-decoration:none;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.73rem;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
 .nav-links a:hover{color:var(--cyan)}
-.container{max-width:1180px;margin:0 auto;padding:0 1.5rem}
-header.hero,section{position:relative;padding:6rem 0;border-bottom:1px solid var(--line)}
-header.hero{text-align:center;padding-top:10rem;min-height:48vh}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+section,header.hero{position:relative;padding:6.5rem 0 5.5rem;border-bottom:1px solid var(--line);background-size:cover;background-position:center;background-attachment:fixed}
+header.hero{padding-top:10rem;text-align:center;background-image:linear-gradient(180deg,rgba(7,10,18,.72),rgba(7,10,18,.95)),url('../images/924acbcd-d333-4de1-b22e-fde067699191.jpg')}
+#concept{background-image:linear-gradient(180deg,rgba(7,10,18,.94),rgba(7,10,18,.92)),url('../images/924acbcd-d333-4de1-b22e-fde067699191.jpg')}
+#world{background-image:linear-gradient(180deg,rgba(7,10,18,.95),rgba(7,10,18,.95)),url('../images/Gemini_Generated_Image_aydfaiaydfaiaydf.png')}
+#characters{background-image:linear-gradient(180deg,rgba(7,10,18,.95),rgba(7,10,18,.94)),url('../images/Gemini_Generated_Image_vzkognvzkognvzko.png')}
+#script{background-image:linear-gradient(180deg,rgba(7,10,18,.95),rgba(7,10,18,.96)),url('../images/ChatGPT Image 22_30_20 26 thg 9, 2026 (2).png')}
+#storyboard{background-image:linear-gradient(180deg,rgba(7,10,18,.96),rgba(7,10,18,.96)),url('../images/chapter.jpg')}
+#pitching{background-image:linear-gradient(180deg,rgba(7,10,18,.96),rgba(7,10,18,.97)),url('../images/924acbcd-d333-4de1-b22e-fde067699191.jpg')}
 .hero-tag{display:inline-block;padding:.4rem 1rem;border:1px solid rgba(0,242,254,.35);background:rgba(0,242,254,.08);border-radius:999px;color:var(--cyan);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.hero h1{font-size:4.5rem;margin:1rem 0}
-.hero-sub{max-width:900px;margin:0 auto;color:var(--muted);font-size:1rem}
-.section-kicker{font-size:.78rem;color:#f3a661;letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem;font-weight:800}
+.hero h1{font-size:4.6rem;margin:1rem 0;background:linear-gradient(180deg,#fff 30%,var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 12px 30px rgba(0,0,0,.7)}
+.hero-sub{max-width:850px;margin:0 auto 2.4rem;color:var(--muted);font-size:1.05rem}
+.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.35rem;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.32);transition:.25s}
+.card:hover{background:var(--card2);border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
+.card h3{font-size:1rem;margin-bottom:.65rem}
+.card p{font-size:.9rem;color:var(--muted);margin:.35rem 0}
+.section-kicker{font-size:.78rem;color:var(--warm2);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem;font-weight:800}
 .section-title{font-size:2.2rem;margin-bottom:2rem}
-.section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
-.section-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.item{min-height:120px;padding:1.6rem;border:1px solid var(--line);border-radius:16px;background:var(--card);display:flex;align-items:flex-start;gap:1rem;transition:.25s}
-.item:hover{transform:translateY(-3px);border-color:rgba(0,242,254,.35)}
-.num{min-width:58px;height:58px;border:1px solid rgba(0,242,254,.32);border-radius:12px;display:grid;place-items:center;color:var(--cyan);font-weight:800;font-size:.85rem}
-.item h3{font-size:1.05rem;margin-top:.15rem}
-.v-item{min-height:110px}
-.v-label{color:#f3a661;font-size:.7rem;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:.35rem;font-weight:800}
-.note{margin-top:1.25rem;padding:1rem 1.1rem;border-left:3px solid var(--warm);background:rgba(224,138,62,.07);color:var(--muted);border-radius:8px;font-size:.82rem}
-footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
-@media(max-width:900px){.section-grid,.section-grid.three{grid-template-columns:1fr}}
-@media(max-width:800px){nav{align-items:flex-start;flex-direction:column}.nav-links{width:100%}.hero h1{font-size:3rem}.container{padding:0 1rem}}
-
-.detail-block{margin-top:1.5rem;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
-.detail-title{padding:1rem 1.2rem;background:rgba(255,255,255,.045);border-bottom:1px solid var(--line);font-weight:800;letter-spacing:.7px}
-.detail-title span{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:.6rem;border-radius:9px;border:1px solid rgba(0,242,254,.35);color:var(--cyan);font-size:.75rem}
-.script-note{padding:1rem 1.2rem;color:var(--muted);font-size:.82rem;border-bottom:1px solid var(--line)}
-.scene{padding:1.2rem;border-bottom:1px solid var(--line)}
-.scene:last-child{border-bottom:0}
-.scene-head{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.7rem;color:var(--cyan);font-size:.8rem}
-.scene-head span{color:var(--warm2,#f3a661);white-space:nowrap}
-.scene p{font-size:.83rem;color:var(--muted);margin:.35rem 0}
-.scene .action{color:#dbe4ee;font-style:italic}
-.timing-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1rem}
-.timing-strip div{padding:1rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.04)}
-.timing-strip b{display:block;color:var(--cyan);font-size:.78rem}
-.timing-strip span{display:block;color:var(--muted);font-size:.75rem;margin-top:.25rem}
-.storyboard-table{overflow:auto}
-.sb-row{display:grid;grid-template-columns:60px 90px 180px minmax(290px,1fr) minmax(220px,1fr);gap:0;border-bottom:1px solid var(--line);min-width:1000px}
-.sb-row>*{padding:.65rem .7rem;border-right:1px solid var(--line);font-size:.72rem;color:var(--muted)}
-.sb-row>*:last-child{border-right:0}
-.sb-head>*{background:rgba(255,255,255,.05);color:var(--cyan);font-weight:800}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;padding:1rem}
-.mini-grid>div{padding:1rem;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035)}
-.mini-grid b{display:block;color:var(--text);font-size:.8rem;margin-bottom:.25rem}
-.mini-grid span{display:block;color:var(--muted);font-size:.76rem}
-
-.chapter-dialogue{border-bottom:1px solid var(--line);padding-bottom:1.4rem;margin-bottom:1.3rem}
-.chapter-title{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cyan);letter-spacing:1px;margin-bottom:.9rem}
-.chapter-dialogue .scene-head{padding-bottom:.7rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
-.chapter-dialogue p{font-size:.84rem;color:var(--muted);margin:.18rem 0}
-.chapter-dialogue p b{color:var(--warm2,#f3a661);letter-spacing:1px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.list{list-style:none}
+.list li{position:relative;padding-left:1.15rem;color:var(--muted);font-size:.88rem;margin:.55rem 0}
+.list li:before{content:'✦';position:absolute;left:0;color:var(--cyan);font-size:.65rem}
+.meta{display:inline-block;color:var(--grey);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem}
+.highlight{background:linear-gradient(135deg,rgba(224,138,62,.12),rgba(0,242,254,.08));border:1px solid rgba(0,242,254,.18);border-radius:16px;padding:1.5rem}
+.table-wrap{overflow:auto}
+table{width:100%;min-width:960px;border-collapse:collapse}
+th,td{border:1px solid var(--line);padding:.75rem;text-align:left;vertical-align:top;font-size:.82rem}
+th{color:var(--cyan);background:rgba(255,255,255,.04)}
+.img-card img{width:100%;height:270px;object-fit:contain;background:#05070d;border:1px solid var(--line);border-radius:12px;display:block}
+.lauren-pair{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.lauren-pair img{height:230px}
+.caption{text-align:center;color:var(--muted);font-size:.68rem;margin-top:.35rem}
+.chapter-main{max-width:1100px;margin:0 auto 2rem;padding:1rem;border-radius:18px;border:1px solid var(--line);background:rgba(5,7,13,.72);display:flex;justify-content:center}
+.chapter-main img{width:100%;max-height:760px;object-fit:contain;border-radius:12px;border:1px solid var(--line)}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem}
+.step{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:1rem;text-align:center}
+.step strong{display:block;color:var(--cyan);margin-bottom:.35rem}
+.note{padding:1rem;border-left:3px solid var(--warm);background:rgba(224,138,62,.07);color:var(--muted);border-radius:8px;font-size:.85rem}
+footer{padding:3rem 0;text-align:center;color:var(--muted);font-size:.8rem;background:#04060b}
+.search{display:flex;gap:.5rem;align-items:center;margin-top:1rem}
+.search input{width:100%;max-width:340px;background:rgba(0,0,0,.48);border:1px solid var(--line);border-radius:999px;padding:.6rem .85rem;color:#fff;outline:none}
+.search button{border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;border-radius:999px;padding:.55rem .8rem;cursor:pointer}
+.search-status{font-size:.72rem;color:var(--cyan)}
+@media(max-width:1100px){.hero-grid,.grid-4{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){nav{align-items:flex-start;flex-direction:column}.nav-links{width:100%}.hero h1{font-size:3rem}.grid-2,.grid-3,.grid-4,.hero-grid,.timeline{grid-template-columns:1fr}section,header.hero{background-attachment:scroll}.container{padding:0 1rem}.lauren-pair{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -73,264 +72,304 @@ footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
 <nav>
   <div class="nav-brand">HẾT CỨU V2</div>
   <ul class="nav-links">
-    <li><a href="#concept">I</a></li>
-    <li><a href="#world">II</a></li>
-    <li><a href="#characters">III</a></li>
-    <li><a href="#script">IV</a></li>
-    <li><a href="#storyboard">V</a></li>
-    <li><a href="#pitching">VII</a></li>
+    <li><a href="#concept">Hồ sơ ý tưởng</a></li>
+    <li><a href="#world">XÂY DỰNG THẾ GIỚI</a></li>
+    <li><a href="#characters">Nhân vật</a></li>
+    <li><a href="#script">Kịch bản</a></li>
+    <li><a href="#storyboard">Storyboard</a></li>
+    <li><a href="#pitching">THUYẾT TRÌNH</a></li>
   </ul>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <span class="hero-tag">ĐÚNG THỨ TỰ CÁC MỤC</span>
+    <span class="hero-tag">BÀI CUỐI MÔN · ĐẠO DIỄN GAME & PHIM HOẠT HÌNH · K18</span>
     <h1>HẾT CỨU V2</h1>
-    <p class="hero-sub">Khung website trình bày theo đúng thứ tự các mục trong bản báo cáo; toàn bộ nhãn hiển thị được viết bằng tiếng Việt.</p>
+    <p class="hero-sub"><strong>IF ONLY</strong> — trình bày lại nội dung website cũ theo đúng hệ thống đầu mục của bản báo cáo: Hồ sơ ý tưởng → XÂY DỰNG THẾ GIỚI → Thiết kế nhân vật → Kịch bản → Storyboard → Pitching.</p>
+    <div class="hero-grid">
+      <div class="card"><span class="meta">Project</span><h3>IF ONLY</h3><p>Cinematic Narrative Adventure</p></div>
+      <div class="card"><span class="meta">Setting</span><h3>San Francisco</h3><p>Russian Hill · Memorial Hospital · Sutter Street · Carmel Beach</p></div>
+      <div class="card"><span class="meta">Core</span><h3>Arthur & Lauren</h3><p>Dual-Perspective · Character Switch · One-Shot Camera</p></div>
+      <div class="card"><span class="meta">Pressure</span><h3>72H</h3><p>Ranh giới giữa sự sống và cái chết</p></div>
+    </div>
   </div>
 </header>
 
 <section id="concept">
 <div class="container">
-  <div class="section-kicker">I</div>
-  <h2 class="section-title">HỒ SƠ Ý TƯỞNG</h2>
-  <div class="section-grid">
-    <article class="item"><div class="num">1.1</div><h3>Thông tin dự án</h3></article>
-    <article class="item"><div class="num">1.2</div><h3>Logline</h3></article>
-    <article class="item"><div class="num">1.3</div><h3>Thể loại & đối tượng khán giả</h3></article>
-    <article class="item"><div class="num">1.4</div><h3>Chủ đề (Theme)</h3></article>
-    <article class="item"><div class="num">1.5</div><h3>Moodboard</h3></article>
+  <div class="section-kicker">I — HỒ SƠ Ý TƯỞNG</div>
+  <h2 class="section-title">Concept · Logline · Genre · Theme · Moodboard</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>1.1. THÔNG TIN DỰ ÁN</h3>
+      <p><strong>Tên dự án:</strong> IF ONLY</p>
+      <p><strong>Hình thức:</strong> Game</p>
+      <p><strong>Định hướng:</strong> Narrative-driven, khám phá, giải đố, điện ảnh, hiện thực kỳ ảo.</p>
+      <p><strong>Chất liệu nguồn:</strong> Hình tượng Arthur & Lauren và thế giới San Francisco sương mờ.</p>
+    </div>
+    <div class="card">
+      <h3>1.2. LOGLINE</h3>
+      <div class="highlight">Tại San Francisco chìm trong sương mù, Arthur gặp linh hồn Lauren và cùng cô giải mã bí ẩn vụ tai nạn tại Sutter Street, đồng thời chạy đua với giới hạn 72 giờ để bảo vệ cơ thể cô và tìm đường trở lại sự sống.</div>
+    </div>
+    <div class="card">
+      <h3>1.3. THỂ LOẠI & ĐỐI TƯỢNG KHÁN GIẢ</h3>
+      <ul class="list">
+        <li>Cinematic Narrative Adventure</li>
+        <li>Exploration & Puzzle</li>
+        <li>Character-driven / Fantasy-Spiritual / Realistic</li>
+        <li>Đối tượng: người chơi yêu thích game điện ảnh, dẫn truyện, kỳ ảo và tình cảm sâu lắng; 18–40 tuổi.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>1.4. CHỦ ĐỀ (THEME)</h3>
+      <p>Câu chuyện xoay quanh <strong>hy vọng, sự kết nối, ký ức và ranh giới sống–chết</strong>. Trải nghiệm được xây dựng để người chơi cảm nhận mối liên kết giữa Arthur và Lauren thông qua các mảnh ký ức, Hope Level và áp lực 72 giờ.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem" class="card">
+    <h3>1.5. MOODBOARD & VISUAL DIRECTION</h3>
+    <div class="grid-4">
+      <div><span class="meta">Color</span><p>Warm Tweed & Earth Tones · Emissive Cyan · Clinical Greys</p></div>
+      <div><span class="meta">Light</span><p>Tương phản Ấm/Lạnh · Sương San Francisco · Volumetric Lighting</p></div>
+      <div><span class="meta">Material</span><p>Gỗ / Gạch / Vải dạ ↔ Ether bán trong suốt ↔ Kim loại & kính y tế</p></div>
+      <div><span class="meta">Shape</span><p>Architectural Lines của Arthur ↔ Fluid Forms của Lauren</p></div>
+    </div>
   </div>
 </div>
 </section>
 
 <section id="world">
 <div class="container">
-  <div class="section-kicker">II</div>
-  <h2 class="section-title">XÂY DỰNG THẾ GIỚI</h2>
-  <div class="section-grid">
-    <article class="item"><div class="num">2.1</div><h3>Mô tả thế giới</h3></article>
-    <article class="item"><div class="num">2.2</div><h3>Thời gian</h3></article>
-    <article class="item"><div class="num">2.3</div><h3>Không gian</h3></article>
-    <article class="item"><div class="num">2.4</div><h3>Quy tắc vận hành</h3></article>
-    <article class="item"><div class="num">2.5</div><h3>Bối cảnh chính</h3></article>
+  <div class="section-kicker">II — WORLD BUILDING</div>
+  <h2 class="section-title">Mô tả thế giới · Thời gian · Không gian · Quy tắc · Bối cảnh</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>2.1. MÔ TẢ THẾ GIỚI</h3>
+      <p>San Francisco trong sương mờ được xây dựng trên sự đối lập giữa thực tại đô thị hoài niệm và hệ thống y tế lạnh, vô trùng. Câu chuyện giao thoa giữa thế giới vật chất, ký ức và tâm linh.</p>
+      <p><strong>Sutter Street Accident:</strong> Vụ va chạm xe bí ẩn khiến Lauren hôn mê sâu tại Bệnh viện Memorial; bí mật nằm trong hồ sơ y tế.</p>
+      <p><strong>Victory Project:</strong> Dự án đô thị do Arthur thiết kế, với các bản vẽ chứa sơ đồ ẩn liên kết hiện trường tai nạn.</p>
+    </div>
+    <div class="card">
+      <h3>2.2. THỜI GIAN</h3>
+      <p><strong>Hiện tại của câu chuyện:</strong> sau tai nạn, khi Lauren đang hôn mê tại Memorial Hospital.</p>
+      <p><strong>Quá khứ:</strong> ký ức về Lauren, căn hộ Victorian, Victory Project và vụ tai nạn Sutter Street.</p>
+      <p><strong>Giới hạn hành trình:</strong> 72 giờ tạo Time-pressure và tác động đến các quyết định cuối.</p>
+    </div>
+    <div class="card">
+      <h3>2.3. KHÔNG GIAN</h3>
+      <ul class="list">
+        <li>Căn hộ Victorian — Russian Hill</li>
+        <li>Bệnh viện Memorial — Phòng 712</li>
+        <li>Sutter Street — hiện trường tai nạn</li>
+        <li>Carmel Beach House — không gian mở, hoàng hôn</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>2.4. QUY TẮC VẬN HÀNH</h3>
+      <ul class="list">
+        <li><strong>Hope Radius:</strong> Lauren chỉ di chuyển trong bán kính giới hạn quanh Arthur hoặc thể xác.</li>
+        <li><strong>Hope Level:</strong> tăng khi thấu hiểu/giải mã ký ức, giúp mở rộng bán kính và năng lượng.</li>
+        <li><strong>Memory Shards:</strong> chìa khóa, ống nghe, bản vẽ kích hoạt Flashback khi Lauren tiếp cận.</li>
+        <li><strong>Ranh Giới Sinh–Tử:</strong> đồng hồ 72h là điều kiện áp lực xuyên suốt.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>2.5. BỐI CẢNH CHÍNH</h3>
+      <p><strong>Russian Hill:</strong> ấm áp, hoài niệm, kết nối.</p>
+      <p><strong>Memorial Hospital:</strong> lạnh, vô trùng, an ninh gác đêm.</p>
+      <p><strong>Sutter Street:</strong> sương mù, đèn vàng, hiện trường bí ẩn.</p>
+      <p><strong>Carmel Beach House:</strong> gió biển, hoàng hôn tím cam, lắng đọng.</p>
+    </div>
+    <div class="card img-card">
+      <h3>HÌNH ẢNH THAM CHIẾU</h3>
+      <img src="../images/924acbcd-d333-4de1-b22e-fde067699191.jpg" alt="Tư liệu hình ảnh IF ONLY">
+    </div>
   </div>
 </div>
 </section>
 
 <section id="characters">
 <div class="container">
-  <div class="section-kicker">III</div>
-  <h2 class="section-title">THIẾT KẾ NHÂN VẬT</h2>
-  <div class="section-grid">
-    <article class="item"><div class="num">3.1</div><h3>Hệ thống nhân vật</h3></article>
-    <article class="item"><div class="num">3.2</div><h3>Hồ sơ nhân vật</h3></article>
-    <article class="item"><div class="num">3.3</div><h3>Bảng thiết kế nhân vật</h3></article>
-    <article class="item"><div class="num">3.4</div><h3>Định hướng tạo hình</h3></article>
+  <div class="section-kicker">III — THIẾT KẾ NHÂN VẬT</div>
+  <h2 class="section-title">Hệ thống nhân vật · Hồ sơ nhân vật · Bảng thiết kế nhân vật · Định hướng tạo hình</h2>
+
+  <div class="table-wrap card">
+    <h3>3.1. HỆ THỐNG NHÂN VẬT</h3>
+    <table>
+      <thead><tr><th>Nhóm</th><th>Nhân vật</th><th>Vai trò</th><th>Tác dụng Gameplay</th></tr></thead>
+      <tbody>
+        <tr><td>Playable</td><td>Arthur Pendleton</td><td>Kiến trúc sư · Thực thể sống</td><td>Tương tác vật lý, Stealth, giải đố không gian, lái xe, đọc bản vẽ.</td></tr>
+        <tr><td>Playable</td><td>Lauren Kline</td><td>Bác sĩ · Thực thể tâm linh</td><td>Phasing, làm nhiễu thiết bị điện, soi ký ức, phát sáng.</td></tr>
+        <tr><td>Support NPC</td><td>Paul Pendleton</td><td>Bạn thân & đối tác kiến trúc</td><td>Thiết bị hỗ trợ điều tra, phương án hành động, dẫn đường kỹ thuật.</td></tr>
+        <tr><td>Support NPC</td><td>Suzanne</td><td>Mẹ của Lauren</td><td>Điểm mấu chốt Narrative, xung đột tình cảm và Time Pressure.</td></tr>
+        <tr><td>Antagonist NPC</td><td>Thanh tra Pilguez</td><td>Đối thủ điều tra</td><td>Stealth chướng ngại vật, điều tra manh mối, tạo áp lực đuổi bắt.</td></tr>
+        <tr><td>Environment NPC</td><td>Đội ngũ y khoa & Bảo vệ</td><td>NPC tuần tra tại Memorial</td><td>Tạo áp lực phát hiện và chướng ngại vật Stealth.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:1.5rem" class="grid-2">
+    <div class="card img-card">
+      <h3>3.2. ARTHUR PENDLETON — THE LIVING</h3>
+      <img src="../images/auther.png" alt="Arthur Pendleton">
+      <p><strong>Shape:</strong> Architectural Lines, hình khối vuông vức, chắc chắn.</p>
+      <p><strong>Visual:</strong> nâu tweed, earth tone, vật liệu gỗ/gạch.</p>
+      <p><strong>Mục tiêu:</strong> giải mã tai nạn, cứu Lauren trước 72h, tăng Hope Level.</p>
+      <p><strong>Động cơ/xung đột:</strong> tình cảm và hy vọng sống đối đầu áp lực điều tra và bệnh viện.</p>
+    </div>
+    <div class="card img-card">
+      <h3>3.2. LAUREN KLINE — THE SPIRIT</h3>
+      <div class="lauren-pair">
+        <div><img src="../images/lauren dạng linh hồn.png" alt="Lauren dạng linh hồn"><div class="caption">Dạng linh hồn</div></div>
+        <div><img src="../images/lauren dạng thực thể.png" alt="Lauren dạng thực thể"><div class="caption">Dạng thực thể</div></div>
+      </div>
+      <p><strong>Shape:</strong> Fluid Forms, mềm, nhẹ, không ổn định.</p>
+      <p><strong>Visual:</strong> Cyan Glow, bán trong suốt.</p>
+      <p><strong>Mục tiêu:</strong> mở khóa Memory Shards, duy trì Hope Level, truyền đạt tâm nguyện.</p>
+      <p><strong>Xung đột:</strong> sống/chết trong Timer 72h và năng lượng tâm linh suy yếu.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.2rem" class="grid-3">
+    <div class="card img-card"><h3>PAUL PENDLETON — THE TECHNICIAN</h3><img src="../images/paul pendltion.jpg" alt="Paul"><p>Thực tế, tháo vát, logic, đáng tin cậy; hỗ trợ thiết bị, kế hoạch và liên lạc.</p></div>
+    <div class="card img-card"><h3>SUZANNE — THE MOTHER</h3><img src="../images/suzamne.jpg" alt="Suzanne"><p>Mẹ của Lauren; đại diện cho tình mẫu tử, hy vọng và quyết định liên quan đến thiết bị duy trì sự sống.</p></div>
+    <div class="card img-card"><h3>THANH TRA PILGUEZ — THE HUNTER</h3><img src="../images/thanh tra Pilguez.png" alt="Thanh tra Pilguez"><p>Lão luyện, sắc bén, nghiêm nghị; là chướng ngại Stealth và lực lượng điều tra bám theo Arthur.</p></div>
+  </div>
+
+  <div style="margin-top:1.5rem" class="grid-2">
+    <div class="card">
+      <h3>3.3. CHARACTER SHEET</h3>
+      <p><strong>Arthur:</strong> tư liệu hình ảnh hiện có phục vụ tham chiếu tạo hình.</p>
+      <p><strong>Lauren:</strong> có hai trạng thái hình ảnh — linh hồn và thực thể.</p>
+      <p><strong>Yêu cầu báo cáo:</strong> Front / Side / Back, biểu cảm, Pose / Action, trang phục / đạo cụ. Những sheet góc nhìn đầy đủ chưa xuất hiện trong nội dung website cũ và có thể bổ sung ở bước sau.</p>
+    </div>
+    <div class="card">
+      <h3>3.4. ĐỊNH HƯỚNG TẠO HÌNH</h3>
+      <ul class="list">
+        <li>Arthur: khối chắc, đường nét kiến trúc, Warm Tweed & Earth Tones.</li>
+        <li>Lauren: Fluid Forms, Cyan Glow, translucent / glitched ether.</li>
+        <li>Environment: Victorian cổ điển ↔ bệnh viện hiện đại.</li>
+        <li>Lighting: tương phản Ấm/Lạnh, sương và volumetric light.</li>
+      </ul>
+    </div>
   </div>
 </div>
 </section>
 
 <section id="script">
 <div class="container">
-  <div class="section-kicker">IV</div>
-  <h2 class="section-title">KỊCH BẢN</h2>
+  <div class="section-kicker">IV — KỊCH BẢN</div>
+  <h2 class="section-title">Ý tưởng câu chuyện · Cấu trúc ba hồi · Kịch bản · Thời lượng & nhịp độ</h2>
 
-  <div class="section-grid">
-    <article class="item"><div class="num">4.1</div><h3>Ý tưởng câu chuyện</h3></article>
-    <article class="item"><div class="num">4.2</div><h3>Đề cương – Cấu trúc ba hồi</h3></article>
-    <article class="item script-main"><div class="num">4.3</div><h3>Kịch bản thoại hoàn chỉnh 3–5 phút</h3></article>
-    <article class="item"><div class="num">4.4</div><h3>Thời lượng & nhịp độ</h3></article>
-  </div>
-
-  <div class="detail-block">
-    <div class="detail-title"><span>4.3</span> KỊCH BẢN THOẠI HOÀN CHỈNH — 04:20</div>
-    <div class="script-note">Phân đoạn cinematic hoàn chỉnh dùng cho phần Kịch bản của báo cáo. Nội dung được triển khai từ mạch truyện đã có của IF ONLY: Arthur gặp Lauren → phát hiện Lauren đang hôn mê → điều tra Sutter Street → hy vọng và ký ức → áp lực 72 giờ.</div>
-
-    <div class="chapter-dialogue">
-      <div class="chapter-title">CHƯƠNG 1 — CUỘC GẶP KỲ ẢO</div>
-      <div class="scene-head"><b>CẢNH 01 — CĂN HỘ VICTORIAN, RUSSIAN HILL — ĐÊM</b><span>CHƯƠNG 1</span></div>
-      <p><b>ARTHUR</b></p>
-      <p>“Lạ thật... Hệ thống điện ở cái căn hộ này lại dở chứng rồi. Paul bảo tuần trước đã thay lại toàn bộ cầu chì mà...”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Đừng... Đừng chạm vào cái chìa khóa đó. Đó là... của tôi.”</p>
-
-      <p><b>ARTHUR</b></p>
-      <p>“Ai đó?!... Cô... cô vào đây bằng cách nào? Cửa khóa rồi mà!”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Anh... Anh nhìn thấy tôi sao? Thật sự nhìn thấy sao?!”</p>
-
-      <p><b>ARTHUR</b></p>
-      <p>“Tôi... Tôi đang ngủ mơ đúng không? Căng thẳng công việc quá hóa điên rồi... Cô là cái bóng? Hay là ảo giác?”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Tôi không phải ảo giác. Tôi là Lauren... Lauren Kline. Đây là nhà của tôi! Hoặc ít nhất... đã từng là nhà của tôi trước khi đêm sương mù đó xảy ra.”</p>
-
-      <p><b>ARTHUR</b></p>
-      <p>“Lauren Kline?... Bác sĩ tập sự ở Bệnh viện Memorial? Vụ tai nạn ở phố Sutter tuần trước?!”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Phải. Nhưng tôi không nhớ chuyện gì đã xảy ra đêm đó... Tôi tỉnh dậy và thấy mình ở đây, nhưng thể xác tôi... vẫn đang nằm trong phòng cấp cứu.”</p>
-
-      <p><b>ARTHUR</b></p>
-      <p>“Nếu cô đang ở bệnh viện... Vậy cái đứng trước mặt tôi lúc này... là cái gì?”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Linh hồn? Một mảnh ký ức? Tôi cũng không rõ... Nhưng anh là người duy nhất suốt một tuần qua nghe được tiếng tôi nói.”</p>
-
-      <p><b>ARTHUR</b></p>
-      <p>“Được rồi, Lauren. Tôi không biết đây là trò đùa hay phép thuật... Nhưng nếu cô thực sự đang ở đây, chúng ta phải tìm hiểu xem chuyện gì đã xảy ra trên phố Sutter.”</p>
-
-      <p><b>LAUREN</b></p>
-      <p>“Cảm ơn anh... Arthur. Hãy giúp tôi tìm lại những ký ức bị đánh mất. Chúng ta không còn nhiều thời gian đâu.”</p>
+  <div class="grid-2">
+    <div class="card">
+      <h3>4.1. STORY CONCEPT</h3>
+      <p><strong>Premise:</strong> Arthur nhìn thấy Lauren sau tai nạn và phải đồng hành cùng linh hồn cô.</p>
+      <p><strong>Mục tiêu:</strong> giải mã vụ tai nạn, bảo vệ cơ thể Lauren, hoàn tất hành trình trước 72h.</p>
+      <p><strong>Xung đột trung tâm:</strong> niềm tin vào Lauren và Hope Level đối đầu điều tra pháp lý, quy trình bệnh viện và giới hạn sinh–tử.</p>
+      <p><strong>Thông điệp:</strong> hy vọng và kết nối có thể tồn tại ngay tại ranh giới sống–chết.</p>
     </div>
-
-    <div class="scene">
-      <div class="scene-head"><b>CẢNH 03 — MEMORIAL HOSPITAL, PHÒNG 712 — ĐÊM</b><span>01:30–02:20</span></div>
-      <p class="action">Cửa bệnh viện mở. Arthur lách qua hành lang tối. Đèn huỳnh quang nhấp nháy. Lauren đứng cạnh phòng 712.</p>
-      <p><b>LAUREN:</b> “Đó là em.”</p>
-      <p class="action">Arthur nhìn qua ô kính: Lauren nằm bất động trên giường, máy theo dõi sinh hiệu đều đặn phát tiếng bíp.</p>
-      <p><b>ARTHUR:</b> “Em còn sống…”</p>
-      <p><b>LAUREN:</b> “Nhưng em không biết còn được bao lâu.”</p>
-      <p><b>ARTHUR:</b> “Chúng ta sẽ tìm ra chuyện gì đã xảy ra.”</p>
-      <p><b>LAUREN:</b> “Muốn cứu em, phải tìm ký ức đã mất.”</p>
-      <p class="action">Một bảo vệ tiến vào hành lang. Arthur ra hiệu im lặng. Lauren chạm vào bảng điện, ánh cyan lan qua thiết bị.</p>
-    </div>
-
-    <div class="scene">
-      <div class="scene-head"><b>CẢNH 04 — SUTTER STREET — ĐÊM</b><span>02:20–03:15</span></div>
-      <p class="action">Sương mù phủ kín con phố. Arthur soi hiện trường tai nạn. Một mảnh kim loại và vật kỷ niệm phát sáng trong tay Lauren.</p>
-      <p><b>LAUREN:</b> “Em đã ở đây.”</p>
-      <p><b>ARTHUR:</b> “Còn ai khác?”</p>
-      <p><b>LAUREN:</b> “Có một chiếc xe. Và có điều gì đó đã bị che giấu.”</p>
-      <p class="action">Hình ảnh Victory Project hiện lên từ bản vẽ của Arthur.</p>
-      <p><b>ARTHUR:</b> “Bản thiết kế của anh… có liên quan đến vụ tai nạn?”</p>
-      <p><b>LAUREN:</b> “Không. Nhưng nó sẽ chỉ cho anh nơi cần tìm.”</p>
-      <p class="action">Tiếng còi xa. Thanh tra Pilguez xuất hiện cuối con phố.</p>
-      <p><b>ARTHUR:</b> “Pilguez.”</p>
-      <p><b>LAUREN:</b> “Chạy đi, Arthur.”</p>
-    </div>
-
-    <div class="scene">
-      <div class="scene-head"><b>CẢNH 05 — CARMEL BEACH HOUSE / CHUYỂN ĐẾN FINAL COUNTDOWN</b><span>03:15–04:20</span></div>
-      <p class="action">Hoàng hôn tím cam. Arthur và Lauren đứng bên biển. Không khí yên tĩnh sau chuỗi điều tra.</p>
-      <p><b>ARTHUR:</b> “Nếu hết 72 giờ thì sao?”</p>
-      <p><b>LAUREN:</b> “Em sẽ không thể quay lại.”</p>
-      <p><b>ARTHUR:</b> “Anh không bỏ cuộc.”</p>
-      <p><b>LAUREN:</b> “Đừng cứu em chỉ vì anh sợ mất em.”</p>
-      <p><b>ARTHUR:</b> “Anh cứu em vì em vẫn còn hy vọng.”</p>
-      <p class="action">Lauren mỉm cười. Ánh sáng cyan quanh cô yếu dần rồi ổn định.</p>
-      <p><b>LAUREN:</b> “Vậy thì đi thôi.”</p>
-      <p class="action">Cắt nhanh: đồng hồ 72:00:00 → 00:12:47. Arthur chạy. Pilguez đuổi theo. Cửa phòng 712 đóng lại. Âm thanh máy theo dõi tăng dần.</p>
-      <p><b>ARTHUR (V.O.):</b> “Lauren… chờ anh.”</p>
-      <p class="action"><b>CẮT ĐEN.</b> Tiếng bíp cuối cùng. Tiêu đề <b>IF ONLY</b> xuất hiện.</p>
+    <div class="card">
+      <h3>4.2. OUTLINE — THREE ACT STRUCTURE</h3>
+      <div class="timeline">
+        <div class="step"><strong>ACT 1</strong>Arthur trở lại căn hộ Victorian, gặp linh hồn Lauren và phát hiện mối liên kết.</div>
+        <div class="step"><strong>INCITING INCIDENT</strong>Lauren đang hôn mê tại Memorial; đồng hồ 72h bắt đầu trở thành áp lực.</div>
+        <div class="step"><strong>ACT 2</strong>Thâm nhập bệnh viện, điều tra Sutter Street, giải mã Victory Project và các ký ức.</div>
+        <div class="step"><strong>MIDPOINT</strong>Những mảnh ghép quá khứ nối trực tiếp Arthur, Lauren và hiện trường tai nạn.</div>
+        <div class="step"><strong>ACT 3</strong>Cuộc chạy đua cuối, quyết định ở ranh giới sống–chết và kết quả của Lauren.</div>
+      </div>
     </div>
   </div>
 
-  <div class="timing-strip">
-    <div><b>00:00–01:30</b><span>Thiết lập bí ẩn</span></div>
-    <div><b>01:30–02:20</b><span>Phát hiện xung đột</span></div>
-    <div><b>02:20–03:15</b><span>Điều tra & truy đuổi</span></div>
-    <div><b>03:15–04:20</b><span>Lắng cảm xúc → cao trào</span></div>
+  <div style="margin-top:1.4rem" class="card">
+    <h3>4.3. KỊCH BẢN THOẠI HOÀN CHỈNH 3–5 PHÚT</h3>
+    <div style="margin-top:1rem">
+      <div class="note"><strong>CHƯƠNG 1 — CUỘC GẶP KỲ ẢO</strong><br>Thời lượng dự kiến: 3–5 phút.</div>
+      <p><strong>ARTHUR:</strong> “Lạ thật... Hệ thống điện ở cái căn hộ này lại dở chứng rồi. Paul bảo tuần trước đã thay lại toàn bộ cầu chì mà...”</p>
+      <p><strong>LAUREN:</strong> “Đừng... Đừng chạm vào cái chìa khóa đó. Đó là... của tôi.”</p>
+      <p><strong>ARTHUR:</strong> “Ai đó?!... Cô... cô vào đây bằng cách nào? Cửa khóa rồi mà!”</p>
+      <p><strong>LAUREN:</strong> “Anh... Anh nhìn thấy tôi sao? Thật sự nhìn thấy sao?!”</p>
+      <p><strong>ARTHUR:</strong> “Tôi... Tôi đang ngủ mơ đúng không? Căng thẳng công việc quá hóa điên rồi... Cô là cái bóng? Hay là ảo giác?”</p>
+      <p><strong>LAUREN:</strong> “Tôi không phải ảo giác. Tôi là Lauren... Lauren Kline. Đây là nhà của tôi! Hoặc ít nhất... đã từng là nhà của tôi trước khi đêm sương mù đó xảy ra.”</p>
+      <p><strong>ARTHUR:</strong> “Lauren Kline?... Bác sĩ tập sự ở Bệnh viện Memorial? Vụ tai nạn ở phố Sutter tuần trước?!”</p>
+      <p><strong>LAUREN:</strong> “Phải. Nhưng tôi không nhớ chuyện gì đã xảy ra đêm đó... Tôi tỉnh dậy và thấy mình ở đây, nhưng thể xác tôi... vẫn đang nằm trong phòng cấp cứu.”</p>
+      <p><strong>ARTHUR:</strong> “Nếu cô đang ở bệnh viện... Vậy cái đứng trước mặt tôi lúc này... là cái gì?”</p>
+      <p><strong>LAUREN:</strong> “Linh hồn? Một mảnh ký ức? Tôi cũng không rõ... Nhưng anh là người duy nhất suốt một tuần qua nghe được tiếng tôi nói.”</p>
+      <p><strong>ARTHUR:</strong> “Được rồi, Lauren. Tôi không biết đây là trò đùa hay phép thuật... Nhưng nếu cô thực sự đang ở đây, chúng ta phải tìm hiểu xem chuyện gì đã xảy ra trên phố Sutter.”</p>
+      <p><strong>LAUREN:</strong> “Cảm ơn anh... Arthur. Hãy giúp tôi tìm lại những ký ức bị đánh mất. Chúng ta không còn nhiều thời gian đâu.”</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.4rem" class="card">
+    <h3>4.4. TIMING & NHỊP ĐỘ</h3>
+    <div class="grid-4">
+      <div><span class="meta">Mở đầu</span><p>Chậm · bí ẩn · giới thiệu căn hộ và nhân vật.</p></div>
+      <div><span class="meta">Điều tra</span><p>Trung bình · tăng dần áp lực khi vào bệnh viện và Sutter Street.</p></div>
+      <div><span class="meta">Lắng</span><p>Chậm · cảm xúc · Carmel Beach House và ký ức.</p></div>
+      <div><span class="meta">Climax</span><p>Nhanh · dồn dập · Final Countdown 72h.</p></div>
+    </div>
   </div>
 </div>
 </section>
 
 <section id="storyboard">
 <div class="container">
-  <div class="section-kicker">V</div>
-  <h2 class="section-title">PHÂN CẢNH</h2>
+  <div class="section-kicker">V — STORYBOARD</div>
+  <h2 class="section-title">Cỡ cảnh · Máy quay · Chuyển cảnh · Âm thanh · Thời lượng</h2>
 
-  <div class="section-grid three">
-    <article class="item v-item storyboard-main"><div><div class="v-label">Mục 19</div><h3>Storyboard tổng thể — 36 khung hình</h3></div></article>
-    <article class="item v-item"><div><div class="v-label">Mục 20</div><h3>Cỡ cảnh & góc máy</h3></div></article>
-    <article class="item v-item"><div><div class="v-label">Mục 21</div><h3>Chuyển động máy quay</h3></div></article>
-    <article class="item v-item"><div><div class="v-label">Mục 22</div><h3>Chuyển cảnh</h3></div></article>
-    <article class="item v-item"><div><div class="v-label">Mục 23</div><h3>Âm thanh & thời lượng</h3></div></article>
+  <div class="chapter-main">
+    <img src="../images/chapter.jpg" alt="Tổng quan 5 Chapter của IF ONLY">
   </div>
 
-  <div class="detail-block">
-    <div class="detail-title"><span>19</span> STORYBOARD TỔNG THỂ — 36 FRAME</div>
-    <div class="storyboard-table">
-      <div class="sb-row sb-head"><b>Frame</b><b>Thời gian</b><b>Cỡ cảnh / góc</b><b>Nội dung hình ảnh</b><b>Âm thanh / thoại</b></div>
-      <div class="sb-row"><b>01</b><span>00:00</span><span>Toàn cảnh · ngang tầm mắt</span><span>Russian Hill trong sương, căn hộ Victorian nổi bật.</span><span>Gió + mưa nhẹ.</span></div>
-      <div class="sb-row"><b>02</b><span>00:07</span><span>Toàn cảnh</span><span>Arthur bước lên cầu thang.</span><span>Bước chân.</span></div>
-      <div class="sb-row"><b>03</b><span>00:14</span><span>Trung cảnh</span><span>Tay Arthur mở cửa căn hộ.</span><span>Tiếng khóa cửa.</span></div>
-      <div class="sb-row"><b>04</b><span>00:21</span><span>Góc nhìn sau vai</span><span>Căn phòng tối, ánh đèn vàng.</span><span>Nhạc nền bắt đầu.</span></div>
-      <div class="sb-row"><b>05</b><span>00:28</span><span>Cận cảnh</span><span>Đồng hồ tích tắc.</span><span>Tích… tắc…</span></div>
-      <div class="sb-row"><b>06</b><span>00:35</span><span>Cận cảnh</span><span>Điện chập chờn.</span><span>Ù điện.</span></div>
-      <div class="sb-row"><b>07</b><span>00:42</span><span>Trung cận</span><span>Bóng Lauren xuất hiện.</span><span>Lauren: “Arthur…”</span></div>
-      <div class="sb-row"><b>08</b><span>00:50</span><span>Cận cảnh</span><span>Arthur quay phắt lại.</span><span>Arthur: “Ai ở đó?”</span></div>
-      <div class="sb-row"><b>09</b><span>01:00</span><span>Đặc tả</span><span>Bàn tay Lauren xuyên qua vật thể.</span><span>Âm thanh nhiễu điện.</span></div>
-      <div class="sb-row"><b>10</b><span>01:10</span><span>Trung cảnh</span><span>Arthur và Lauren đối diện.</span><span>Lauren: “Tai nạn. Sutter Street.”</span></div>
-      <div class="sb-row"><b>11</b><span>01:20</span><span>Đặc tả</span><span>Flashback đèn xe và tiếng phanh.</span><span>Phanh xe.</span></div>
-      <div class="sb-row"><b>12</b><span>01:30</span><span>Toàn cảnh</span><span>Hành lang Memorial Hospital.</span><span>Ambient bệnh viện.</span></div>
-      <div class="sb-row"><b>13</b><span>01:38</span><span>Tracking</span><span>Arthur di chuyển sát tường.</span><span>Bước chân nhỏ.</span></div>
-      <div class="sb-row"><b>14</b><span>01:46</span><span>Góc thấp</span><span>Bảo vệ đi ngang.</span><span>Bộ đàm.</span></div>
-      <div class="sb-row"><b>15</b><span>01:54</span><span>Góc nhìn qua vai</span><span>Lauren đứng trước phòng 712.</span><span>Lauren: “Đó là em.”</span></div>
-      <div class="sb-row"><b>16</b><span>02:02</span><span>Đặc tả</span><span>Máy theo dõi sinh hiệu.</span><span>Bíp đều.</span></div>
-      <div class="sb-row"><b>17</b><span>02:10</span><span>Cận cảnh</span><span>Arthur nhìn Lauren đang hôn mê.</span><span>Arthur: “Em còn sống…”</span></div>
-      <div class="sb-row"><b>18</b><span>02:20</span><span>Chuyển cảnh</span><span>Cắt từ màn hình monitor sang đèn xe Sutter Street.</span><span>Whoosh + mưa.</span></div>
-      <div class="sb-row"><b>19</b><span>02:28</span><span>Toàn cảnh · góc cao</span><span>Hiện trường Sutter Street.</span><span>Gió + xe xa.</span></div>
-      <div class="sb-row"><b>20</b><span>02:36</span><span>Trung cảnh</span><span>Arthur soi mặt đường.</span><span>Arthur gọi Lauren.</span></div>
-      <div class="sb-row"><b>21</b><span>02:44</span><span>Đặc tả</span><span>Memory Shard phát sáng.</span><span>Âm thanh ký ức.</span></div>
-      <div class="sb-row"><b>22</b><span>02:52</span><span>Cận cảnh Lauren</span><span>Lauren chạm vào mảnh ký ức.</span><span>Lauren: “Em đã ở đây.”</span></div>
-      <div class="sb-row"><b>23</b><span>03:00</span><span>Góc nhìn chủ thể</span><span>Flashback xe lao qua màn sương.</span><span>Phanh + nhịp trống.</span></div>
-      <div class="sb-row"><b>24</b><span>03:08</span><span>Trung cận</span><span>Bản vẽ Victory Project hiện ra.</span><span>Arthur: “Có liên quan?”</span></div>
-      <div class="sb-row"><b>25</b><span>03:15</span><span>Toàn cảnh</span><span>Bóng Pilguez ở cuối phố.</span><span>Còi xe xa.</span></div>
-      <div class="sb-row"><b>26</b><span>03:22</span><span>Trung cảnh</span><span>Arthur và Lauren quay lại.</span><span>Lauren: “Chạy đi.”</span></div>
-      <div class="sb-row"><b>27</b><span>03:30</span><span>Tracking</span><span>Arthur chạy trong sương.</span><span>Nhịp nhạc tăng.</span></div>
-      <div class="sb-row"><b>28</b><span>03:38</span><span>Cắt mềm</span><span>Carmel Beach House lúc hoàng hôn.</span><span>Gió biển.</span></div>
-      <div class="sb-row"><b>29</b><span>03:46</span><span>Toàn cảnh</span><span>Arthur và Lauren đứng bên biển.</span><span>Nhạc lắng.</span></div>
-      <div class="sb-row"><b>30</b><span>03:54</span><span>Cận cảnh Arthur</span><span>Arthur hỏi về 72 giờ.</span><span>Arthur: “Nếu hết 72 giờ thì sao?”</span></div>
-      <div class="sb-row"><b>31</b><span>04:02</span><span>Cận cảnh Lauren</span><span>Lauren mỉm cười.</span><span>Lauren: “Vậy thì đi thôi.”</span></div>
-      <div class="sb-row"><b>32</b><span>04:08</span><span>Montage · cắt nhanh</span><span>Đồng hồ 72:00:00 → 00:12:47.</span><span>Nhạc cao trào.</span></div>
-      <div class="sb-row"><b>33</b><span>04:12</span><span>Tracking</span><span>Arthur chạy.</span><span>Thở + bước chân.</span></div>
-      <div class="sb-row"><b>34</b><span>04:15</span><span>Góc thấp</span><span>Pilguez bám đuổi.</span><span>Tiếng còi.</span></div>
-      <div class="sb-row"><b>35</b><span>04:18</span><span>Đặc tả</span><span>Cửa phòng 712 đóng lại, monitor nhấp nháy.</span><span>Arthur V.O.: “Lauren… chờ anh.”</span></div>
-      <div class="sb-row"><b>36</b><span>04:20</span><span>Cắt đen</span><span>Logo IF ONLY xuất hiện.</span><span>Bíp cuối → im lặng.</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>5.1. STORYBOARD TỔNG THỂ</h3>
+      <div class="timeline">
+        <div class="step"><strong>CH.1</strong>Cuộc Gặp Kỳ Ảo</div>
+        <div class="step"><strong>CH.2</strong>Ranh Giới Hôn Mê</div>
+        <div class="step"><strong>CH.3</strong>Mảnh Ghép Sutter</div>
+        <div class="step"><strong>CH.4</strong>Hoàng Hôn Bình Yên</div>
+        <div class="step"><strong>CH.5</strong>Cuộc Chạy Đua 72 Giờ</div>
+      </div>
+      <div style="margin-top:1rem">
+        <div class="note"><strong>36 KHUNG STORYBOARD</strong> — nội dung được đặt trong chính thẻ storyboard hiện có, không tạo bố cục mới.</div>
+        <ol style="padding-left:1.25rem;color:var(--muted);font-size:.8rem">
+          <li style="margin:.3rem 0">01 · 00:00 · Toàn cảnh · Russian Hill trong sương, căn hộ Victorian · Gió + mưa nhẹ.</li><li style="margin:.3rem 0">02 · 00:07 · Toàn cảnh · Arthur bước lên cầu thang · Bước chân.</li><li style="margin:.3rem 0">03 · 00:14 · Trung cảnh · Tay Arthur mở cửa căn hộ · Tiếng khóa cửa.</li><li style="margin:.3rem 0">04 · 00:21 · Góc nhìn sau vai · Căn phòng tối, ánh đèn vàng · Nhạc nền bắt đầu.</li><li style="margin:.3rem 0">05 · 00:28 · Cận cảnh · Đồng hồ tích tắc · Tích… tắc…</li><li style="margin:.3rem 0">06 · 00:35 · Cận cảnh · Điện chập chờn · Ù điện.</li><li style="margin:.3rem 0">07 · 00:42 · Trung cận · Bóng Lauren xuất hiện · Lauren: “Đừng... Đừng chạm vào cái chìa khóa đó.”</li><li style="margin:.3rem 0">08 · 00:50 · Cận cảnh · Arthur quay phắt lại · Arthur: “Ai đó?!...”</li><li style="margin:.3rem 0">09 · 01:00 · Đặc tả · Chìa khóa trên bàn · Lauren: “Đó là... của tôi.”</li><li style="margin:.3rem 0">10 · 01:10 · Trung cảnh · Arthur nhìn Lauren, chưa tin · Arthur: “Cô là cái bóng? Hay là ảo giác?”</li><li style="margin:.3rem 0">11 · 01:20 · Cận cảnh · Lauren tiến lại gần · Lauren: “Tôi không phải ảo giác.”</li><li style="margin:.3rem 0">12 · 01:30 · Toàn cảnh · Không gian căn hộ Victorian · Lauren: “Đây là nhà của tôi!”</li><li style="margin:.3rem 0">13 · 01:38 · Trung cảnh · Arthur nhận ra Lauren Kline · Arthur: “Lauren Kline?!”</li><li style="margin:.3rem 0">14 · 01:46 · Cận cảnh · Ký ức vụ tai nạn Sutter Street lóe lên · Âm thanh phanh xe.</li><li style="margin:.3rem 0">15 · 01:54 · Trung cận · Lauren kể về cơ thể ở bệnh viện · Lauren: “Thể xác tôi... vẫn đang nằm trong phòng cấp cứu.”</li><li style="margin:.3rem 0">16 · 02:02 · Cận cảnh · Arthur bối rối · Arthur: “Cái đứng trước mặt tôi lúc này... là cái gì?”</li><li style="margin:.3rem 0">17 · 02:10 · Đặc tả · Lauren mờ, ánh sáng lạnh · Lauren: “Linh hồn? Một mảnh ký ức?”</li><li style="margin:.3rem 0">18 · 02:20 · Chuyển cảnh · Từ Lauren sang Bệnh viện Memorial · Âm thanh chuyển cảnh.</li><li style="margin:.3rem 0">19 · 02:28 · Toàn cảnh · Hành lang Bệnh viện Memorial · Ambient bệnh viện.</li><li style="margin:.3rem 0">20 · 02:36 · Trung cảnh · Arthur di chuyển trong hành lang · Bước chân nhỏ.</li><li style="margin:.3rem 0">21 · 02:44 · Đặc tả · Bảng phòng 712 · Bíp monitor từ xa.</li><li style="margin:.3rem 0">22 · 02:52 · Cận cảnh · Lauren đứng cạnh phòng 712 · Lauren: “Đó là em.”</li><li style="margin:.3rem 0">23 · 03:00 · Đặc tả · Lauren đang hôn mê trên giường bệnh · Bíp đều.</li><li style="margin:.3rem 0">24 · 03:08 · Trung cận · Arthur nhìn qua ô kính · Arthur: “Em còn sống...”</li><li style="margin:.3rem 0">25 · 03:15 · Toàn cảnh · Arthur và Lauren đến Sutter Street · Gió + xe xa.</li><li style="margin:.3rem 0">26 · 03:22 · Trung cảnh · Arthur soi hiện trường tai nạn · Tìm manh mối.</li><li style="margin:.3rem 0">27 · 03:30 · Đặc tả · Mảnh ký ức phát sáng · Âm thanh ký ức.</li><li style="margin:.3rem 0">28 · 03:38 · Cận cảnh Lauren · Lauren chạm vào mảnh ký ức · Lauren: “Em đã ở đây.”</li><li style="margin:.3rem 0">29 · 03:46 · Góc nhìn chủ thể · Flashback xe lao qua màn sương · Phanh + nhịp trống.</li><li style="margin:.3rem 0">30 · 03:54 · Trung cận · Bản vẽ Victory Project hiện ra · Arthur nhận ra manh mối.</li><li style="margin:.3rem 0">31 · 04:02 · Toàn cảnh · Bóng Thanh tra Pilguez ở cuối phố · Còi xe xa.</li><li style="margin:.3rem 0">32 · 04:08 · Trung cảnh · Arthur và Lauren nhìn về Pilguez · Lauren: “Chạy đi, Arthur.”</li><li style="margin:.3rem 0">33 · 04:12 · Tracking · Arthur chạy trong sương · Nhịp nhạc tăng.</li><li style="margin:.3rem 0">34 · 04:15 · Cận cảnh · Đồng hồ đếm ngược 72 giờ · Tích tắc nhanh.</li><li style="margin:.3rem 0">35 · 04:18 · Đặc tả · Cửa phòng 712 đóng lại · Arthur V.O.: “Lauren… chờ anh.”</li><li style="margin:.3rem 0">36 · 04:20 · Cắt đen · Tiêu đề IF ONLY xuất hiện · Bíp cuối → im lặng.</li>
+        </ol>
+      </div>
     </div>
-  </div>
-
-  <div class="detail-block">
-    <div class="detail-title"><span>20</span> CỠ CẢNH & GÓC MÁY</div>
-    <div class="mini-grid">
-      <div><b>Toàn cảnh</b><span>Thiết lập San Francisco, bệnh viện, Sutter Street, biển Carmel.</span></div>
-      <div><b>Trung cảnh</b><span>Đối thoại và hành động giữa Arthur – Lauren.</span></div>
-      <div><b>Cận cảnh / Đặc tả</b><span>Ký ức, đồng hồ 72 giờ, Memory Shard, monitor.</span></div>
-      <div><b>Góc thấp / Góc cao</b><span>Tạo áp lực, nhấn mạnh không gian và sự truy đuổi.</span></div>
+    <div class="card">
+      <h3>5.2. CỠ CẢNH & GÓC MÁY</h3>
+      <p>EWS / WS cho không gian San Francisco; MS / MCU cho tương tác Arthur–Lauren; CU / ECU cho ký ức, kỷ vật và khoảnh khắc sinh–tử.</p>
+      <p>Ngôn ngữ hình ảnh chính: One-Shot Camera, góc nhìn đôi và chuyển động liền mạch.</p>
     </div>
-  </div>
-
-  <div class="detail-block">
-    <div class="detail-title"><span>21</span> CHUYỂN ĐỘNG MÁY QUAY</div>
-    <div class="mini-grid">
-      <div><b>Pan / Tilt</b><span>Mở thông tin trong căn hộ và bệnh viện.</span></div>
-      <div><b>Tracking / Follow</b><span>Bám theo Arthur ở các đoạn khám phá và chạy trốn.</span></div>
-      <div><b>Dolly / Truck</b><span>Tiến gần các phát hiện quan trọng và cảnh cảm xúc.</span></div>
-      <div><b>Tĩnh máy</b><span>Giữ khung ở các khoảnh khắc đối thoại và kết thúc.</span></div>
+    <div class="card">
+      <h3>5.3. CAMERA MOVEMENT</h3>
+      <ul class="list">
+        <li>Tracking / Follow theo hành động Arthur.</li>
+        <li>Pan / Tilt để mở rộng không gian và manh mối.</li>
+        <li>Dolly / Truck trong các đoạn khám phá.</li>
+        <li>Static ở các khoảnh khắc cảm xúc / ký ức.</li>
+      </ul>
     </div>
-  </div>
-
-  <div class="detail-block">
-    <div class="detail-title"><span>22</span> CHUYỂN CẢNH</div>
-    <div class="mini-grid">
-      <div><b>Cắt thẳng</b><span>Đối thoại, hành động, truy đuổi.</span></div>
-      <div><b>Chuyển cảnh nối hình</b><span>Đồng hồ → monitor → đèn xe để liên kết ý niệm thời gian.</span></div>
-      <div><b>Hòa tan</b><span>Flashback và chuyển sang không gian ký ức.</span></div>
-      <div><b>Cắt đen</b><span>Kết thúc phân đoạn và xuất hiện tiêu đề.</span></div>
+    <div class="card">
+      <h3>5.4. CHUYỂN CẢNH</h3>
+      <p>Ưu tiên Cut và chuyển tiếp liền mạch theo One-Shot Camera; Fade / Dissolve có thể dùng ở các phân đoạn ký ức và thay đổi trạng thái.</p>
     </div>
-  </div>
-
-  <div class="detail-block">
-    <div class="detail-title"><span>23</span> ÂM THANH & THỜI LƯỢNG</div>
-    <div class="mini-grid">
-      <div><b>Thoại</b><span>Arthur – Lauren là trung tâm của nhịp kể.</span></div>
-      <div><b>Hiệu ứng</b><span>Mưa, bước chân, điện nhiễu, monitor, còi xe, biển.</span></div>
-      <div><b>Nhạc</b><span>Mở đầu tối giản → tăng nhịp ở Sutter Street → cao trào cuối.</span></div>
-      <div><b>Môi trường</b><span>San Francisco, bệnh viện và biển tạo ba lớp âm thanh đối lập.</span></div>
+    <div class="card">
+      <h3>5.5. ÂM THANH & THỜI LƯỢNG</h3>
+      <ul class="list">
+        <li>Dialogue: ưu tiên hội thoại Arthur–Lauren ở các nút cảm xúc.</li>
+        <li>SFX: bước chân, thiết bị điện, môi trường bệnh viện, giao thông.</li>
+        <li>Music: tối giản, điện ảnh, tăng cường ở climax.</li>
+        <li>Ambient: gió, sương, biển, không gian y tế.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>GHI CHÚ THEO BÁO CÁO</h3>
+      <div class="note">Bản báo cáo yêu cầu storyboard 30–40 frame và ghi chú shot/timing cụ thể. Nội dung website cũ hiện chỉ cung cấp mạch 5 chapter và ngôn ngữ camera; vì vậy trang này trình bày khung storyboard tổng thể mà không tự tạo thêm 30–40 frame chưa có trong nguồn.</div>
     </div>
   </div>
 </div>
@@ -338,24 +377,78 @@ footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
 
 <section id="pitching">
 <div class="container">
-  <div class="section-kicker">VII</div>
-  <h2 class="section-title">THUYẾT TRÌNH</h2>
-  <div class="section-grid">
-    <article class="item"><div class="num">7.1</div><h3>Nội dung thuyết trình</h3></article>
-    <article class="item"><div class="num">7.2</div><h3>Quy trình xây dựng</h3></article>
-    <article class="item"><div class="num">7.3</div><h3>Vai trò thành viên</h3></article>
-    <article class="item"><div class="num">7.4</div><h3>Khó khăn & giải pháp</h3></article>
-    <article class="item"><div class="num">7.5</div><h3>Tổng kết</h3></article>
+  <div class="section-kicker">VII — PITCHING</div>
+  <h2 class="section-title">Nội dung thuyết trình · Workflow · Vai trò · Khó khăn · Tổng kết</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>7.1. NỘI DUNG THUYẾT TRÌNH</h3>
+      <ul class="list">
+        <li>Ý tưởng / Logline</li>
+        <li>XÂY DỰNG THẾ GIỚI</li>
+        <li>Character Design</li>
+        <li>Kịch bản</li>
+        <li>Storyboard / Animatic</li>
+      </ul>
+      <p><strong>Định hướng thời lượng:</strong> 10–15 phút theo yêu cầu báo cáo.</p>
+    </div>
+    <div class="card">
+      <h3>7.2. QUY TRÌNH XÂY DỰNG</h3>
+      <div class="timeline">
+        <div class="step"><strong>01</strong>Concept</div>
+        <div class="step"><strong>02</strong>XÂY DỰNG THẾ GIỚI</div>
+        <div class="step"><strong>03</strong>Character</div>
+        <div class="step"><strong>04</strong>Script</div>
+        <div class="step"><strong>05</strong>Storyboard</div>
+        <div class="step"><strong>06</strong>Animatic</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>7.3. VAI TRÒ THÀNH VIÊN</h3>
+      <p>Trang HẾT CỨU V2 giữ mục vai trò thành viên theo cấu trúc báo cáo: Đạo diễn / Story, Writer, Character / Background, Storyboard, Animation / Editing / Sound.</p>
+      <p class="note">Thông tin phân công chi tiết chưa có trong nội dung website cũ được dùng làm nguồn nên không tự gán vai trò.</p>
+    </div>
+    <div class="card">
+      <h3>7.4. KHÓ KHĂN & GIẢI PHÁP</h3>
+      <p><strong>Khó khăn nguồn:</strong> website cũ tập trung vào GDD/game design hơn là storyboard frame-by-frame và kịch bản thoại.</p>
+      <p><strong>Cách xử lý:</strong> chuyển đổi nội dung cũ sang hệ thống đầu mục báo cáo, giữ nguyên thuật ngữ, mạch truyện và các chapter đã có.</p>
+    </div>
   </div>
-  <div class="note">Thứ tự giữ nguyên theo bản báo cáo: I → II → III → IV → V → VII.</div>
+
+  <div style="margin-top:1.4rem" class="highlight">
+    <h3>7.5. TỔNG KẾT</h3>
+    <p>HẾT CỨU V2 trình bày lại nội dung IF ONLY theo đúng khung báo cáo K18: từ hồ sơ ý tưởng, thế giới, nhân vật đến kịch bản, storyboard và pitching. Các nội dung đã có từ website cũ được tổ chức lại; những mục báo cáo đòi hỏi tài liệu chi tiết chưa có trong nguồn được đánh dấu rõ ràng thay vì tự tạo thêm.</p>
+  </div>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Tìm kiếm nội dung...">
+    <button onclick="doSearch()">⌕</button>
+    <span class="search-status" id="searchStatus"></span>
+  </div>
 </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>HẾT CỨU V2 · IF ONLY</p>
+    <p><strong>HẾT CỨU V2</strong> — IF ONLY · Game Design / Direction Presentation</p>
+    <p style="margin-top:.35rem">Trang V2 dùng nội dung website cũ và tổ chức lại theo đầu mục bản báo cáo.</p>
   </div>
 </footer>
 
+<script>
+function doSearch(){
+  const q=document.getElementById('searchInput').value.toLowerCase().trim();
+  const sections=[...document.querySelectorAll('section,.card')];
+  let n=0;
+  sections.forEach(el=>{
+    if(el.closest('footer')) return;
+    const hit=!q||el.innerText.toLowerCase().includes(q);
+    el.style.outline=(q&&hit)?'1px solid rgba(0,242,254,.6)':'';
+    if(q&&hit)n++;
+  });
+  document.getElementById('searchStatus').textContent=q?('Tìm thấy '+n+' vùng nội dung'):'';
+}
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
+</script>
 </body>
 </html>
