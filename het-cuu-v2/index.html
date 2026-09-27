@@ -36,6 +36,30 @@ header.hero{text-align:center;padding-top:10rem;min-height:48vh}
 footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
 @media(max-width:900px){.section-grid,.section-grid.three{grid-template-columns:1fr}}
 @media(max-width:800px){nav{align-items:flex-start;flex-direction:column}.nav-links{width:100%}.hero h1{font-size:3rem}.container{padding:0 1rem}}
+
+.detail-block{margin-top:1.5rem;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+.detail-title{padding:1rem 1.2rem;background:rgba(255,255,255,.045);border-bottom:1px solid var(--line);font-weight:800;letter-spacing:.7px}
+.detail-title span{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:.6rem;border-radius:9px;border:1px solid rgba(0,242,254,.35);color:var(--cyan);font-size:.75rem}
+.script-note{padding:1rem 1.2rem;color:var(--muted);font-size:.82rem;border-bottom:1px solid var(--line)}
+.scene{padding:1.2rem;border-bottom:1px solid var(--line)}
+.scene:last-child{border-bottom:0}
+.scene-head{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.7rem;color:var(--cyan);font-size:.8rem}
+.scene-head span{color:var(--warm2,#f3a661);white-space:nowrap}
+.scene p{font-size:.83rem;color:var(--muted);margin:.35rem 0}
+.scene .action{color:#dbe4ee;font-style:italic}
+.timing-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1rem}
+.timing-strip div{padding:1rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.04)}
+.timing-strip b{display:block;color:var(--cyan);font-size:.78rem}
+.timing-strip span{display:block;color:var(--muted);font-size:.75rem;margin-top:.25rem}
+.storyboard-table{overflow:auto}
+.sb-row{display:grid;grid-template-columns:60px 90px 180px minmax(290px,1fr) minmax(220px,1fr);gap:0;border-bottom:1px solid var(--line);min-width:1000px}
+.sb-row>*{padding:.65rem .7rem;border-right:1px solid var(--line);font-size:.72rem;color:var(--muted)}
+.sb-row>*:last-child{border-right:0}
+.sb-head>*{background:rgba(255,255,255,.05);color:var(--cyan);font-weight:800}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;padding:1rem}
+.mini-grid>div{padding:1rem;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035)}
+.mini-grid b{display:block;color:var(--text);font-size:.8rem;margin-bottom:.25rem}
+.mini-grid span{display:block;color:var(--muted);font-size:.76rem}
 </style>
 </head>
 <body>
@@ -105,11 +129,87 @@ footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
 <div class="container">
   <div class="section-kicker">IV</div>
   <h2 class="section-title">KỊCH BẢN</h2>
+
   <div class="section-grid">
     <article class="item"><div class="num">4.1</div><h3>Ý tưởng câu chuyện</h3></article>
     <article class="item"><div class="num">4.2</div><h3>Đề cương – Cấu trúc ba hồi</h3></article>
-    <article class="item"><div class="num">4.3</div><h3>Kịch bản hoàn chỉnh</h3></article>
-    <article class="item"><div class="num">4.4</div><h3>Timing & nhịp độ</h3></article>
+    <article class="item script-main"><div class="num">4.3</div><h3>Kịch bản thoại hoàn chỉnh 3–5 phút</h3></article>
+    <article class="item"><div class="num">4.4</div><h3>Thời lượng & nhịp độ</h3></article>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>4.3</span> KỊCH BẢN THOẠI HOÀN CHỈNH — 04:20</div>
+    <div class="script-note">Phân đoạn cinematic hoàn chỉnh dùng cho phần Kịch bản của báo cáo. Nội dung được triển khai từ mạch truyện đã có của IF ONLY: Arthur gặp Lauren → phát hiện Lauren đang hôn mê → điều tra Sutter Street → hy vọng và ký ức → áp lực 72 giờ.</div>
+
+    <div class="scene">
+      <div class="scene-head"><b>CẢNH 01 — CĂN HỘ VICTORIAN, RUSSIAN HILL — ĐÊM</b><span>00:00–00:45</span></div>
+      <p class="action">Arthur bước vào căn hộ. Mưa đập nhẹ lên cửa kính. Đồng hồ treo tường chạy. Trong ánh đèn vàng, một bóng người mờ dần hiện ra.</p>
+      <p><b>ARTHUR:</b> “Ai ở đó?”</p>
+      <p><b>LAUREN:</b> “Arthur… cuối cùng anh cũng nhìn thấy em.”</p>
+      <p><b>ARTHUR:</b> “Lauren? Không thể nào… Em đang ở đâu?”</p>
+      <p><b>LAUREN:</b> “Ở rất gần. Nhưng em không thể trở về.”</p>
+      <p class="action">Lauren đưa tay về phía Arthur. Bàn tay cô xuyên qua vật thể trên bàn. Điện trong phòng chập chờn.</p>
+    </div>
+
+    <div class="scene">
+      <div class="scene-head"><b>CẢNH 02 — CĂN HỘ VICTORIAN — LIÊN TỤC</b><span>00:45–01:30</span></div>
+      <p class="action">Arthur nhìn thấy một mảnh ký ức lóe lên: đường phố, đèn xe, tiếng phanh. Lauren lùi lại như đang cố nhớ điều gì.</p>
+      <p><b>ARTHUR:</b> “Chuyện gì đã xảy ra với em?”</p>
+      <p><b>LAUREN:</b> “Tai nạn. Sutter Street.”</p>
+      <p><b>ARTHUR:</b> “Anh sẽ đưa em về.”</p>
+      <p><b>LAUREN:</b> “Không phải về nhà. Về với cơ thể của em.”</p>
+      <p><b>ARTHUR:</b> “Cơ thể?”</p>
+      <p><b>LAUREN:</b> “Em vẫn còn sống… nhưng thời gian không đứng về phía chúng ta.”</p>
+      <p class="action">Cận cảnh chiếc đồng hồ. Kim giây chuyển sang tiếng “tích”.</p>
+    </div>
+
+    <div class="scene">
+      <div class="scene-head"><b>CẢNH 03 — MEMORIAL HOSPITAL, PHÒNG 712 — ĐÊM</b><span>01:30–02:20</span></div>
+      <p class="action">Cửa bệnh viện mở. Arthur lách qua hành lang tối. Đèn huỳnh quang nhấp nháy. Lauren đứng cạnh phòng 712.</p>
+      <p><b>LAUREN:</b> “Đó là em.”</p>
+      <p class="action">Arthur nhìn qua ô kính: Lauren nằm bất động trên giường, máy theo dõi sinh hiệu đều đặn phát tiếng bíp.</p>
+      <p><b>ARTHUR:</b> “Em còn sống…”</p>
+      <p><b>LAUREN:</b> “Nhưng em không biết còn được bao lâu.”</p>
+      <p><b>ARTHUR:</b> “Chúng ta sẽ tìm ra chuyện gì đã xảy ra.”</p>
+      <p><b>LAUREN:</b> “Muốn cứu em, phải tìm ký ức đã mất.”</p>
+      <p class="action">Một bảo vệ tiến vào hành lang. Arthur ra hiệu im lặng. Lauren chạm vào bảng điện, ánh cyan lan qua thiết bị.</p>
+    </div>
+
+    <div class="scene">
+      <div class="scene-head"><b>CẢNH 04 — SUTTER STREET — ĐÊM</b><span>02:20–03:15</span></div>
+      <p class="action">Sương mù phủ kín con phố. Arthur soi hiện trường tai nạn. Một mảnh kim loại và vật kỷ niệm phát sáng trong tay Lauren.</p>
+      <p><b>LAUREN:</b> “Em đã ở đây.”</p>
+      <p><b>ARTHUR:</b> “Còn ai khác?”</p>
+      <p><b>LAUREN:</b> “Có một chiếc xe. Và có điều gì đó đã bị che giấu.”</p>
+      <p class="action">Hình ảnh Victory Project hiện lên từ bản vẽ của Arthur.</p>
+      <p><b>ARTHUR:</b> “Bản thiết kế của anh… có liên quan đến vụ tai nạn?”</p>
+      <p><b>LAUREN:</b> “Không. Nhưng nó sẽ chỉ cho anh nơi cần tìm.”</p>
+      <p class="action">Tiếng còi xa. Thanh tra Pilguez xuất hiện cuối con phố.</p>
+      <p><b>ARTHUR:</b> “Pilguez.”</p>
+      <p><b>LAUREN:</b> “Chạy đi, Arthur.”</p>
+    </div>
+
+    <div class="scene">
+      <div class="scene-head"><b>CẢNH 05 — CARMEL BEACH HOUSE / CHUYỂN ĐẾN FINAL COUNTDOWN</b><span>03:15–04:20</span></div>
+      <p class="action">Hoàng hôn tím cam. Arthur và Lauren đứng bên biển. Không khí yên tĩnh sau chuỗi điều tra.</p>
+      <p><b>ARTHUR:</b> “Nếu hết 72 giờ thì sao?”</p>
+      <p><b>LAUREN:</b> “Em sẽ không thể quay lại.”</p>
+      <p><b>ARTHUR:</b> “Anh không bỏ cuộc.”</p>
+      <p><b>LAUREN:</b> “Đừng cứu em chỉ vì anh sợ mất em.”</p>
+      <p><b>ARTHUR:</b> “Anh cứu em vì em vẫn còn hy vọng.”</p>
+      <p class="action">Lauren mỉm cười. Ánh sáng cyan quanh cô yếu dần rồi ổn định.</p>
+      <p><b>LAUREN:</b> “Vậy thì đi thôi.”</p>
+      <p class="action">Cắt nhanh: đồng hồ 72:00:00 → 00:12:47. Arthur chạy. Pilguez đuổi theo. Cửa phòng 712 đóng lại. Âm thanh máy theo dõi tăng dần.</p>
+      <p><b>ARTHUR (V.O.):</b> “Lauren… chờ anh.”</p>
+      <p class="action"><b>CẮT ĐEN.</b> Tiếng bíp cuối cùng. Tiêu đề <b>IF ONLY</b> xuất hiện.</p>
+    </div>
+  </div>
+
+  <div class="timing-strip">
+    <div><b>00:00–01:30</b><span>Thiết lập bí ẩn</span></div>
+    <div><b>01:30–02:20</b><span>Phát hiện xung đột</span></div>
+    <div><b>02:20–03:15</b><span>Điều tra & truy đuổi</span></div>
+    <div><b>03:15–04:20</b><span>Lắng cảm xúc → cao trào</span></div>
   </div>
 </div>
 </section>
@@ -118,12 +218,96 @@ footer{padding:3rem 0;text-align:center;color:var(--grey);font-size:.78rem}
 <div class="container">
   <div class="section-kicker">V</div>
   <h2 class="section-title">PHÂN CẢNH</h2>
+
   <div class="section-grid three">
-    <article class="item v-item"><div><div class="v-label">Mục 19</div><h3>Storyboard tổng thể</h3></div></article>
+    <article class="item v-item storyboard-main"><div><div class="v-label">Mục 19</div><h3>Storyboard tổng thể — 36 khung hình</h3></div></article>
     <article class="item v-item"><div><div class="v-label">Mục 20</div><h3>Cỡ cảnh & góc máy</h3></div></article>
     <article class="item v-item"><div><div class="v-label">Mục 21</div><h3>Chuyển động máy quay</h3></div></article>
     <article class="item v-item"><div><div class="v-label">Mục 22</div><h3>Chuyển cảnh</h3></div></article>
     <article class="item v-item"><div><div class="v-label">Mục 23</div><h3>Âm thanh & thời lượng</h3></div></article>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>19</span> STORYBOARD TỔNG THỂ — 36 FRAME</div>
+    <div class="storyboard-table">
+      <div class="sb-row sb-head"><b>Frame</b><b>Thời gian</b><b>Cỡ cảnh / góc</b><b>Nội dung hình ảnh</b><b>Âm thanh / thoại</b></div>
+      <div class="sb-row"><b>01</b><span>00:00</span><span>Toàn cảnh · ngang tầm mắt</span><span>Russian Hill trong sương, căn hộ Victorian nổi bật.</span><span>Gió + mưa nhẹ.</span></div>
+      <div class="sb-row"><b>02</b><span>00:07</span><span>Toàn cảnh</span><span>Arthur bước lên cầu thang.</span><span>Bước chân.</span></div>
+      <div class="sb-row"><b>03</b><span>00:14</span><span>Trung cảnh</span><span>Tay Arthur mở cửa căn hộ.</span><span>Tiếng khóa cửa.</span></div>
+      <div class="sb-row"><b>04</b><span>00:21</span><span>Góc nhìn sau vai</span><span>Căn phòng tối, ánh đèn vàng.</span><span>Nhạc nền bắt đầu.</span></div>
+      <div class="sb-row"><b>05</b><span>00:28</span><span>Cận cảnh</span><span>Đồng hồ tích tắc.</span><span>Tích… tắc…</span></div>
+      <div class="sb-row"><b>06</b><span>00:35</span><span>Cận cảnh</span><span>Điện chập chờn.</span><span>Ù điện.</span></div>
+      <div class="sb-row"><b>07</b><span>00:42</span><span>Trung cận</span><span>Bóng Lauren xuất hiện.</span><span>Lauren: “Arthur…”</span></div>
+      <div class="sb-row"><b>08</b><span>00:50</span><span>Cận cảnh</span><span>Arthur quay phắt lại.</span><span>Arthur: “Ai ở đó?”</span></div>
+      <div class="sb-row"><b>09</b><span>01:00</span><span>Đặc tả</span><span>Bàn tay Lauren xuyên qua vật thể.</span><span>Âm thanh nhiễu điện.</span></div>
+      <div class="sb-row"><b>10</b><span>01:10</span><span>Trung cảnh</span><span>Arthur và Lauren đối diện.</span><span>Lauren: “Tai nạn. Sutter Street.”</span></div>
+      <div class="sb-row"><b>11</b><span>01:20</span><span>Đặc tả</span><span>Flashback đèn xe và tiếng phanh.</span><span>Phanh xe.</span></div>
+      <div class="sb-row"><b>12</b><span>01:30</span><span>Toàn cảnh</span><span>Hành lang Memorial Hospital.</span><span>Ambient bệnh viện.</span></div>
+      <div class="sb-row"><b>13</b><span>01:38</span><span>Tracking</span><span>Arthur di chuyển sát tường.</span><span>Bước chân nhỏ.</span></div>
+      <div class="sb-row"><b>14</b><span>01:46</span><span>Góc thấp</span><span>Bảo vệ đi ngang.</span><span>Bộ đàm.</span></div>
+      <div class="sb-row"><b>15</b><span>01:54</span><span>Góc nhìn qua vai</span><span>Lauren đứng trước phòng 712.</span><span>Lauren: “Đó là em.”</span></div>
+      <div class="sb-row"><b>16</b><span>02:02</span><span>Đặc tả</span><span>Máy theo dõi sinh hiệu.</span><span>Bíp đều.</span></div>
+      <div class="sb-row"><b>17</b><span>02:10</span><span>Cận cảnh</span><span>Arthur nhìn Lauren đang hôn mê.</span><span>Arthur: “Em còn sống…”</span></div>
+      <div class="sb-row"><b>18</b><span>02:20</span><span>Chuyển cảnh</span><span>Cắt từ màn hình monitor sang đèn xe Sutter Street.</span><span>Whoosh + mưa.</span></div>
+      <div class="sb-row"><b>19</b><span>02:28</span><span>Toàn cảnh · góc cao</span><span>Hiện trường Sutter Street.</span><span>Gió + xe xa.</span></div>
+      <div class="sb-row"><b>20</b><span>02:36</span><span>Trung cảnh</span><span>Arthur soi mặt đường.</span><span>Arthur gọi Lauren.</span></div>
+      <div class="sb-row"><b>21</b><span>02:44</span><span>Đặc tả</span><span>Memory Shard phát sáng.</span><span>Âm thanh ký ức.</span></div>
+      <div class="sb-row"><b>22</b><span>02:52</span><span>Cận cảnh Lauren</span><span>Lauren chạm vào mảnh ký ức.</span><span>Lauren: “Em đã ở đây.”</span></div>
+      <div class="sb-row"><b>23</b><span>03:00</span><span>Góc nhìn chủ thể</span><span>Flashback xe lao qua màn sương.</span><span>Phanh + nhịp trống.</span></div>
+      <div class="sb-row"><b>24</b><span>03:08</span><span>Trung cận</span><span>Bản vẽ Victory Project hiện ra.</span><span>Arthur: “Có liên quan?”</span></div>
+      <div class="sb-row"><b>25</b><span>03:15</span><span>Toàn cảnh</span><span>Bóng Pilguez ở cuối phố.</span><span>Còi xe xa.</span></div>
+      <div class="sb-row"><b>26</b><span>03:22</span><span>Trung cảnh</span><span>Arthur và Lauren quay lại.</span><span>Lauren: “Chạy đi.”</span></div>
+      <div class="sb-row"><b>27</b><span>03:30</span><span>Tracking</span><span>Arthur chạy trong sương.</span><span>Nhịp nhạc tăng.</span></div>
+      <div class="sb-row"><b>28</b><span>03:38</span><span>Cắt mềm</span><span>Carmel Beach House lúc hoàng hôn.</span><span>Gió biển.</span></div>
+      <div class="sb-row"><b>29</b><span>03:46</span><span>Toàn cảnh</span><span>Arthur và Lauren đứng bên biển.</span><span>Nhạc lắng.</span></div>
+      <div class="sb-row"><b>30</b><span>03:54</span><span>Cận cảnh Arthur</span><span>Arthur hỏi về 72 giờ.</span><span>Arthur: “Nếu hết 72 giờ thì sao?”</span></div>
+      <div class="sb-row"><b>31</b><span>04:02</span><span>Cận cảnh Lauren</span><span>Lauren mỉm cười.</span><span>Lauren: “Vậy thì đi thôi.”</span></div>
+      <div class="sb-row"><b>32</b><span>04:08</span><span>Montage · cắt nhanh</span><span>Đồng hồ 72:00:00 → 00:12:47.</span><span>Nhạc cao trào.</span></div>
+      <div class="sb-row"><b>33</b><span>04:12</span><span>Tracking</span><span>Arthur chạy.</span><span>Thở + bước chân.</span></div>
+      <div class="sb-row"><b>34</b><span>04:15</span><span>Góc thấp</span><span>Pilguez bám đuổi.</span><span>Tiếng còi.</span></div>
+      <div class="sb-row"><b>35</b><span>04:18</span><span>Đặc tả</span><span>Cửa phòng 712 đóng lại, monitor nhấp nháy.</span><span>Arthur V.O.: “Lauren… chờ anh.”</span></div>
+      <div class="sb-row"><b>36</b><span>04:20</span><span>Cắt đen</span><span>Logo IF ONLY xuất hiện.</span><span>Bíp cuối → im lặng.</span></div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>20</span> CỠ CẢNH & GÓC MÁY</div>
+    <div class="mini-grid">
+      <div><b>Toàn cảnh</b><span>Thiết lập San Francisco, bệnh viện, Sutter Street, biển Carmel.</span></div>
+      <div><b>Trung cảnh</b><span>Đối thoại và hành động giữa Arthur – Lauren.</span></div>
+      <div><b>Cận cảnh / Đặc tả</b><span>Ký ức, đồng hồ 72 giờ, Memory Shard, monitor.</span></div>
+      <div><b>Góc thấp / Góc cao</b><span>Tạo áp lực, nhấn mạnh không gian và sự truy đuổi.</span></div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>21</span> CHUYỂN ĐỘNG MÁY QUAY</div>
+    <div class="mini-grid">
+      <div><b>Pan / Tilt</b><span>Mở thông tin trong căn hộ và bệnh viện.</span></div>
+      <div><b>Tracking / Follow</b><span>Bám theo Arthur ở các đoạn khám phá và chạy trốn.</span></div>
+      <div><b>Dolly / Truck</b><span>Tiến gần các phát hiện quan trọng và cảnh cảm xúc.</span></div>
+      <div><b>Tĩnh máy</b><span>Giữ khung ở các khoảnh khắc đối thoại và kết thúc.</span></div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>22</span> CHUYỂN CẢNH</div>
+    <div class="mini-grid">
+      <div><b>Cắt thẳng</b><span>Đối thoại, hành động, truy đuổi.</span></div>
+      <div><b>Chuyển cảnh nối hình</b><span>Đồng hồ → monitor → đèn xe để liên kết ý niệm thời gian.</span></div>
+      <div><b>Hòa tan</b><span>Flashback và chuyển sang không gian ký ức.</span></div>
+      <div><b>Cắt đen</b><span>Kết thúc phân đoạn và xuất hiện tiêu đề.</span></div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="detail-title"><span>23</span> ÂM THANH & THỜI LƯỢNG</div>
+    <div class="mini-grid">
+      <div><b>Thoại</b><span>Arthur – Lauren là trung tâm của nhịp kể.</span></div>
+      <div><b>Hiệu ứng</b><span>Mưa, bước chân, điện nhiễu, monitor, còi xe, biển.</span></div>
+      <div><b>Nhạc</b><span>Mở đầu tối giản → tăng nhịp ở Sutter Street → cao trào cuối.</span></div>
+      <div><b>Môi trường</b><span>San Francisco, bệnh viện và biển tạo ba lớp âm thanh đối lập.</span></div>
+    </div>
   </div>
 </div>
 </section>
