@@ -6,12 +6,8 @@
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
     <application android:theme="@style/Theme.MusicPlayer" android:label="Music Player" android:allowBackup="true" android:supportsRtl="true">
         <activity android:name=".MainActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
         </activity>
-        <service android:name="androidx.media3.session.MediaSessionService" android:foregroundServiceType="mediaPlayback" android:exported="true">
-            <intent-filter><action android:name="androidx.media3.session.MediaSessionService" /></intent-filter>
-        </service>
+        <service android:name=".PlaybackService" android:foregroundServiceType="mediaPlayback" android:exported="true"><intent-filter><action android:name="androidx.media3.session.MediaSessionService"/></intent-filter></service>
     </application>
 </manifest>
