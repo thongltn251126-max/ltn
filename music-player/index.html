@@ -1,64 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Music — Desktop Music Player</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
   <aside class="sidebar">
     <div class="brand"><div class="brand-mark">M</div><span>Music</span></div>
-    <div class="nav-label">APPLE-STYLE PLAYER</div>
+    <div class="nav-label">MUSIC PLAYER</div>
     <nav>
       <button class="nav-item active" data-view="listen"><span>⌂</span> Nghe ngay</button>
       <button class="nav-item" data-view="browse"><span>◈</span> Duyệt</button>
+      <button class="nav-item" data-view="online"><span>◎</span> Nhạc Online</button>
       <button class="nav-item" data-view="library"><span>▣</span> Thư viện</button>
     </nav>
     <div class="nav-label playlist-label">PLAYLIST</div>
-    <nav>
-      <button class="nav-item" data-view="favorites"><span>♥</span> Bài hát yêu thích</button>
-      <button class="nav-item" data-view="recent"><span>◷</span> Phát gần đây</button>
-    </nav>
+    <nav><button class="nav-item" data-view="favorites"><span>♥</span> Bài hát yêu thích</button><button class="nav-item" data-view="recent"><span>◷</span> Phát gần đây</button></nav>
     <button id="createPlaylist" class="new-playlist">＋ Playlist mới</button>
-    <div class="sidebar-bottom"><small>Nhạc của bạn</small><small>Chạy trực tiếp trên trình duyệt</small></div>
+    <div class="sidebar-bottom"><small>Nhạc của bạn</small><small>Local + Online</small></div>
   </aside>
-
   <main class="main">
-    <header class="topbar">
-      <div class="back-forward"><button>‹</button><button>›</button></div>
-      <label class="search"><span>⌕</span><input id="searchInput" placeholder="Tìm kiếm bài hát, nghệ sĩ, album..."></label>
-      <button id="importBtn" class="import-btn">＋ Thêm nhạc</button>
-      <input id="fileInput" type="file" accept="audio/*" multiple hidden>
-    </header>
-
+    <header class="topbar"><div class="back-forward"><button>‹</button><button>›</button></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="Tìm kiếm bài hát, nghệ sĩ, album..."></label><button id="onlineBtn" class="import-btn">＋ Nhạc Online</button><button id="importBtn" class="import-btn">＋ Thêm nhạc</button><input id="fileInput" type="file" accept="audio/*" multiple hidden></header>
     <section id="content" class="content"></section>
   </main>
-
-  <footer class="player">
-    <div class="now-playing">
-      <div id="playerCover" class="mini-cover placeholder">♪</div>
-      <div class="track-info"><strong id="playerTitle">Chưa phát nhạc</strong><span id="playerArtist">Thêm file nhạc để bắt đầu</span></div>
-      <button id="likeBtn" class="icon-btn" title="Yêu thích">♡</button>
-    </div>
-    <div class="controls">
-      <div class="control-row">
-        <button id="shuffleBtn" class="control">⤨</button>
-        <button id="prevBtn" class="control">◀</button>
-        <button id="playBtn" class="play">▶</button>
-        <button id="nextBtn" class="control">▶</button>
-        <button id="repeatBtn" class="control">↻</button>
-      </div>
-      <div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
-    </div>
-    <div class="volume"><span>◖</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.8"><span>◕</span></div>
-  </footer>
+  <footer class="player"><div class="now-playing"><div id="playerCover" class="mini-cover placeholder">♪</div><div class="track-info"><strong id="playerTitle">Chưa phát nhạc</strong><span id="playerArtist">Thêm nhạc online hoặc file từ máy</span></div><button id="likeBtn" class="icon-btn">♡</button></div><div class="controls"><div class="control-row"><button id="shuffleBtn" class="control">⤨</button><button id="prevBtn" class="control">◀</button><button id="playBtn" class="play">▶</button><button id="nextBtn" class="control">▶</button><button id="repeatBtn" class="control">↻</button></div><div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div></div><div class="volume"><span>◖</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.8"><span>◕</span></div></footer>
 </div>
-<audio id="audio"></audio>
-<script src="app.js"></script>
-</body>
-</html>
+<div id="onlineModal" class="modal" hidden><div class="modal-card"><button id="closeOnline" class="modal-close">×</button><div class="eyebrow">ONLINE MUSIC</div><h2>Thêm nhạc Online</h2><p>Dán URL trực tiếp tới file âm thanh mà bạn có quyền sử dụng (MP3, WAV, OGG, M4A...).</p><input id="onlineUrl" class="modal-input" placeholder="https://example.com/song.mp3"><input id="onlineTitle" class="modal-input" placeholder="Tên bài hát"><input id="onlineArtist" class="modal-input" placeholder="Nghệ sĩ"><input id="onlineCover" class="modal-input" placeholder="URL ảnh bìa (không bắt buộc)"><div class="modal-actions"><button id="cancelOnline" class="secondary-btn">Hủy</button><button id="addOnline" class="primary-btn">Thêm & phát</button></div><small>Trang web không thể tự lấy nhạc từ YouTube/Spotify/Apple Music chỉ bằng URL trang. Hãy dùng URL stream/file được phép phát trực tiếp.</small></div></div>
+<audio id="audio" crossorigin="anonymous"></audio><script src="app.js"></script>
+</body></html>
