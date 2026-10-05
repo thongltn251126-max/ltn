@@ -77,6 +77,22 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
 @media(max-width:700px){.character-gallery,.visual-reference-grid{grid-template-columns:1fr}.chapters{grid-template-columns:1fr}}
 
 @media(max-width:768px){.character-grid{grid-template-columns:1fr}}
+
+/* STORYBOARD GALLERY */
+.storyboard-gallery{margin-top:1.8rem}
+.storyboard-intro{background:linear-gradient(135deg,rgba(14,20,33,.86),rgba(10,16,28,.72));border:1px solid var(--border-color);border-radius:16px;padding:1.4rem 1.5rem;margin-bottom:1.3rem}
+.storyboard-intro p{color:var(--text-muted);font-size:.9rem}
+.storyboard-chapter{margin-top:1.5rem}
+.storyboard-chapter-title{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+.storyboard-chapter-title h3{font-size:1.35rem}
+.storyboard-chapter-title span{font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--grey-clinical)}
+.storyboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.storyboard-sheet{background:var(--bg-card);border:1px solid var(--border-color);border-radius:14px;overflow:hidden;box-shadow:0 8px 26px rgba(0,0,0,.26)}
+.storyboard-sheet img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#05070c}
+.storyboard-sheet .sb-meta{padding:.8rem 1rem 1rem}
+.storyboard-sheet .sb-meta strong{display:block;font-size:.78rem;letter-spacing:.8px;text-transform:uppercase;margin-bottom:.2rem}
+.storyboard-sheet .sb-meta small{color:var(--text-muted);font-size:.72rem}
+@media(max-width:900px){.storyboard-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -255,6 +271,55 @@ footer{border-top:1px solid var(--border-color);padding:3rem 0;text-align:center
   <div style="margin-top:2rem"><div class="section-num">LEVEL/ AREA HÀNH TRÌNH GAME</div><h3 style="font-size:1.5rem;margin:.4rem 0 1rem">5 CHAPTERS</h3></div>
   <div class="chapter-feature">
     <img src="images/chapter.jpg" alt="Tổng quan 5 Chapter — IF ONLY">
+  </div>
+  <div class="storyboard-gallery" id="storyboard">
+    <div class="section-header" style="margin-top:2.2rem">
+      <div class="section-num">STORYBOARD</div>
+      <h3 style="font-size:1.8rem">Storyboard 5 Chapter · 2 Sheet / Chapter</h3>
+    </div>
+    <div class="storyboard-intro">
+      <p>Storyboard được tách riêng theo từng Chapter. Mỗi Chapter có đúng 2 sheet, mỗi shot giữ tỉ lệ 16:9 ngang; ảnh được đặt tại <strong>images/storyboard/</strong>.</p>
+    </div>
+
+    <div class="storyboard-chapter">
+      <div class="storyboard-chapter-title"><h3>Chapter 1 — Cuộc Gặp Kỳ Ảo</h3><span>Russian Hill Apartment</span></div>
+      <div class="storyboard-grid">
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-1-sheet-1.jpg" alt="IF ONLY Chapter 1 Sheet 1" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 1 / 2</strong><small>Cuộc gặp đầu tiên · Căn hộ Victorian</small></figcaption></figure>
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-1-sheet-2.jpg" alt="IF ONLY Chapter 1 Sheet 2" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 2 / 2</strong><small>Lauren · Arthur · Bí ẩn bắt đầu</small></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="storyboard-chapter">
+      <div class="storyboard-chapter-title"><h3>Chapter 2 — Ranh Giới Hôn Mê</h3><span>Memorial Hospital · Phòng 712</span></div>
+      <div class="storyboard-grid">
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-2-sheet-1.jpg" alt="IF ONLY Chapter 2 Sheet 1" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 1 / 2</strong><small>Đột nhập bệnh viện · Phòng 712</small></figcaption></figure>
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-2-sheet-2.jpg" alt="IF ONLY Chapter 2 Sheet 2" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 2 / 2</strong><small>Stealth · Lauren làm nhiễu thiết bị · Bảo vệ cơ thể</small></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="storyboard-chapter">
+      <div class="storyboard-chapter-title"><h3>Chapter 3 — Mảnh Ghép Sutter</h3><span>Sutter Street & Ký Ức</span></div>
+      <div class="storyboard-grid">
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-3-sheet-1.jpg" alt="IF ONLY Chapter 3 Sheet 1" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 1 / 2</strong><small>Hiện trường · Dual-Perspective · Dấu vết</small></figcaption></figure>
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-3-sheet-2.jpg" alt="IF ONLY Chapter 3 Sheet 2" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 2 / 2</strong><small>Memory Shards · Puzzle · Victory Project</small></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="storyboard-chapter">
+      <div class="storyboard-chapter-title"><h3>Chapter 4 — Hoàng Hôn Bình Yên</h3><span>Carmel Beach House</span></div>
+      <div class="storyboard-grid">
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-4-sheet-1.jpg" alt="IF ONLY Chapter 4 Sheet 1" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 1 / 2</strong><small>Carmel · Ký ức · Kỷ vật</small></figcaption></figure>
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-4-sheet-2.jpg" alt="IF ONLY Chapter 4 Sheet 2" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 2 / 2</strong><small>Quan hệ Arthur–Lauren · Hope Level</small></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="storyboard-chapter">
+      <div class="storyboard-chapter-title"><h3>Chapter 5 — Cuộc Chạy Đua 72 Giờ</h3><span>Chuyển Hướng Sinh Tử</span></div>
+      <div class="storyboard-grid">
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-5-sheet-1.jpg" alt="IF ONLY Chapter 5 Sheet 1" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 1 / 2</strong><small>Countdown · Cao trào bệnh viện</small></figcaption></figure>
+        <figure class="storyboard-sheet"><img src="images/storyboard/chapter-5-sheet-2.jpg" alt="IF ONLY Chapter 5 Sheet 2" loading="lazy"><figcaption class="sb-meta"><strong>Sheet 2 / 2</strong><small>Lựa chọn sinh tử · Lauren tỉnh lại hay tan biến</small></figcaption></figure>
+      </div>
+    </div>
   </div>
   <div class="chapters">
     <div class="chapter searchable-item"><small>CHAPTER 1</small><h3>Cuộc Gặp Kỳ Ảo</h3><p>Russian Hill Apartment</p></div>
