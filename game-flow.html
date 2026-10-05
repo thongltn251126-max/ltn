@@ -20,7 +20,7 @@ section{padding:65px 0;border-bottom:1px solid var(--line)}.section-head{display
 .searchable.match{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,242,254,.12)}.searchable.hidden{display:none!important}
 @media(max-width:900px){.nav{align-items:flex-start;flex-direction:column}.chapter-grid{grid-template-columns:1fr}.master-flow{grid-template-columns:1fr}.master-node:not(:last-child):after{display:none}.save{grid-template-columns:1fr}}
 @media(max-width:600px){.wrap{padding:0 14px}.search{width:100%}.search input{width:100%}header{padding:75px 0 55px}.chapter-title{font-size:26px}}
-</style>
+.main-home{display:inline-block}</style>
 </head>
 <body>
 <nav><div class="nav"><div class="logo">IF ONLY</div><div class="links"><a href="index.html">TRANG CHÍNH</a><a class="flow-link" href="#master">GAME FLOW</a><a href="#chapter1">CHAPTER 1</a><a href="#chapter2">CHAPTER 2</a><a href="#chapter3">CHAPTER 3</a><a href="#chapter4">CHAPTER 4</a><a href="#chapter5">CHAPTER 5</a></div><div class="search"><input id="q" placeholder="Tìm Chapter, Arthur, Lauren, 72H..." oninput="search()"><button onclick="search()">⌕</button><span id="status" class="status"></span></div></div></nav>
@@ -41,4 +41,4 @@ function search(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();document.getElementById('q').focus()}if(e.key==='Escape'){document.getElementById('q').value='';search()}});
 </script>
-</body></html>
+<div style="padding:28px 0 40px;text-align:center;border-top:1px solid var(--line)"><a href="index.html" class="btn primary main-home">← VỀ TRANG WEB CHÍNH IF ONLY</a></div></body></html>
