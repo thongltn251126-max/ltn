@@ -1,2 +1,302 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IF ONLY — UX/UI Prototype</title><style>:root{--b:#07090d;--p:#11161e;--l:#303844;--t:#f3f3ef;--m:#9aa3ad}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 10%,#303744,#07090d 55%);color:var(--t);font:15px Arial,sans-serif}button{font:inherit}.wrap{max-width:1200px;margin:auto;padding:28px}.screen{display:none;min-height:100vh}.on{display:block}.brand{font-size:clamp(55px,10vw,110px);font-weight:900;letter-spacing:-6px;margin-top:18vh}.muted,.tiny{color:var(--m)}.tiny{text-transform:uppercase;letter-spacing:2px;font-size:11px}.menu{display:grid;gap:10px;width:300px;margin-top:30px}.btn,.ch,.ghost{background:transparent;color:inherit;border:1px solid var(--l);padding:13px 16px;cursor:pointer;text-align:left}.btn:hover,.ch:hover,.ch.sel,.ghost:hover{background:#fff;color:#07090d}.bar{display:flex;justify-content:space-between;border-bottom:1px solid var(--l);padding-bottom:15px;margin-bottom:20px}.grid{display:grid;grid-template-columns:230px 1fr;gap:18px}.side,.panel{background:#10141be8;border:1px solid var(--l);border-radius:12px;padding:16px}.ch{width:100%;border-width:0 0 0 2px;border-color:transparent;color:var(--m);margin:2px 0}.hero{min-height:340px;padding:28px;display:flex;flex-direction:column;justify-content:end;border:1px solid var(--l);border-radius:10px;background:linear-gradient(180deg,transparent,#080a0dcc),radial-gradient(circle at 65% 30%,#394352,#11161e 50%,#080a0d)}h1{font-size:42px;margin:8px 0}.tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tag{border:1px solid var(--l);border-radius:99px;padding:6px 9px;font-size:10px;color:var(--m)}.actions{display:flex;gap:8px;margin-top:15px}.primary{border:0;background:#eee;color:#07090d;padding:12px 18px;cursor:pointer}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:18px 0}.node{border:1px solid var(--l);padding:13px 5px;text-align:center;font-size:11px;color:var(--m)}.hud{height:520px;position:relative;border:1px solid var(--l);border-radius:12px;overflow:hidden;background:radial-gradient(circle at 50% 42%,#343d49,#121820 48%,#080a0d)}.hud>*{position:absolute}.hudtop{top:18px;left:18px;right:18px;display:flex;justify-content:space-between}.card{background:#05070a99;border:1px solid #ffffff22;padding:10px}.obj{max-width:300px}.center{left:50%;top:45%;transform:translate(-50%,-50%);text-align:center}.key{display:inline-block;border:1px solid white;padding:8px;margin-top:10px}.dialog{left:7%;right:7%;bottom:18px;background:#05070ae8;border:1px solid #ffffff22;padding:16px}.choice{display:block;width:100%;background:transparent;border:1px solid var(--l);color:inherit;text-align:left;padding:9px;margin-top:6px;cursor:pointer}.choice:hover{background:#fff;color:#07090d}.bottom{bottom:18px;left:18px;right:18px;display:flex;justify-content:space-between}.timer{font-size:22px}.danger{color:#f1b3b3}.map{height:430px;border:1px solid var(--l);border-radius:10px;position:relative;background:radial-gradient(circle,#303946,#0a0d12 65%)}.place{position:absolute;transform:translate(-50%,-50%);text-align:center}.dot{width:13px;height:13px;border:2px solid white;border-radius:50%;margin:auto}.mem{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.memory{border:1px solid var(--l);padding:18px;min-height:100px}.lock{opacity:.35}@media(max-width:800px){.grid{grid-template-columns:1fr}.flow,.mem{grid-template-columns:1fr}.node{padding:10px}.hud{height:600px}}
-</style></head><body><main class="wrap"><section id="start" class="screen on"><div class="tiny">ĐỒ ÁN TỐT NGHIỆP · UX / UI PROTOTYPE</div><div class="brand">IF ONLY</div><p class="muted">Arthur × Lauren · Narrative Mystery</p><div class="menu"><button class="btn" onclick="go()">BẮT ĐẦU</button><button class="btn" onclick="info('CÁCH CHƠI','Chọn 1 trong 5 chapter. Thử Character Switch, Interaction, Dialogue, Memory và Countdown ở Chapter 5.')">CÁCH CHƠI</button><button class="btn" onclick="info('CÀI ĐẶT','Third Person · Subtitles ON · Interaction [E] · Audio ON')">CÀI ĐẶT</button></div></section><section id="game" class="screen"><div class="bar"><b>IF ONLY / UX · UI</b><button class="ghost" onclick="show('start')">MENU</button></div><div class="grid"><aside class="side"><div class="tiny">CHAPTERS</div><div id="chs"></div><hr><button class="ch" onclick="panel('memory')">✦ MEMORY ARCHIVE</button><button class="ch" onclick="panel('map')">⌖ BẢN ĐỒ</button></aside><section id="main"></section></div></section></main><script>const D=[['CUỘC GẶP KỲ ẢO','Russian Hill Apartment','Exploration · Interaction · Character Switch','Khám phá căn hộ và tìm hiểu dấu hiệu bất thường.'],['RANH GIỚI HÔN MÊ','Memorial Hospital · Phòng 712','Stealth · Spirit Traversal · Investigation','Tiếp cận phòng 712 mà không bị phát hiện.'],['MẢNH GHÉP SUTTER','Sutter Street · Victory Project','Dual-Perspective · Puzzle · Memory','Tìm manh mối liên kết Sutter Street với Victory Project.'],['HOÀNG HÔN BÌNH YÊN','Carmel Beach House','Exploration · Dialogue · Hope','Khám phá các kỷ vật và mảnh ký ức.'],['CUỘC CHẠY ĐUA 72 GIỜ','Final Sequence','Countdown · Final Puzzle · Choice','Hoàn thành mục tiêu trước khi 72 giờ kết thúc.']];let c=1,ch='ARTHUR',mem=[1,0,0,0,0],time=259200,timer;function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on')}function go(){show('game');build()}function build(){document.getElementById('chs').innerHTML=D.map((x,i)=>`<button class="ch ${c==i+1?'sel':''}" onclick="chapter(${i+1})">0${i+1} · ${x[0]}</button>`).join('');let x=D[c-1];document.getElementById('main').innerHTML=`<div class="panel"><div class="tiny">CHAPTER 0${c} · GAME FLOW</div><div class="hero"><div class="tiny">${x[1]}</div><h1>${x[0]}</h1><p class="muted">${x[3]}</p><div class="tags">${x[2].split(' · ').map(a=>`<span class="tag">${a}</span>`).join('')}</div><div class="actions"><button class="primary" onclick="play()">TRẢI NGHIỆM CHAPTER</button><button class="ghost" onclick="panel('flow')">GAME FLOW</button></div></div><div class="flow">${['EXPLORE','DISCOVER','SWITCH','SOLVE','REMEMBER'].map(a=>`<div class="node">${a}</div>`).join('')}</div><div id="extra"></div></div>`}function chapter(n){c=n;ch=n==4?'LAUREN':'ARTHUR';build()}function play(){if(c==5){time=259200;clearInterval(timer);timer=setInterval(tick,1000)}document.getElementById('extra').innerHTML=`<div class="hud"><div class="hudtop"><div class="card"><div class="tiny">CHARACTER</div><b id="char">${ch}</b><button class="ghost" onclick="sw()">SWITCH</button></div><div class="card obj"><div class="tiny">OBJECTIVE</div>${D[c-1][3]}</div></div><div class="center"><div class="tiny">${D[c-1][1]}</div><div class="key">[ E ]</div><div>KHÁM PHÁ MÔI TRƯỜNG</div></div><div class="dialog"><div class="tiny" id="speaker">${ch}</div><div id="line">${c==1?'Lauren... cô đang ở đây sao?':c==2?'Có thứ gì đó trong phòng 712.':c==3?'Những mảnh ký ức này đang dẫn tới Sutter Street.':c==4?'Có những thứ tôi đã quên...':'Chúng ta không còn nhiều thời gian nữa.'}</div><button class="choice" onclick="next()">Tiếp tục khám phá →</button><button class="choice" onclick="collect()">✦ Kiểm tra dấu vết ký ức</button></div><div class="bottom"><div class="card">[W][A][S][D] Di chuyển · [E] Tương tác</div><div class="card">${c==5?'<span class="tiny">TIME REMAINING</span> <span id="timer" class="timer">72:00:00</span>':'Memory Shards · '+mem.filter(Boolean).length+'/5'}</div></div></div>`}function sw(){ch=ch=='ARTHUR'?'LAUREN':'ARTHUR';document.getElementById('char').textContent=ch;document.getElementById('speaker').textContent=ch}function next(){let a=['Lauren: Đây từng là nhà của tôi...','Lauren: Em có thể đi qua cánh cửa. Anh thì không.','Lauren: Hãy nhìn nơi ký ức bị đứt đoạn.','Arthur: Có lẽ điều quan trọng không phải chúng ta đã mất gì.','Arthur: Chúng ta phải quyết định ngay.'];document.getElementById('line').textContent=a[c-1]}function collect(){mem[c-1]=1;alert('✦ MEMORY SHARD DISCOVERED\nChapter '+c+' đã được lưu.')}function tick(){time--;let e=document.getElementById('timer');if(!e)return;let h=Math.floor(time/3600),m=Math.floor(time%3600/60),s=time%60;e.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':');if(time<3600)e.classList.add('danger')}function panel(t){if(t=='flow')document.getElementById('main').innerHTML='<div class="panel"><div class="tiny">GAME FLOW</div><h1>EXPLORE → DISCOVER → SWITCH → SOLVE → REMEMBER</h1><p class="muted">Chapter 5 bổ sung COUNTDOWN → FINAL CHOICE.</p></div>';if(t=='memory')document.getElementById('main').innerHTML='<div class="panel"><div class="tiny">MEMORY ARCHIVE</div><h1>Memory Shards</h1><div class="mem">'+['Russian Hill','Memorial Hospital','Sutter Street','Carmel','Victory Project'].map((x,i)=>`<div class="memory ${mem[i]?'':'lock'}">✦<br><b>${x}</b><br><span class="tiny">${mem[i]?'DISCOVERED':'LOCKED'}</span></div>`).join('')+'</div></div>';if(t=='map')document.getElementById('main').innerHTML='<div class="panel"><div class="tiny">MAP · SAN FRANCISCO</div><h1>Locations</h1><div class="map">'+[['Russian Hill',20,25],['Sutter Street',47,42],['Memorial Hospital',72,30],['Carmel',55,72],['Victory Project',82,67]].map(x=>`<div class="place" style="left:${x[1]}%;top:${x[2]}%"><div class="dot"></div><span>${x[0]}</span></div>`).join('')+'</div></div>'}function info(t,b){alert(t+'\n\n'+b)}build();</script></body></html>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IF ONLY — UX / UI Prototype</title>
+<style>
+:root{
+  --bg:#06080c;--panel:rgba(15,19,26,.92);--panel2:#111720;--line:#29313c;
+  --text:#f4f4ef;--muted:#9ba5b1;--soft:#d7dbe0;--spirit:#9fd8ff;--warm:#e6b58c;
+  --danger:#f1a5a5;--success:#b9e3c0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+body{overflow-x:hidden}
+button{font:inherit}
+button:disabled{opacity:.42;cursor:not-allowed}
+.app{min-height:100vh;position:relative}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px);z-index:20}
+.bg{position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 72% 15%,#27313b 0,#11161d 35%,#06080c 75%)}
+.bg:after{content:"";position:absolute;inset:-10%;background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.05),transparent 65%);animation:glide 10s linear infinite}
+@keyframes glide{from{transform:translateX(-18%)}to{transform:translateX(18%)}}
+.screen{display:none;min-height:100vh;padding:26px}
+.screen.active{display:block}
+.wrap{width:min(1280px,100%);margin:auto}
+.tiny{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.brand{font-size:clamp(56px,9vw,120px);font-weight:950;letter-spacing:-7px;line-height:.9}
+.menu{display:grid;gap:9px;width:min(360px,100%);margin-top:30px}
+.btn,.ghost,.chapter-btn,.save-btn,.choice,.setting-btn{border:1px solid var(--line);background:rgba(0,0,0,.22);color:inherit;cursor:pointer}
+.btn{padding:14px 18px;text-align:left}
+.btn:hover,.chapter-btn:hover,.chapter-btn.active,.save-btn:hover,.save-btn.active,.choice:hover,.setting-btn:hover{background:#fff;color:#07090d;border-color:#fff}
+.hero-start{min-height:92vh;display:flex;align-items:center}
+.hero-start-inner{width:min(740px,100%)}
+.start-image{margin-top:36px;border:1px solid var(--line);border-radius:16px;overflow:hidden;height:230px;background:#0a0d12}
+.start-image img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.04)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0 16px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.topbar-left{display:flex;align-items:center;gap:12px}.logo{font-weight:900;letter-spacing:1px}
+.layout{display:grid;grid-template-columns:255px 1fr;gap:18px}
+.side,.panel,.modal-card{background:var(--panel);border:1px solid var(--line);border-radius:15px}
+.side{padding:14px;align-self:start;position:sticky;top:18px}
+.side h3{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin:4px 8px 9px}
+.chapter-btn{width:100%;padding:11px 10px;text-align:left;border-width:0 0 0 2px;border-color:transparent;margin:2px 0;color:var(--muted)}
+.side-sep{height:1px;background:var(--line);margin:18px 0}
+.panel{padding:18px}
+.hero-card{min-height:410px;border:1px solid var(--line);border-radius:13px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#0a0d11}
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.02);opacity:.63}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,5,8,.06),rgba(3,5,8,.94) 82%)}
+.hero-copy{position:relative;padding:24px;max-width:820px}
+.hero-title{font-size:clamp(30px,4vw,53px);margin:9px 0 5px}
+.hero-desc{color:#c5cad1;max-width:790px;line-height:1.65}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
+.tag{border:1px solid rgba(255,255,255,.16);padding:6px 9px;border-radius:999px;font-size:10px;color:#c1c7ce;letter-spacing:.6px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.primary{background:#eee;color:#090b0f;border:0;padding:12px 17px;cursor:pointer}.ghost{padding:11px 14px}
+.section-row{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:18px 0 9px}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+.flow-node{border:1px solid var(--line);padding:12px 8px;text-align:center;font-size:10px;color:var(--muted);position:relative}
+.flow-node:not(:last-child):after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:#66717d;z-index:2}
+.flow-node.active{color:#fff;background:#171d25;border-color:#fff}
+.ui-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin-top:13px}
+.hud{min-height:540px;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;background:#10151b}
+.hud-image{position:absolute;inset:0}.hud-image img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);opacity:.54}
+.hud-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,10,.26),rgba(5,7,10,.88))}
+.hud-top{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;gap:10px}
+.hud-card{background:rgba(4,6,9,.72);border:1px solid rgba(255,255,255,.13);padding:10px 12px;border-radius:9px;backdrop-filter:blur(5px)}
+.hud-center{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);text-align:center}
+.key{display:inline-block;border:1px solid #fff;padding:8px 10px;font-size:11px;margin-top:10px;border-radius:5px}
+.dialog{position:absolute;left:7%;right:7%;bottom:18px;background:rgba(4,6,9,.88);border:1px solid rgba(255,255,255,.14);padding:15px;border-radius:10px}
+.dialog .line{font-size:18px;line-height:1.45;margin-top:6px}.choice{display:block;width:100%;text-align:left;padding:9px;margin-top:6px;border-radius:6px}
+.hud-bottom{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;gap:10px}
+.char-panel{background:#0c1016;border:1px solid var(--line);border-radius:14px;padding:14px}
+.portraits{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.portraits img{width:100%;height:220px;object-fit:contain;display:block;background:#07090d;border:1px solid var(--line);border-radius:10px}
+.portrait-label{text-align:center;font-size:10px;color:var(--muted);margin-top:6px}
+.info-list{display:grid;gap:7px;margin-top:12px}.info-item{padding:10px;border:1px solid var(--line);background:#0c1016;color:#c4cad0;font-size:12px}
+.prototype-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.prototype-nav button{width:100%;padding:10px}
+.timer{font-size:26px;font-variant-numeric:tabular-nums}.danger{color:var(--danger);animation:pulse 1s infinite}@keyframes pulse{50%{opacity:.45}}
+.save-panel{margin-top:14px;border:1px solid var(--line);border-radius:13px;background:#0b0f15;padding:14px}
+.save-head{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px}
+.save-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.save-btn{padding:11px;text-align:left;min-height:92px}
+.save-btn .save-status{display:block;font-size:9px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+.save-btn.active{box-shadow:0 0 0 1px #fff inset}
+.status{font-size:11px;color:var(--success);margin-top:9px;min-height:16px}
+.asset-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}.asset{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#080b0f}.asset img{width:100%;height:95px;object-fit:cover;display:block;filter:grayscale(1)}.asset span{display:block;font-size:9px;color:var(--muted);padding:6px;text-transform:uppercase;letter-spacing:.6px}
+.memory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.memory{padding:14px;border:1px solid var(--line);min-height:100px;background:#0b0f15}.memory.locked{opacity:.36}
+.map{height:430px;border:1px solid var(--line);border-radius:12px;position:relative;background:radial-gradient(circle at 30% 30%,#303842,#11161d 55%,#080a0e)}
+.place{position:absolute;transform:translate(-50%,-50%);text-align:center}.dot{width:14px;height:14px;border:2px solid #fff;border-radius:50%;margin:auto;background:#0c1014}.place span{display:block;font-size:10px;margin-top:6px;color:#c6cbd1;white-space:nowrap}
+.settings{display:grid;gap:10px}.setting-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);padding:13px;background:#0b0f15}.setting-row small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.select,.range{background:#0e131a;color:#fff;border:1px solid var(--line);padding:9px}.range{width:130px}
+.account{display:flex;gap:13px;align-items:center;padding:14px;border:1px solid var(--line);background:#0b0f15;border-radius:10px}.avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;border:1px solid var(--line)}.avatar img{width:100%;height:100%;object-fit:cover}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.modal.open{display:flex}.modal-card{width:min(780px,100%);padding:18px;max-height:88vh;overflow:auto}.modal-card h2{margin:0 0 4px}.close{float:right;border:0;background:transparent;color:#fff;font-size:26px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(18px);background:#f1f1ee;color:#080a0d;padding:10px 14px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;z-index:40;font-size:12px}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:980px){.layout,.ui-grid{grid-template-columns:1fr}.side{position:static}.save-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(3,1fr)}.flow-node:not(:last-child):after{display:none}.asset-strip{grid-template-columns:repeat(3,1fr)}.memory-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.screen{padding:14px}.brand{letter-spacing:-4px}.hero-card{min-height:350px}.hud{min-height:650px}.hud-top,.hud-bottom{flex-direction:column;align-items:stretch}.dialog{left:4%;right:4%;bottom:84px}.portraits img{height:160px}.asset-strip{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.memory-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app"><div class="bg"></div><div class="noise"></div>
+
+<section id="start" class="screen active">
+  <div class="wrap hero-start">
+    <div class="hero-start-inner">
+      <div class="tiny">IF ONLY · UX / UI · PLAYABLE PROTOTYPE</div>
+      <div class="brand">IF ONLY</div>
+      <p class="muted">Arthur × Lauren · Cinematic Narrative Adventure · 5 Chapter</p>
+      <div class="menu">
+        <button class="btn" onclick="enter()">BẮT ĐẦU</button>
+        <button class="btn" onclick="openInfo('CÁCH CHƠI',howText())">CÁCH CHƠI</button>
+        <button class="btn" onclick="openSettings()">CÀI ĐẶT</button>
+        <button class="btn" onclick="openInfo('VỀ PROTOTYPE',aboutText())">VỀ PROTOTYPE</button>
+      </div>
+      <div class="start-image"><img src="images/chapter.jpg" alt="IF ONLY — 5 Chapter"></div>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="screen">
+ <div class="wrap">
+  <div class="topbar">
+    <div class="topbar-left"><div class="logo">IF ONLY</div><span class="tiny">/ UX · UI · GAME FLOW</span></div>
+    <div class="actions"><button class="ghost" onclick="openSettings()">CÀI ĐẶT</button><button class="ghost" onclick="show('start')">MENU</button></div>
+  </div>
+
+  <div class="layout">
+   <aside class="side">
+    <h3>CHAPTERS</h3>
+    <div id="chapterNav"></div>
+    <div class="side-sep"></div>
+    <h3>PROTOTYPE</h3>
+    <button class="chapter-btn" onclick="openSaves()">💾 ĐIỂM SAVE</button>
+    <button class="chapter-btn" onclick="panel('memory')">✦ MEMORY ARCHIVE</button>
+    <button class="chapter-btn" onclick="panel('map')">⌖ BẢN ĐỒ</button>
+    <button class="chapter-btn" onclick="panel('settings')">⚙ CÀI ĐẶT</button>
+   </aside>
+   <main id="main"></main>
+  </div>
+ </div>
+</section>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div>
+</div>
+<div id="toast" class="toast"></div>
+</div>
+
+<script>
+const assets={
+  chapter1:'images/chap1 sheet1 shot 1.png',
+  chapter2:'images/chap2 sheet1 shot 1.png',
+  chapter3:'images/chap3 sheet1 shot 1.png',
+  chapter4:'images/chap4 sheet1 shot 1.png',
+  chapter5:'images/chap5 sheet1 shot 1.png',
+  arthur:'images/auther.png',
+  laurenSpirit:'images/lauren dạng linh hồn.png',
+  laurenHuman:'images/lauren dạng thực thể.png',
+  paul:'images/paul pendltion.jpg',
+  pilguez:'images/thanh tra Pilguez.png',
+  chapterMap:'images/chapter.jpg'
+};
+
+const chapters=[
+ {id:1,title:'CUỘC GẶP KỲ ẢO',loc:'Russian Hill Apartment',obj:'Khám phá căn hộ và tìm hiểu dấu hiệu bất thường.',tags:['Exploration','Interaction','Character Switch'],asset:'chapter1',char:'ARTHUR',
+ saves:[['save1','Bắt đầu căn hộ','Arthur bước vào căn hộ Victorian.'],['save2','Gặp Lauren','Lauren xuất hiện; mở khóa Character Switch.'],['save3','Memory Shard 01','Đã phát hiện mảnh ký ức đầu tiên.']]},
+ {id:2,title:'RANH GIỚI HÔN MÊ',loc:'Memorial Hospital · Phòng 712',obj:'Tiếp cận phòng 712 mà không bị phát hiện.',tags:['Stealth','Spirit Traversal','Investigation'],asset:'chapter2',char:'ARTHUR',
+ saves:[['save1','Cổng bệnh viện','Bắt đầu tuyến đột nhập bệnh viện.'],['save2','Hành lang đêm','Lauren hỗ trợ nhiễu thiết bị điện.'],['save3','Phòng 712','Đã tiếp cận cơ thể Lauren.']]},
+ {id:3,title:'MẢNH GHÉP SUTTER',loc:'Sutter Street · Victory Project',obj:'Tìm manh mối liên kết Sutter Street với Victory Project.',tags:['Dual-Perspective','Puzzle','Memory'],asset:'chapter3',char:'ARTHUR',
+ saves:[['save1','Hiện trường','Bắt đầu điều tra Sutter Street.'],['save2','Memory Shards','Đã ghép các dấu vết ký ức.'],['save3','Victory Project','Đã tìm thấy liên hệ với bản vẽ.']]},
+ {id:4,title:'HOÀNG HÔN BÌNH YÊN',loc:'Carmel Beach House',obj:'Khám phá các kỷ vật và mảnh ký ức.',tags:['Exploration','Dialogue','Hope'],asset:'chapter4',char:'LAUREN',
+ saves:[['save1','Đến Carmel','Bắt đầu phân đoạn Carmel.'],['save2','Kỷ vật','Đã mở ký ức cá nhân.'],['save3','Hope Level','Đã tăng Hope Level trước cao trào.']]},
+ {id:5,title:'CUỘC CHẠY ĐUA 72 GIỜ',loc:'Final Sequence',obj:'Hoàn thành mục tiêu trước khi 72 giờ kết thúc.',tags:['Countdown','Final Puzzle','Choice'],asset:'chapter5',char:'ARTHUR',
+ saves:[['save1','72:00:00','Bắt đầu countdown.'],['save2','Cao trào','Đã vào chuỗi puzzle cuối.'],['save3','Final Choice','Đã tới lựa chọn sinh tử.']]}
+];
+
+let current=1, character='ARTHUR', timer=259200, timerId=null;
+let memories=[true,false,false,false,false];
+const saveState=JSON.parse(localStorage.getItem('ifonly-saves')||'{}');
+
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function enter(){show('game');render()}
+function currentData(){return chapters[current-1]}
+function chapter(n){current=n;character=currentData().char;render()}
+function ensureSave(){if(!saveState[current])saveState[current]={};}
+function saveKey(){return 'ifonly-save-ch'+current}
+function setSave(slot){ensureSave();saveState[current].selected=slot;saveState[current].time=new Date().toLocaleString('vi-VN');localStorage.setItem('ifonly-saves',JSON.stringify(saveState));toast('Đã chọn điểm save: '+slot)}
+function selectedSave(){return saveState[current]?.selected||''}
+function renderNav(){
+ const el=document.getElementById('chapterNav');
+ el.innerHTML=chapters.map(c=>'<button class="chapter-btn '+(c.id===current?'active':'')+'" onclick="chapter('+c.id+')">0'+c.id+' · '+c.title+'</button>').join('');
+}
+function render(){
+ renderNav();
+ const d=currentData();
+ const img=assets[d.asset];
+ document.getElementById('main').innerHTML=
+ '<div class="panel">'+
+   '<div class="tiny">CHAPTER 0'+current+' · GAME FLOW</div>'+
+   '<div class="hero-card">'+
+    '<div class="hero-media"><img src="'+img+'" alt="Chapter '+current+'"></div><div class="hero-overlay"></div>'+
+    '<div class="hero-copy"><div class="tiny">'+d.loc+'</div><div class="hero-title">'+d.title+'</div><div class="hero-desc">'+d.obj+'</div>'+
+    '<div class="tags">'+d.tags.map(t=>'<span class="tag">'+t+'</span>').join('')+'</div>'+
+    '<div class="actions"><button class="primary" onclick="playChapter()">TRẢI NGHIỆM CHAPTER</button><button class="ghost" onclick="openSaves()">CHỌN ĐIỂM SAVE</button></div></div>'+
+   '</div>'+
+   '<div class="section-row"><div><div class="tiny">GAME FLOW</div><b>EXPLORE → DISCOVER → SWITCH → SOLVE → REMEMBER</b></div><div class="tiny">'+(current===5?'COUNTDOWN → FINAL CHOICE':'CHAPTER '+current)+'</div></div>'+
+   '<div class="flow">'+['EXPLORE','DISCOVER','SWITCH','SOLVE','REMEMBER','PROGRESS'].map(x=>'<div class="flow-node">'+x+'</div>').join('')+'</div>'+
+   '<div class="ui-grid">'+
+    '<div id="playArea"></div>'+
+    '<div>'+
+      '<div class="char-panel"><div class="tiny">CHARACTER SYSTEM</div><div class="portraits">'+
+       '<div><img src="'+assets.arthur+'" alt="Arthur"><div class="portrait-label">ARTHUR · THỰC THỂ</div></div>'+
+       '<div><img src="'+(character==='LAUREN'?assets.laurenSpirit:assets.laurenHuman)+'" alt="Lauren"><div class="portrait-label">LAUREN · '+(character==='LAUREN'?'LINH HỒN':'DẠNG NGƯỜI')+'</div></div>'+
+      '</div>'+
+      '<div class="prototype-nav"><button class="ghost" onclick="switchCharacter()">⇄ SWITCH</button><button class="ghost" onclick="openSaves()">💾 SAVE</button></div>'+
+      '</div>'+
+      '<div class="info-list">'+
+       '<div class="info-item"><b>Arthur</b><br>Physical interaction · stealth · blueprint · driving</div>'+
+       '<div class="info-item"><b>Lauren</b><br>Phasing · electrical interference · memory traces</div>'+
+       '<div class="info-item"><b>72H</b><br>Áp lực thời gian trung tâm của tuyến cuối.</div>'+
+      '</div>'+
+    '</div>'+
+   '</div>'+
+   '<div class="save-panel"><div class="save-head"><div><div class="tiny">CHECKPOINT / SAVE POINT</div><b>'+d.title+'</b></div><button class="ghost" onclick="openSaves()">XEM TẤT CẢ SAVE</button></div>'+
+    '<div class="save-grid">'+d.saves.map(s=>'<button class="save-btn '+(selectedSave()===s[0]?'active':'')+'" onclick="setSave(\''+s[0]+'\');render()"><b>'+s[1]+'</b><span class="save-status">'+(selectedSave()===s[0]?'ĐANG CHỌN':'CHƯA CHỌN')+'</span><div class="tiny" style="margin-top:6px">'+s[2]+'</div></button>').join('')+'</div>'+
+    '<div class="status" id="saveStatus">'+(selectedSave()?'Điểm save đang chọn: '+selectedSave():'Chưa chọn điểm save. Bạn có thể vào bất kỳ checkpoint nào.')+'</div>'+
+   '</div>'+
+   '<div class="section-row"><div><div class="tiny">YOUR ASSETS · GITHUB / images</div><b>Ảnh đã tải lên được sử dụng trực tiếp trong prototype</b></div></div>'+
+   '<div class="asset-strip">'+
+    '<div class="asset"><img src="'+assets.arthur+'"><span>Arthur</span></div>'+
+    '<div class="asset"><img src="'+assets.laurenSpirit+'"><span>Lauren · Spirit</span></div>'+
+    '<div class="asset"><img src="'+assets.laurenHuman+'"><span>Lauren · Human</span></div>'+
+    '<div class="asset"><img src="'+assets.paul+'"><span>Paul</span></div>'+
+    '<div class="asset"><img src="'+assets.pilguez+'"><span>Pilguez</span></div>'+
+   '</div>'+
+ '</div>';
+}
+
+function playChapter(){
+ const d=currentData();
+ if(current===5) startTimer();
+ document.getElementById('playArea').innerHTML=
+ '<div class="hud">'+
+   '<div class="hud-image"><img src="'+assets[d.asset]+'" alt=""></div><div class="hud-shade"></div>'+
+   '<div class="hud-top"><div class="hud-card"><div class="tiny">CHARACTER</div><b id="charLabel">'+character+'</b></div><div class="hud-card"><div class="tiny">OBJECTIVE</div>'+d.obj+'</div></div>'+
+   '<div class="hud-center"><div class="tiny">'+d.loc+'</div><div class="key">[ E ]</div><div>KHÁM PHÁ MÔI TRƯỜNG</div></div>'+
+   '<div class="dialog"><div class="tiny" id="speaker">'+character+'</div><div class="line" id="dialogLine">'+initialLine()+'</div>'+
+    '<button class="choice" onclick="nextLine()">Tiếp tục khám phá →</button><button class="choice" onclick="collectMemory()">✦ Kiểm tra dấu vết ký ức</button></div>'+
+   '<div class="hud-bottom"><div class="hud-card">[W][A][S][D] Di chuyển · [E] Tương tác · [V] Switch</div><div class="hud-card">'+(current===5?'<span class="tiny">TIME REMAINING</span> <span id="timer" class="timer">72:00:00</span>':'Memory Shards · '+memories.filter(Boolean).length+'/5')+'</div></div>'+
+ '</div>';
+}
+let lineIndex=0;
+function initialLine(){lineIndex=0;return ['Lauren... cô đang ở đây sao?','Có thứ gì đó trong phòng 712.','Những mảnh ký ức này đang dẫn tới Sutter Street.','Có những thứ tôi đã quên...','Chúng ta không còn nhiều thời gian nữa.'][current-1]}
+function nextLine(){
+ const lines=[
+ ['Lauren: Đây từng là nhà của tôi... trước đêm sương mù đó.','Arthur: Tôi sẽ tìm hiểu chuyện gì đã xảy ra.'],
+ ['Lauren: Em có thể đi qua cánh cửa. Anh thì không.','Arthur: Vậy chúng ta phải phối hợp.'],
+ ['Lauren: Hãy nhìn nơi ký ức bị đứt đoạn.','Arthur: Tôi thấy rồi. Có liên hệ với bản vẽ.'],
+ ['Arthur: Có lẽ điều quan trọng không phải chúng ta đã mất gì.','Lauren: Mà là điều chúng ta còn kịp giữ lại.'],
+ ['Arthur: Chúng ta phải quyết định ngay.','Lauren: Hãy tin vào điều anh đã tìm thấy.']
+ ];
+ lineIndex=(lineIndex+1)%lines[current-1].length;
+ document.getElementById('dialogLine').textContent=lines[current-1][lineIndex];
+}
+function switchCharacter(){character=character==='ARTHUR'?'LAUREN':'ARTHUR';render();playChapter()}
+function collectMemory(){memories[current-1]=true;toast('✦ MEMORY SHARD · Chapter '+current+' đã được ghi nhận.')}
+function startTimer(){clearInterval(timerId);timer=259200;timerId=setInterval(()=>{timer--;const e=document.getElementById('timer');if(!e)return;const h=Math.floor(timer/3600),m=Math.floor(timer%3600/60),s=timer%60;e.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':');if(timer<3600)e.classList.add('danger');if(timer<=0)clearInterval(timerId)},1000)}
+function openSaves(){
+ const d=currentData();
+ document.getElementById('modalBody').innerHTML=
+ '<div class="tiny">CHECKPOINT / SAVE SYSTEM</div><h2>Chọn điểm save · Chapter 0'+current+'</h2><p class="muted">Bạn có thể vào thẳng checkpoint đã chọn thay vì chơi lại từ đầu Chapter. Trạng thái được lưu trong trình duyệt.</p>'+
+ '<div class="save-grid">'+d.saves.map(s=>'<button class="save-btn '+(selectedSave()===s[0]?'active':'')+'" onclick="setSave(\''+s[0]+'\');closeModal();render();playChapter()"><b>'+s[1]+'</b><span class="save-status">'+(selectedSave()===s[0]?'ĐANG CHỌN':'CHƯA CHỌN')+'</span><div class="tiny" style="margin-top:6px">'+s[2]+'</div></button>').join('')+'</div>'+
+ '<div class="status">'+(selectedSave()?'Save hiện tại: '+selectedSave():'Chưa chọn save cho Chapter này.')+'</div>';
+ document.getElementById('modal').classList.add('open');
+}
+function openInfo(title,body){document.getElementById('modalBody').innerHTML='<div class="tiny">'+title+'</div><h2>'+title+'</h2>'+body;document.getElementById('modal').classList.add('open')}
+function howText(){return '<p>Prototype cho phép thử luồng UX/UI của IF ONLY: chọn 1 trong 5 Chapter, vào gameplay, chuyển Arthur ↔ Lauren, tương tác, xem dialogue, thu thập Memory Shard và chọn checkpoint save.</p><p>Ở Chapter 5, Countdown 72 giờ được kích hoạt khi bạn bắt đầu trải nghiệm Chapter.</p>'}
+function aboutText(){return '<p>Trang này dùng trực tiếp các asset bạn đã tải lên repository <b>thongltn251126-max/ltn</b>, gồm ảnh Arthur, Lauren, Paul, Pilguez, Chapter và storyboard shot.</p><p>Đây là prototype UX/UI có tương tác, chưa phải game 3D hoàn chỉnh.</p>'}
+function openSettings(){show('game');panel('settings')}
+function panel(type){
+ renderNav();
+ const main=document.getElementById('main');
+ if(type==='memory')main.innerHTML='<div class="panel"><div class="tiny">MEMORY ARCHIVE</div><h1>Memory Shards</h1><p class="muted">Tiến trình ký ức được giữ theo 5 Chapter.</p><div class="memory-grid">'+['Russian Hill','Memorial Hospital','Sutter Street','Carmel','Victory Project'].map((x,i)=>'<div class="memory '+(memories[i]?'':'locked')+'"><div style="font-size:22px">'+(memories[i]?'✦':'◇')+'</div><b>'+x+'</b><div class="tiny" style="margin-top:6px">'+(memories[i]?'DISCOVERED':'LOCKED')+'</div></div>').join('')+'</div></div>';
+ if(type==='map')main.innerHTML='<div class="panel"><div class="tiny">MAP · SAN FRANCISCO</div><h1>Locations</h1><div class="map"><div class="place" style="left:20%;top:25%"><div class="dot"></div><span>Russian Hill</span></div><div class="place" style="left:46%;top:42%"><div class="dot"></div><span>Sutter Street</span></div><div class="place" style="left:72%;top:29%"><div class="dot"></div><span>Memorial Hospital</span></div><div class="place" style="left:56%;top:73%"><div class="dot"></div><span>Carmel</span></div><div class="place" style="left:83%;top:66%"><div class="dot"></div><span>Victory Project</span></div></div></div>';
+ if(type==='settings')main.innerHTML=settingsHTML();
+}
+function settingsHTML(){
+ return '<div class="panel"><div class="tiny">SETTINGS</div><h1>Cài đặt</h1><p class="muted">Thiết lập UX/UI của prototype. Các lựa chọn được lưu trong trình duyệt.</p><div class="settings">'+
+  '<div class="setting-row"><div><b>Âm thanh</b><small>Master volume · Music · SFX · Voice</small></div><select class="select"><option>100%</option><option>80%</option><option>60%</option><option>40%</option><option>0%</option></select></div>'+
+  '<div class="setting-row"><div><b>Ngôn ngữ</b><small>Language của giao diện và phụ đề</small></div><select class="select" onchange="toast(this.value==='English'?'English UI selected':'Đã chọn Tiếng Việt')"><option>Tiếng Việt</option><option>English</option></select></div>'+
+  '<div class="setting-row"><div><b>Chất lượng đồ họa</b><small>Low · Medium · High · Cinematic</small></div><select class="select"><option>Cinematic</option><option>High</option><option>Medium</option><option>Low</option></select></div>'+
+  '<div class="setting-row"><div><b>Độ sáng</b><small>Brightness / visibility</small></div><input class="range" type="range" min="0" max="100" value="70"></div>'+
+  '<div class="setting-row"><div><b>Phụ đề</b><small>Hiển thị dialogue trên màn hình</small></div><select class="select"><option>Bật</option><option>Tắt</option></select></div>'+
+  '<div class="setting-row"><div><b>Camera</b><small>Góc nhìn gameplay</small></div><select class="select"><option>Third Person</option><option>First Person</option></select></div>'+
+  '<div class="account"><div class="avatar"><img src="'+assets.arthur+'"></div><div><b>Tài khoản</b><div class="muted">Guest Player · Local Profile</div><div class="tiny">Progress được lưu trên trình duyệt này</div></div><button class="ghost" style="margin-left:auto" onclick="toast(\'Đã lưu hồ sơ cục bộ\')">LƯU</button></div>'+
+ '</div></div>';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key.toLowerCase()==='v'&&document.getElementById('game').classList.contains('active'))switchCharacter()});
+renderNav();
+</script>
+</body>
+</html>
