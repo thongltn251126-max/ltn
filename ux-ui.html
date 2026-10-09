@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IF ONLY — UX/UI Interactive Prototype</title>
+<style>
+:root{--bg:#06080c;--panel:#11161e;--panel2:#0c1117;--line:#2b333e;--text:#f4f4ef;--muted:#9ba5b1;--white:#fff;--spirit:#a8dbff;--danger:#f1a5a5}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:radial-gradient(circle at 75% 10%,#2d3744 0,#121820 34%,#06080c 72%);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.05;background:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px);z-index:99}.wrap{width:min(1320px,100%);margin:auto;padding:24px}.tiny{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+nav{position:sticky;top:0;z-index:80;background:rgba(6,8,12,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.navin{width:min(1320px,100%);margin:auto;padding:12px 24px;display:flex;align-items:center;gap:18px;justify-content:space-between}.logo{font-weight:950;letter-spacing:1.5px}.navlinks{display:flex;gap:7px;overflow:auto}.navlinks a{white-space:nowrap;padding:8px 10px;border:1px solid transparent;color:var(--muted);font-size:11px}.navlinks a:hover,.navlinks a.active{border-color:var(--line);color:#fff;background:#121820}
+.hero{min-height:88vh;display:flex;align-items:center}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.brand{font-size:clamp(60px,10vw,125px);font-weight:950;letter-spacing:-8px;line-height:.85}.lede{max-width:720px;color:#c4cad1;font-size:17px;line-height:1.7}.hero-img{height:390px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0a0d11}.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);opacity:.72}.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}.menu-card{padding:15px;border:1px solid var(--line);background:#0b0f15;transition:.18s}.menu-card:hover{background:#fff;color:#07090d;transform:translateY(-2px)}
+section{padding:52px 0;border-top:1px solid var(--line)}h1,h2,h3{margin:0 0 10px}.section-title{font-size:34px}.sub{color:var(--muted);line-height:1.65}
+.chapter{scroll-margin-top:80px}.chapter-card{border:1px solid var(--line);background:rgba(12,16,22,.88);border-radius:15px;overflow:hidden}.chapter-top{display:grid;grid-template-columns:1fr .86fr;gap:0}.chapter-copy{padding:24px}.chapter-art{min-height:350px;background:#080b0f}.chapter-art img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)}.tags{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}.tag{border:1px solid var(--line);padding:6px 9px;border-radius:99px;color:var(--muted);font-size:10px}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:18px}.node{padding:14px 8px;text-align:center;border:1px solid var(--line);color:var(--muted);font-size:10px;background:#0a0e13}.node.active{color:#fff;border-color:#fff;background:#171d25}
+.actionbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.btn,.selectbtn{padding:11px 14px;border:1px solid var(--line);background:#0b0f15;color:#fff;cursor:pointer}.btn:hover,.selectbtn:hover{background:#fff;color:#07090d}.primary{background:#eee;color:#07090d;border-color:#eee}
+.hud{margin-top:16px;min-height:500px;position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0d1218}.hudscene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#070a0e}.hudscene-main{width:100%;height:100%;object-fit:cover;display:block}.hudscene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,5,8,.08),rgba(2,5,8,.45) 62%,rgba(2,5,8,.88));pointer-events:none}.hud-thumbs{position:absolute;right:16px;bottom:78px;width:190px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;z-index:4}.hud-thumbs img{width:100%;height:58px;object-fit:cover;border:1px solid rgba(255,255,255,.23);border-radius:5px;background:#090d12;filter:saturate(.95);cursor:pointer}.hud-thumbs img:hover{border-color:#fff}.hud-scene-label{position:absolute;left:16px;bottom:78px;z-index:4;background:rgba(3,6,9,.75);border:1px solid rgba(255,255,255,.18);padding:7px 10px;border-radius:6px;font-size:9px;letter-spacing:1px;text-transform:uppercase}.hud-play-badge{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);z-index:4;border:1px solid rgba(255,255,255,.7);padding:8px 12px;background:rgba(3,6,9,.65);border-radius:6px;font-size:10px;letter-spacing:.8px}.hudbg{position:absolute;inset:0}.hudbg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.5}.hudshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.9))}.hudtop,.hudbottom{position:absolute;left:16px;right:16px;display:flex;justify-content:space-between;gap:10px}.hudtop{top:16px}.hudbottom{bottom:16px}.hudcard{padding:10px 12px;background:rgba(2,4,7,.75);border:1px solid #ffffff21;border-radius:8px}.hudcenter{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);text-align:center}.key{display:inline-block;margin-top:10px;padding:8px 10px;border:1px solid #fff;border-radius:5px}.dialog{position:absolute;left:6%;right:6%;bottom:72px;padding:16px;background:rgba(2,4,7,.88);border:1px solid #ffffff22;border-radius:10px}.choice{display:block;width:100%;margin-top:7px;padding:9px;background:transparent;border:1px solid var(--line);color:inherit;text-align:left;cursor:pointer}.choice:hover{background:#fff;color:#07090d}.timer{font-variant-numeric:tabular-nums;font-size:24px}.danger{color:var(--danger);animation:pulse 1s infinite}@keyframes pulse{50%{opacity:.4}}
+.save-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.save{min-height:105px;padding:14px;text-align:left;border:1px solid var(--line);background:#0b0f15;color:#fff;cursor:pointer;border-radius:10px}.save:hover,.save.selected{background:#fff;color:#07090d;border-color:#fff}.save small{display:block;margin-top:7px;opacity:.72}.save.selected small{color:#333}
+.save-chapters{display:grid;gap:16px;margin-top:20px}.save-chapter{border:1px solid var(--line);border-radius:14px;background:rgba(10,14,20,.94);overflow:hidden}.save-chapter-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#121923,#0b0f15)}.save-chapter-number{font-size:11px;letter-spacing:2px;color:#9db8d0;text-transform:uppercase}.save-chapter-title{font-size:18px;font-weight:800;margin-top:3px}.save-current{font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:7px 9px;border:1px solid #3a4654;border-radius:999px;color:#aeb8c3;white-space:nowrap}.save-current.active{color:#071017;background:#dfeaf2;border-color:#dfeaf2}.save-chapter-body{padding:14px 18px 18px}.save-chapter-help{font-size:11px;color:#9ba5b1;margin-bottom:11px}.save-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.save-option{min-height:118px;text-align:left;padding:14px;background:#0b0f15;border:1px solid #29313c;color:#fff;border-radius:10px;cursor:pointer;transition:.18s}.save-option:hover{transform:translateY(-2px);border-color:#fff;background:#151b24}.save-option.selected{border-color:#fff;background:#f2f2ed;color:#080a0d}.save-option .checkpoint{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8f9aa6;margin-bottom:8px}.save-option.selected .checkpoint{color:#4d555b}.save-option b{display:block;font-size:14px;margin-bottom:5px}.save-option p{margin:0;color:#aeb6bf;font-size:11px;line-height:1.5}.save-option.selected p{color:#394047}.save-meta{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#737e8a}.save-option.selected .save-meta{color:#394047}
+.settings{display:grid;gap:9px;max-width:850px}.setting{display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);background:#0b0f15}.setting select,.setting input{width:100%;background:#10161d;color:#fff;border:1px solid var(--line);padding:9px}.account{display:flex;gap:12px;align-items:center}.avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;border:1px solid var(--line)}.avatar img{width:100%;height:100%;object-fit:cover}
+.asset-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}.asset{border:1px solid var(--line);background:#0b0f15;border-radius:9px;overflow:hidden}.asset img{width:100%;height:130px;object-fit:cover;display:block;filter:grayscale(1)}.asset span{display:block;padding:7px;font-size:10px;color:var(--muted)}
+.memory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.memory{padding:15px;min-height:110px;border:1px solid var(--line);background:#0b0f15}.lock{opacity:.35}
+.map{height:430px;border:1px solid var(--line);border-radius:12px;background:radial-gradient(circle at 28% 25%,#303943,#131a22 52%,#080a0e);position:relative}.place{position:absolute;transform:translate(-50%,-50%);text-align:center}.dot{width:14px;height:14px;border:2px solid white;border-radius:50%;background:#0c1014;margin:auto}.place span{display:block;margin-top:6px;color:#c7ccd1;font-size:10px;white-space:nowrap}
+.notice{padding:12px 14px;border:1px dashed #45505d;background:#0a0e13;color:#b8c0c8;border-radius:10px;margin-top:13px}
+.showcase-board{background:linear-gradient(145deg,#091018,#071019 48%,#05080d);border:1px solid #29445b;border-radius:16px;padding:14px;box-shadow:0 25px 80px rgba(0,0,0,.36)}.showcase-head{display:flex;justify-content:space-between;align-items:end;gap:15px;padding:8px 8px 13px;border-bottom:1px solid #29445b}.showcase-head h2{font-size:28px;margin:4px 0}.showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.showcase-card{border:1px solid #29445b;border-radius:10px;background:#081018;overflow:hidden;position:relative}.showcase-card.large{grid-column:span 2}.showcase-title{padding:10px 12px 7px;display:flex;justify-content:space-between;gap:8px;align-items:center}.showcase-title b{font-size:13px}.showcase-title span{font-size:9px;color:#8faec8;text-transform:uppercase;letter-spacing:1px}.showcase-card img{width:100%;height:220px;display:block;object-fit:cover;filter:saturate(.95) contrast(1.03)}.showcase-card.large img{height:360px}.showcase-overlay{position:absolute;left:14px;right:14px;top:52px;pointer-events:none}.demo-hud{display:flex;justify-content:space-between;gap:10px}.demo-chip{background:rgba(4,8,12,.77);border:1px solid rgba(145,205,255,.3);padding:8px 10px;border-radius:7px;backdrop-filter:blur(5px);font-size:9px}.demo-chip b{display:block;font-size:11px;margin-bottom:2px}.demo-action{position:absolute;left:50%;top:150px;transform:translateX(-50%);background:rgba(4,8,12,.86);border:1px solid #d5ecff;border-radius:6px;padding:7px 9px;font-size:10px;white-space:nowrap}.showcase-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px}.mini-ui{border:1px solid #29445b;border-radius:8px;background:#091019;padding:9px;min-height:110px}.mini-ui h4{font-size:10px;margin:0 0 7px;text-transform:uppercase;letter-spacing:1px}.mini-ui p{font-size:9px;color:#9facb8;line-height:1.45;margin:0}.mini-row{display:flex;gap:6px}.mini-btn{flex:1;padding:6px;border:1px solid #2e4254;background:#0d141c;font-size:9px;text-align:center}.mini-btn.active{background:#eaf4fb;color:#071018;border-color:#eaf4fb}.showcase-story{margin-top:12px;border:1px solid #29445b;border-radius:10px;padding:12px;background:#081018;color:#b8c4ce;font-size:10px;line-height:1.55}.showcase-story strong{color:#fff}.scroll-top{position:fixed;right:20px;bottom:20px;z-index:70;border:1px solid #415365;background:#0b1118;color:#fff;border-radius:50%;width:42px;height:42px;cursor:pointer}.scroll-top:hover{background:#fff;color:#07090d}@media(max-width:980px){.hero-grid,.chapter-top{grid-template-columns:1fr}.menu-grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:repeat(3,1fr)}.save-grid,.save-options{grid-template-columns:1fr 1fr}.asset-grid{grid-template-columns:repeat(3,1fr)}.setting{grid-template-columns:1fr}}
+@media(max-width:580px){.wrap{padding:14px}.navin{padding:9px 14px}.menu-grid,.flow,.save-grid,.save-options,.memory-grid,.asset-grid{grid-template-columns:1fr}.save-chapter-head{align-items:flex-start;flex-direction:column}.hero-img{height:250px}.brand{letter-spacing:-5px}.hud{min-height:640px}.hudtop,.hudbottom{flex-direction:column}.dialog{bottom:105px}}
+.main-home-link{border-color:rgba(255,255,255,.14)!important;color:#fff!important;background:rgba(255,255,255,.04)}.main-home-link:hover{border-color:#fff!important;background:#fff!important;color:#07090d!important}</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav>
+ <div class="navin">
+  <div class="logo"><a href="index.html" title="Về trang web chính">IF ONLY</a></div>
+  <div class="navlinks"><a href="index.html" class="main-home-link">← TRANG CHÍNH</a>
+   <a href="#home">HOME</a><a href="#board">BOARD</a><a href="#showcase">SHOWCASE</a><a href="#chapter1">CHAPTER 1</a><a href="#chapter2">CHAPTER 2</a><a href="#chapter3">CHAPTER 3</a><a href="#chapter4">CHAPTER 4</a><a href="#chapter5">CHAPTER 5</a><a href="#settings">CÀI ĐẶT</a><a href="#saves">SAVE</a>
+  </div>
+ </div>
+</nav>
+
+<div id="home" class="hero">
+ <div class="wrap">
+  <div class="hero-grid">
+   <div>
+    <div class="tiny">CINEMATIC NARRATIVE ADVENTURE · UX / UI PROTOTYPE</div>
+    <div class="brand">IF ONLY</div>
+    <p class="lede">Prototype tương tác cho 5 Chapter của game IF ONLY. Toàn bộ chapter, UX, UI, nhân vật, Memory, Save Point và Countdown 72 giờ nằm trên một trang để có thể thử trực tiếp.</p>
+    <div class="menu-grid">
+     <a class="menu-card" href="#chapter1"><b>BẮT ĐẦU</b><br><span class="tiny">Chapter 1</span></a>
+     <a class="menu-card" href="#flow"><b>GAME FLOW</b><br><span class="tiny">Tổng luồng chơi</span></a>
+     <a class="menu-card" href="#settings"><b>CÀI ĐẶT</b><br><span class="tiny">Audio · Language · Graphics · Account</span></a>
+     <a class="menu-card" href="#saves"><b>ĐIỂM SAVE</b><br><span class="tiny">Checkpoint 5 Chapter</span></a>
+    </div>
+   </div>
+   <div class="hero-img"><img src="images/chapter.jpg" alt="IF ONLY 5 Chapter"></div>
+  </div>
+ </div>
+</div>
+
+<section id="showcase"><div class="wrap">
+ <div class="tiny">STORYBOARD & GAMEPLAY SCENE</div>
+ <div class="showcase-board">
+  <div class="showcase-head"><div><h2>IF ONLY — STORYBOARD & GAMEPLAY</h2><div class="tiny">Hai thế giới · Một sự thật · 5 Chapter</div></div><div class="tiny">UX / UI DEMO</div></div>
+  <div class="showcase-grid">
+   <article class="showcase-card"><div class="showcase-title"><b>CHAPTER 1 · CUỘC GẶP KỲ ẢO</b><span>Russian Hill Apartment</span></div><img src="images/chap1 sheet1 shot 1.png"><div class="showcase-overlay"><div class="demo-hud"><div class="demo-chip"><b>ARTHUR</b>Physical world</div><div class="demo-chip"><b>MỤC TIÊU HIỆN TẠI</b>Tìm Lauren</div></div><div class="demo-action">[ E ] Tương tác</div></div><div class="showcase-bottom"><div class="mini-ui"><h4>Character Switch</h4><div class="mini-row"><div class="mini-btn active">ARTHUR</div><div class="mini-btn">LAUREN</div></div></div><div class="mini-ui"><h4>Dialogue</h4><p>Lauren<br>“Anh có thấy tôi không?”</p></div><div class="mini-ui"><h4>Memory</h4><p>✦ Memory Shard<br>Russian Hill</p></div></div></article>
+   <article class="showcase-card"><div class="showcase-title"><b>CHAPTER 2 · RANH GIỚI HÔN MÊ</b><span>Memorial Hospital</span></div><img src="images/chap2 sheet1 shot 1.png"><div class="showcase-overlay"><div class="demo-hud"><div class="demo-chip"><b>ARTHUR</b>Stealth</div><div class="demo-chip"><b>OBJECTIVE</b>Tiếp cận phòng 712</div></div><div class="demo-action">[ E ] Khám phá</div></div><div class="showcase-bottom"><div class="mini-ui"><h4>HUD</h4><p>Objective · Stealth · Interaction</p></div><div class="mini-ui"><h4>Checkpoint</h4><p>Checkpoint 02<br>Hành lang đêm</p></div><div class="mini-ui"><h4>Spirit</h4><p>Lauren có thể phasing và nhiễu điện.</p></div></div></article>
+   <article class="showcase-card"><div class="showcase-title"><b>CHAPTER 3 · MẢNH GHÉP SUTTER</b><span>Sutter Street / Victory Project</span></div><img src="images/chap3 sheet1 shot 1.png"><div class="showcase-overlay"><div class="demo-hud"><div class="demo-chip"><b>ARTHUR</b>Investigation</div><div class="demo-chip"><b>MEMORY</b>3 shards</div></div><div class="demo-action">[ E ] Khám phá</div></div><div class="showcase-bottom"><div class="mini-ui"><h4>Map</h4><p>Sutter Street → Victory Project</p></div><div class="mini-ui"><h4>Dual-Perspective</h4><p>Arthur = vật chất<br>Lauren = ký ức</p></div><div class="mini-ui"><h4>Puzzle</h4><p>Ghép manh mối và mở khu vực mới.</p></div></div></article>
+   <article class="showcase-card"><div class="showcase-title"><b>CHAPTER 4 · HOÀNG HÔN BÌNH YÊN</b><span>Carmel Beach House</span></div><img src="images/chap4 sheet1 shot 1.png"><div class="showcase-overlay"><div class="demo-hud"><div class="demo-chip"><b>LAUREN</b>Spirit world</div><div class="demo-chip"><b>HOPE LEVEL</b>80%</div></div><div class="demo-action">✦ Memory</div></div><div class="showcase-bottom"><div class="mini-ui"><h4>Hope</h4><p>Hope Level · 80%</p></div><div class="mini-ui"><h4>Dialogue</h4><p>Lựa chọn hội thoại ảnh hưởng cảm xúc và tiến trình.</p></div><div class="mini-ui"><h4>Collectible</h4><p>Kỷ vật mở ký ức của Lauren.</p></div></div></article>
+   <article class="showcase-card large"><div class="showcase-title"><b>CHAPTER 5 · CUỘC CHẠY ĐUA 72 GIỜ</b><span>Memorial Hospital / Final Location</span></div><img src="images/chap5 sheet1 shot 1.png"><div class="showcase-overlay"><div class="demo-hud"><div class="demo-chip"><b>ARTHUR</b>Final sequence</div><div class="demo-chip"><b>TIME REMAINING</b><span id="showcaseTimer">72:00:00</span></div></div><div class="demo-action">[ E ] Quyết định</div></div><div class="showcase-bottom"><div class="mini-ui"><h4>Countdown</h4><p>72:00:00 → tạo áp lực thời gian.</p></div><div class="mini-ui"><h4>Save Point</h4><p>Checkpoint → Cao trào → Final Choice</p></div><div class="mini-ui"><h4>Final Choice</h4><div class="mini-row"><div class="mini-btn active">TỈNH LẠI</div><div class="mini-btn">TAN BIẾN</div></div></div></div></article>
+  </div>
+  <div class="showcase-story"><strong>Trải nghiệm đề xuất:</strong> EXPLORE → DISCOVER → SWITCH → SOLVE → REMEMBER → PROGRESS. Người chơi có thể nhảy trực tiếp vào từng Chapter và chọn checkpoint bên dưới.</div>
+ </div>
+</div></section><section id="board"><div class="wrap">
+ <div class="tiny">REFERENCE BOARD · STORYBOARD & GAMEPLAY SCENE</div>
+ <div style="border:1px solid #29445b;border-radius:16px;overflow:hidden;background:#05080d;box-shadow:0 30px 100px rgba(0,0,0,.45)">
+  <img src="images/ux-ui/if-only-storyboard-gameplay-ux-ui.png" alt="IF ONLY — Storyboard & Gameplay Scene · UX/UI Demo" style="display:block;width:100%;height:auto">
+ </div>
+ <p class="sub" style="margin-top:10px">Bản board này chính là mẫu bạn vừa gửi: 5 Chapter + màn hình gameplay + UX/UI demo. Các khu vực tương tác bên dưới vẫn hoạt động độc lập để bạn thử nghiệm.</p>
+</div></section><section id="flow"><div class="wrap">
+ <div class="tiny">GAME FLOW</div><h2 class="section-title">EXPLORE → DISCOVER → SWITCH → SOLVE → REMEMBER → PROGRESS</h2>
+ <p class="sub">Chapter 5 mở rộng thành COUNTDOWN → FINAL CHOICE.</p>
+ <div class="flow"><div class="node active">EXPLORE</div><div class="node">DISCOVER</div><div class="node">SWITCH</div><div class="node">SOLVE</div><div class="node">REMEMBER</div><div class="node">PROGRESS</div></div>
+</div></section>
+
+<section id="chapter1" class="chapter"><div class="wrap"><div class="tiny">CHAPTER 01</div><div class="chapter-card"><div class="chapter-top"><div class="chapter-copy"><h2 class="section-title">CUỘC GẶP KỲ ẢO</h2><div class="tiny">Russian Hill Apartment</div><p class="sub">Arthur khám phá căn hộ Victorian và lần đầu nhìn thấy Lauren.</p><div class="tags"><span class="tag">Exploration</span><span class="tag">Interaction</span><span class="tag">Character Switch</span></div><div class="actionbar"><button class="btn primary" onclick="play(1)">TRẢI NGHIỆM CHAPTER</button><a class="btn" href="#saves">CHỌN SAVE</a></div></div><div class="chapter-art"><img src="images/chap1 sheet1 shot 1.png"></div></div><div id="hud1" class="hud"></div></div></div></section>
+
+<section id="chapter2" class="chapter"><div class="wrap"><div class="tiny">CHAPTER 02</div><div class="chapter-card"><div class="chapter-top"><div class="chapter-copy"><h2 class="section-title">RANH GIỚI HÔN MÊ</h2><div class="tiny">Memorial Hospital · Phòng 712</div><p class="sub">Arthur điều tra bệnh viện; Lauren hỗ trợ bằng khả năng phasing và can thiệp thiết bị điện.</p><div class="tags"><span class="tag">Stealth</span><span class="tag">Spirit Traversal</span><span class="tag">Investigation</span></div><div class="actionbar"><button class="btn primary" onclick="play(2)">TRẢI NGHIỆM CHAPTER</button><a class="btn" href="#saves">CHỌN SAVE</a></div></div><div class="chapter-art"><img src="images/chap2 sheet1 shot 1.png"></div></div><div id="hud2" class="hud"></div></div></div></section>
+
+<section id="chapter3" class="chapter"><div class="wrap"><div class="tiny">CHAPTER 03</div><div class="chapter-card"><div class="chapter-top"><div class="chapter-copy"><h2 class="section-title">MẢNH GHÉP SUTTER</h2><div class="tiny">Sutter Street · Victory Project</div><p class="sub">Arthur và Lauren kết hợp hai góc nhìn để ghép các mảnh ký ức và điều tra vụ tai nạn.</p><div class="tags"><span class="tag">Dual-Perspective</span><span class="tag">Puzzle</span><span class="tag">Memory</span></div><div class="actionbar"><button class="btn primary" onclick="play(3)">TRẢI NGHIỆM CHAPTER</button><a class="btn" href="#saves">CHỌN SAVE</a></div></div><div class="chapter-art"><img src="images/chap3 sheet1 shot 1.png"></div></div><div id="hud3" class="hud"></div></div></div></section>
+
+<section id="chapter4" class="chapter"><div class="wrap"><div class="tiny">CHAPTER 04</div><div class="chapter-card"><div class="chapter-top"><div class="chapter-copy"><h2 class="section-title">HOÀNG HÔN BÌNH YÊN</h2><div class="tiny">Carmel Beach House</div><p class="sub">Khám phá kỷ vật, ký ức và mối liên kết Arthur – Lauren; Hope Level tăng trước cao trào.</p><div class="tags"><span class="tag">Exploration</span><span class="tag">Dialogue</span><span class="tag">Hope Level</span></div><div class="actionbar"><button class="btn primary" onclick="play(4)">TRẢI NGHIỆM CHAPTER</button><a class="btn" href="#saves">CHỌN SAVE</a></div></div><div class="chapter-art"><img src="images/chap4 sheet1 shot 1.png"></div></div><div id="hud4" class="hud"></div></div></div></section>
+
+<section id="chapter5" class="chapter"><div class="wrap"><div class="tiny">CHAPTER 05</div><div class="chapter-card"><div class="chapter-top"><div class="chapter-copy"><h2 class="section-title">CUỘC CHẠY ĐUA 72 GIỜ</h2><div class="tiny">Final Sequence</div><p class="sub">Countdown trở thành cơ chế trung tâm. Arthur và Lauren chạy đua tới lựa chọn sinh tử.</p><div class="tags"><span class="tag">Countdown</span><span class="tag">Final Puzzle</span><span class="tag">Choice</span></div><div class="actionbar"><button class="btn primary" onclick="play(5)">TRẢI NGHIỆM CHAPTER</button><a class="btn" href="#saves">CHỌN SAVE</a></div></div><div class="chapter-art"><img src="images/chap5 sheet1 shot 1.png"></div></div><div id="hud5" class="hud"></div></div></div></section>
+
+<section id="saves"><div class="wrap"><div class="tiny">CHECKPOINT / SAVE SYSTEM</div><h2 class="section-title">Chọn điểm save mà không cần chơi lại từ đầu</h2><p class="sub">Chọn Chapter rồi chọn checkpoint. Prototype ghi lựa chọn bằng trình duyệt.</p><div id="saveContent"></div></div></section>
+
+<section id="settings"><div class="wrap"><div class="tiny">SETTINGS</div><h2 class="section-title">Cài đặt</h2><div class="settings">
+ <div class="setting"><div><b>Âm thanh</b><small class="sub">Master Volume · Music · SFX · Voice</small></div><select><option>100%</option><option>80%</option><option>60%</option><option>40%</option><option>Tắt</option></select></div>
+ <div class="setting"><div><b>Ngôn ngữ</b><small class="sub">Ngôn ngữ giao diện và phụ đề</small></div><select onchange="toast('Đã chọn: '+this.value)"><option>Tiếng Việt</option><option>English</option></select></div>
+ <div class="setting"><div><b>Chất lượng đồ họa</b><small class="sub">Low · Medium · High · Cinematic</small></div><select><option>Cinematic</option><option>High</option><option>Medium</option><option>Low</option></select></div>
+ <div class="setting"><div><b>Độ sáng</b><small class="sub">Brightness</small></div><input type="range" min="0" max="100" value="70"></div>
+ <div class="setting"><div><b>Phụ đề</b><small class="sub">Dialogue subtitles</small></div><select><option>Bật</option><option>Tắt</option></select></div>
+ <div class="setting"><div><b>Camera</b><small class="sub">Góc nhìn gameplay</small></div><select><option>Third Person</option><option>First Person</option></select></div>
+ <div class="setting"><div><b>Tài khoản</b><small class="sub">Local Profile / Progress</small></div><div class="account"><div class="avatar"><img src="images/auther.png"></div><div><b>Guest Player</b><div class="tiny">Progress được lưu trên trình duyệt</div></div><button class="btn" onclick="toast('Hồ sơ cục bộ đã lưu')">LƯU</button></div></div>
+ </div></div></section>
+
+<section id="memory"><div class="wrap"><div class="tiny">MEMORY ARCHIVE</div><h2 class="section-title">Memory Shards</h2><div class="memory-grid"><div class="memory" id="mem1"><div style="font-size:23px">✦</div><b>Russian Hill</b><div class="tiny">DISCOVERED</div></div><div class="memory" id="mem2"><div style="font-size:23px">✦</div><b>Memorial Hospital</b><div class="tiny">LOCKED</div></div><div class="memory" id="mem3"><div style="font-size:23px">✦</div><b>Sutter Street</b><div class="tiny">LOCKED</div></div><div class="memory" id="mem4"><div style="font-size:23px">✦</div><b>Carmel</b><div class="tiny">LOCKED</div></div><div class="memory" id="mem5"><div style="font-size:23px">✦</div><b>Victory Project</b><div class="tiny">LOCKED</div></div></div></div></section>
+
+<section id="map"><div class="wrap"><div class="tiny">MAP</div><h2 class="section-title">San Francisco · IF ONLY</h2><div class="map"><div class="place" style="left:19%;top:25%"><div class="dot"></div><span>Russian Hill</span></div><div class="place" style="left:46%;top:43%"><div class="dot"></div><span>Sutter Street</span></div><div class="place" style="left:72%;top:29%"><div class="dot"></div><span>Memorial Hospital</span></div><div class="place" style="left:56%;top:72%"><div class="dot"></div><span>Carmel Beach House</span></div><div class="place" style="left:83%;top:66%"><div class="dot"></div><span>Victory Project</span></div></div></div></section>
+
+<section id="assets"><div class="wrap"><div class="tiny">YOUR GITHUB ASSETS</div><h2 class="section-title">Nhân vật & hình ảnh đã tải lên</h2><div class="asset-grid">
+ <div class="asset"><img src="images/auther.png"><span>Arthur</span></div>
+ <div class="asset"><img src="images/lauren dạng linh hồn.png"><span>Lauren · Spirit</span></div>
+ <div class="asset"><img src="images/lauren dạng thực thể.png"><span>Lauren · Human</span></div>
+ <div class="asset"><img src="images/paul pendltion.jpg"><span>Paul</span></div>
+ <div class="asset"><img src="images/thanh tra Pilguez.png"><span>Thanh tra Pilguez</span></div>
+ </div><div class="notice">Ảnh Chapter/Storyboard của bạn được sử dụng trực tiếp từ thư mục <b>images/</b> của repository.</div></div></section>
+
+<script>
+const CH=[
+ {id:1,name:'Cuộc Gặp Kỳ Ảo',saves:[['save1','Bắt đầu căn hộ','Arthur bước vào căn hộ Victorian.'],['save2','Gặp Lauren','Lauren xuất hiện; Character Switch mở khóa.'],['save3','Memory Shard 01','Đã phát hiện mảnh ký ức đầu tiên.']]},
+ {id:2,name:'Ranh Giới Hôn Mê',saves:[['save1','Cổng bệnh viện','Bắt đầu tuyến đột nhập.'],['save2','Hành lang đêm','Lauren hỗ trợ thiết bị điện.'],['save3','Phòng 712','Đã tiếp cận cơ thể Lauren.']]},
+ {id:3,name:'Mảnh Ghép Sutter',saves:[['save1','Hiện trường','Bắt đầu điều tra.'],['save2','Memory Shards','Đã ghép các dấu vết.'],['save3','Victory Project','Đã tìm thấy liên hệ với bản vẽ.']]},
+ {id:4,name:'Hoàng Hôn Bình Yên',saves:[['save1','Đến Carmel','Bắt đầu phân đoạn Carmel.'],['save2','Kỷ vật','Đã mở ký ức cá nhân.'],['save3','Hope Level','Đã tăng Hope Level.']]},
+ {id:5,name:'Cuộc Chạy Đua 72 Giờ',saves:[['save1','72:00:00','Bắt đầu countdown.'],['save2','Cao trào','Đã vào chuỗi puzzle cuối.'],['save3','Final Choice','Đã tới lựa chọn sinh tử.']]}
+];
+let timerId=null,t=259200,currentCharacter='ARTHUR';
+function saveStore(){return JSON.parse(localStorage.getItem('ifonly-savepoints')||'{}')}
+function setSave(ch,slot){const s=saveStore();s[ch]={slot,time:new Date().toLocaleString('vi-VN')};localStorage.setItem('ifonly-savepoints',JSON.stringify(s));renderSaves();toast('Đã chọn save Chapter '+ch+' · '+slot)}
+function renderSaves(){
+ const s=saveStore();
+ document.getElementById('saveContent').innerHTML='<div class="save-chapters">'+CH.map(c=>{
+   const currentSlot=s[c.id]?.slot||'';
+   return '<article class="save-chapter">'+
+     '<div class="save-chapter-head">'+
+       '<div><div class="save-chapter-number">CHAPTER 0'+c.id+'</div><div class="save-chapter-title">'+c.name+'</div></div>'+
+       '<div class="save-current '+(currentSlot?'active':'')+'">'+(currentSlot?'SAVE ĐANG CHỌN':'CHƯA CHỌN')+'</div>'+
+     '</div>'+
+     '<div class="save-chapter-body">'+
+       '<div class="save-chapter-help">Chọn một checkpoint để tiếp tục từ đúng tiến độ của Chapter này.</div>'+
+       '<div class="save-options">'+c.saves.map((x,i)=>{
+         const selected=currentSlot===x[0];
+         return '<button class="save-option '+(selected?'selected':'')+'" onclick="setSave('+c.id+',\''+x[0]+'\')">'+
+           '<div class="checkpoint">CHECKPOINT 0'+(i+1)+'</div>'+
+           '<b>'+x[1]+'</b>'+
+           '<p>'+x[2]+'</p>'+
+           '<div class="save-meta"><span>'+(selected?'✓ ĐANG CHỌN':'Chọn checkpoint')+'</span><span>'+(selected?(s[c.id]?.time||'ĐÃ LƯU'):'')+'</span></div>'+
+         '</button>';
+       }).join('')+'</div>'+
+     '</div>'+
+   '</article>';
+ }).join('')+'</div>';
+}
+function play(n){document.querySelector('#chapter'+n).scrollIntoView({behavior:'smooth'});setTimeout(()=>renderHUD(n,true),250)}
+function renderHUD(n,activateTimer=false){
+ const img=['','images/Gemini_Generated_Image_aydfaiaydfaiaydf.png','images/Gemini_Generated_Image_kw76uekw76uekw76.png','images/Gemini_Generated_Image_vzkognvzkognvzko.png','images/Gemini_Generated_Image_w9jso3w9jso3w9js.png','images/924acbcd-d333-4de1-b22e-fde067699191.jpg'][n];
+ const thumbs={
+ 1:['images/chap1 sheet1 shot 1.png','images/chap1 sheet1 shot 2.png','images/chap1 sheet1 shot 3.png'],
+ 2:['images/chap2 sheet1 shot 1.png','images/chap2 sheet1 shot 2.png','images/chap2 sheet1 shot 3.png'],
+ 3:['images/chap3 sheet1 shot 1.png','images/chap3 sheet1 shot 2.png','images/chap3 sheet1 shot 3.png'],
+ 4:['images/chap4 sheet1 shot 1.png','images/chap4 sheet1 shot 2.png','images/chap4 sheet1 shot 3.png'],
+ 5:['images/chap5 sheet1 shot 1.png','images/chap5 sheet1 shot 2.png','images/chap5 sheet1 shot 3.png']
+ }[n];
+ const loc=['','Russian Hill Apartment','Memorial Hospital · Phòng 712','Sutter Street · Victory Project','Carmel Beach House','Final Sequence'][n];
+ const obj=['','Khám phá căn hộ và tìm hiểu dấu hiệu bất thường.','Tiếp cận phòng 712 mà không bị phát hiện.','Tìm manh mối liên kết Sutter Street với Victory Project.','Khám phá kỷ vật và mảnh ký ức.','Hoàn thành mục tiêu trước khi 72 giờ kết thúc.'][n];
+ const line=['','Lauren... cô đang ở đây sao?','Có thứ gì đó trong phòng 712.','Những mảnh ký ức này đang dẫn tới Sutter Street.','Có những thứ tôi đã quên...','Chúng ta không còn nhiều thời gian nữa.'][n];
+ document.getElementById('hud'+n).innerHTML='<div class="hudscene"><img class="hudscene-main" src="'+img+'" alt=""><div class="hud-play-badge">GAMEPLAY SCREEN · CHAPTER '+n+'</div><div class="hudscene-label">'+loc+'</div><div class="hud-thumbs">'+thumbs.map((t,i)=>'<img src="'+t+'" alt="Storyboard shot '+(i+1)+'">').join('')+'</div></div><div class="hudshade"></div><div class="hudtop"><div class="hudcard"><div class="tiny">CHARACTER</div><b id="char'+n+'">'+currentCharacter+'</b> <button class="btn" style="padding:6px 8px;margin-left:7px" onclick="switchChar('+n+')">SWITCH</button></div><div class="hudcard"><div class="tiny">OBJECTIVE</div>'+obj+'</div></div><div class="hudcenter"><div class="tiny">'+loc+'</div><div class="key">[ E ]</div><div>KHÁM PHÁ MÔI TRƯỜNG</div></div><div class="dialog"><div class="tiny" id="speaker'+n+'">'+currentCharacter+'</div><div id="line'+n+'" style="font-size:17px;line-height:1.45;margin-top:5px">'+line+'</div><button class="choice" onclick="dialogNext('+n+')">Tiếp tục khám phá →</button><button class="choice" onclick="collect('+n+')">✦ Kiểm tra dấu vết ký ức</button></div><div class="hudbottom"><div class="hudcard">[W][A][S][D] Di chuyển · [E] Tương tác · [V] Switch</div><div class="hudcard">'+(n===5?'<span class="tiny">TIME REMAINING</span> <span id="timer" class="timer">72:00:00</span>':'Memory Shards · '+(n===1?1:0)+'/5')+'</div></div>';
+ if(n===5&&activateTimer){clearInterval(timerId);t=259200;timerId=setInterval(()=>{t--;const e=document.getElementById('timer');if(!e)return;let h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;e.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':');if(t<3600)e.classList.add('danger');if(t<=0)clearInterval(timerId)},1000)}
+}
+const dialogLines={
+1:['Lauren: Đây từng là nhà của tôi... trước đêm sương mù đó.','Arthur: Tôi sẽ tìm hiểu chuyện gì đã xảy ra.'],
+2:['Lauren: Em có thể đi qua cánh cửa. Anh thì không.','Arthur: Vậy chúng ta phải phối hợp.'],
+3:['Lauren: Hãy nhìn nơi ký ức bị đứt đoạn.','Arthur: Tôi thấy rồi. Có liên hệ với bản vẽ.'],
+4:['Arthur: Có lẽ điều quan trọng không phải chúng ta đã mất gì.','Lauren: Mà là điều chúng ta còn kịp giữ lại.'],
+5:['Arthur: Chúng ta phải quyết định ngay.','Lauren: Hãy tin vào điều anh đã tìm thấy.']
+};const idx={1:0,2:0,3:0,4:0,5:0};
+function dialogNext(n){idx[n]=(idx[n]+1)%2;document.getElementById('line'+n).textContent=dialogLines[n][idx[n]]}
+function switchChar(n){currentCharacter=currentCharacter==='ARTHUR'?'LAUREN':'ARTHUR';document.getElementById('char'+n).textContent=currentCharacter;document.getElementById('speaker'+n).textContent=currentCharacter}
+function collect(n){document.getElementById('mem'+n).classList.remove('lock');document.getElementById('mem'+n).innerHTML='<div style="font-size:23px">✦</div><b>Chapter '+n+' Memory</b><div class="tiny">DISCOVERED</div>';toast('✦ Memory Shard Chapter '+n+' đã mở khóa')}
+setInterval(()=>{const e=document.getElementById('showcaseTimer');if(e){const now=Date.now();const cycle=Math.floor(now/1000)%259200;const left=259200-cycle;const h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;e.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':')}},1000);
+function toast(msg){const x=document.createElement('div');x.textContent=msg;x.style='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:200;background:#fff;color:#07090d;padding:10px 14px;border-radius:8px;font-size:12px';document.body.appendChild(x);setTimeout(()=>x.remove(),1700)}
+function openDefault(){renderSaves();if(location.hash){document.getElementById(location.hash.slice(1))?.scrollIntoView()}}
+window.addEventListener('hashchange',openDefault);openDefault();[1,2,3,4,5].forEach(n=>renderHUD(n,false));
+</script>
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Về đầu trang">↑</button><div style="padding:26px 0 36px;text-align:center;border-top:1px solid var(--line)"><a href="index.html" class="btn primary" style="display:inline-block">← VỀ TRANG WEB CHÍNH IF ONLY</a></div></body>
+</html>
