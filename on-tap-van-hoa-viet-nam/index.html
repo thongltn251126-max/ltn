@@ -8,7 +8,7 @@ header{border-bottom:1px solid var(--line);padding:20px max(22px,calc((100% - 10
 main{max-width:960px;margin:42px auto;padding:0 20px}.hero{margin-bottom:26px}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:10px 0}.hero p{color:var(--muted);margin:0}
 .panel{background:linear-gradient(145deg,rgba(25,40,64,.96),rgba(16,27,44,.98));border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:0 20px 60px #0003}
 .settings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.setting{background:#0d1728;border:1px solid var(--line);border-radius:13px;padding:14px}.setting label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}select,input[type=number]{width:100%;background:#17263d;color:var(--text);border:1px solid #3a4e6b;border-radius:9px;padding:11px;font:inherit}
-.range-note{font-size:12px;color:var(--muted);margin-top:8px}.analysis{margin-top:26px;text-align:left}.analysis h3{margin:0 0 8px}.table-wrap{overflow:auto;max-height:440px;border:1px solid var(--line);border-radius:12px}.analysis table{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}.analysis th,.analysis td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}.analysis th{position:sticky;top:0;background:#1b2b43;color:var(--gold)}.analysis td:nth-child(n+2),.analysis th:nth-child(n+2){text-align:center}.analysis tr:last-child td{border-bottom:0}.analysis .empty{color:var(--muted);padding:14px}
+.range-note{font-size:12px;color:var(--muted);margin-top:8px}.study-entry{margin-top:12px}.study-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}.study-head h2{margin:5px 0}.study-search{width:100%;background:#17263d;color:var(--text);border:1px solid #3a4e6b;border-radius:10px;padding:13px;font:inherit;margin:18px 0 10px}.study-list{display:grid;gap:13px;margin-top:16px}.study-card{background:#0d1728;border:1px solid var(--line);border-radius:14px;padding:18px}.study-number{font-size:12px;letter-spacing:.1em;font-weight:800;color:var(--gold);margin-bottom:8px}.study-question{font-size:17px;font-weight:700;line-height:1.55}.study-answer{margin-top:14px;padding:13px 15px;border-radius:10px;background:#12372f;border:1px solid #347e65}.study-answer-label{font-size:11px;letter-spacing:.1em;font-weight:850;color:var(--green)}.study-answer-text{margin:5px 0 0;font-weight:700;line-height:1.5}.study-count{font-size:13px;color:var(--muted)}.study-empty{color:var(--muted);padding:20px;text-align:center;border:1px dashed var(--line);border-radius:12px}.analysis{margin-top:26px;text-align:left}.analysis h3{margin:0 0 8px}.table-wrap{overflow:auto;max-height:440px;border:1px solid var(--line);border-radius:12px}.analysis table{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}.analysis th,.analysis td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}.analysis th{position:sticky;top:0;background:#1b2b43;color:var(--gold)}.analysis td:nth-child(n+2),.analysis th:nth-child(n+2){text-align:center}.analysis tr:last-child td{border-bottom:0}.analysis .empty{color:var(--muted);padding:14px}
 button{cursor:pointer;border:0;border-radius:11px;padding:13px 18px;font:700 15px inherit;transition:.18s}button:hover{transform:translateY(-1px);filter:brightness(1.08)}.primary{background:var(--gold);color:#1a2230}.secondary{background:#263a56;color:var(--text);border:1px solid #415674}.danger{background:#512c39;color:#ffdce1}
 .stats{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px}.stats strong{color:var(--text)}
 .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:13px}.progress{height:7px;background:#0b1525;border-radius:10px;overflow:hidden;margin:12px 0 26px}.progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--gold));width:0;transition:width .2s}
@@ -24,7 +24,8 @@ button{cursor:pointer;border:0;border-radius:11px;padding:13px 18px;font:700 15p
 <div class="setting"><label for="fromQuestion">Bắt đầu từ câu</label><input id="fromQuestion" type="number" min="1" max="300" placeholder="Ví dụ: 51"></div>
 <div class="setting"><label for="toQuestion">Kết thúc ở câu</label><input id="toQuestion" type="number" min="1" max="300" placeholder="Ví dụ: 100"></div></div>
 <p class="range-note">Nhập cả hai số để làm theo khoảng câu mong muốn (tính cả câu đầu và câu cuối). Để trống cả hai nếu muốn chọn số câu mỗi lượt ở trên.</p>
-<button id="start" class="primary">Bắt đầu ôn tập →</button></section>
+<button id="start" class="primary">Bắt đầu ôn tập →</button><div class="study-entry"><button id="openStudy" class="secondary">Học câu hỏi &amp; đáp án đúng →</button><p class="range-note">Mục học riêng gồm 300 câu hỏi và đáp án chính xác, có tô nổi bật từ khóa nhận biết.</p></div></section>
+<section id="study" class="panel hidden"><div class="study-head"><div><div class="tag">Study notes · 300 câu</div><h2>Câu hỏi và đáp án đúng</h2><p class="muted">Chỉ hiển thị câu hỏi cùng đáp án đúng. Không có các phương án sai.</p></div><button id="backStudy" class="secondary">← Quay lại ôn tập</button></div><input id="studySearch" class="study-search" type="search" placeholder="Tìm theo số câu, nội dung câu hỏi hoặc đáp án đúng..."><div id="studyCount" class="study-count">Đang hiển thị 300/300 câu</div><div id="studyList" class="study-list"></div></section>
 <section id="quiz" class="panel hidden"><div class="topline"><span id="counter">Câu 1 / 20</span><span id="timer">00:00</span></div><div class="progress"><i id="bar"></i></div><div class="qnum" id="qnum">CÂU 1</div><div class="question" id="question"></div><div class="answers" id="answers"></div><div id="feedback" class="feedback hidden"></div><div class="actions"><button id="quit" class="secondary">Kết thúc lượt</button><button id="next" class="primary" disabled>Câu tiếp theo →</button></div></section>
 <section id="result" class="panel result hidden"><div class="tag">Hoàn thành lượt ôn tập</div><h2>Kết quả của bạn</h2><div class="score" id="score">0/20</div><p id="summary" class="muted"></p><div class="stats" style="justify-content:center"><span>Đúng: <strong id="right">0</strong></span><span>Sai: <strong id="wrong">0</strong></span><span>Thời gian: <strong id="elapsed">00:00</strong></span></div><div class="actions" style="justify-content:center"><button id="again" class="primary">Làm lượt mới</button><button id="reviewBtn" class="secondary">Xem lại đáp án</button></div><div id="review" class="review hidden"></div><section class="analysis"><h3>Thống kê từng câu hỏi</h3><p class="muted">Lưu số lần trả lời đúng và sai trên trình duyệt này qua các lượt làm bài.</p><div class="table-wrap"><table><thead><tr><th>Câu</th><th>Số lần đúng</th><th>Số lần sai</th><th>Tổng lượt</th></tr></thead><tbody id="questionStats"></tbody></table></div></section></section></main>
 <footer>Ôn tập Văn hóa Việt Nam · Nội dung và đáp án đối chiếu theo file đề cương được cung cấp.</footer>
@@ -34,7 +35,8 @@ let deck=[],idx=0,chosen={},mode="practice",started=0,elapsed=0,tick=null;
 const $=id=>document.getElementById(id), fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
 function begin(){const from=$("fromQuestion").value.trim(),to=$("toQuestion").value.trim();if((from&&!to)||(!from&&to)){alert("Hãy nhập cả câu bắt đầu và câu kết thúc.");return}let start=from?Number(from):1,end=to?Number(to):300;if(!Number.isInteger(start)||!Number.isInteger(end)||start<1||end>300||start>end){alert("Khoảng câu không hợp lệ. Hãy chọn từ 1 đến 300 và câu bắt đầu không lớn hơn câu kết thúc.");return}deck=DATA.filter(q=>from?q.id>=start&&q.id<=end:true);if(!from){const n=+$("count").value;deck=deck.slice(0,n)}if($("order").value==="random")deck.sort(()=>Math.random()-.5);idx=0;chosen={};mode=$("mode").value;started=Date.now();$("setup").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");clearInterval(tick);tick=setInterval(()=>$("timer").textContent=fmt(Math.floor((Date.now()-started)/1000)),1000);render()}
 function getKeywords(q){
- const s=q.question, found=[];
+ const correct=(q.options.find(o=>o.key===q.answer)||{}).text||"";
+ const s=q.question+" "+correct, found=[];
  const add=v=>{
   v=(v||"").trim().replace(/[“”"']/g,"");
   if(v.length>1&&!found.some(x=>x.toLocaleLowerCase("vi")===v.toLocaleLowerCase("vi")))found.push(v);
@@ -47,20 +49,35 @@ function getKeywords(q){
  const words=s.replace(/[^\p{L}\p{N}\s-]/gu," ").split(/\s+/)
   .filter(w=>w.length>=4&&!stop.has(w.toLocaleLowerCase("vi")));
  words.sort((x,y)=>y.length-x.length);
- words.forEach(w=>{if(found.length<6)add(w)});
- return found.slice(0,6);
+ words.forEach(w=>{if(found.length<8)add(w)});
+ return found.slice(0,8);
 }
 function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function highlightQuestion(q){
- const keys=getKeywords(q).filter(k=>k.trim().length>1).sort((a,b)=>b.length-a.length);
- if(!keys.length)return escapeHTML(q.question);
- const pattern=new RegExp(keys.map(k=>k.replace(/[.*+?^\${}()|[\]\\]/g,"\\$&")).join("|"),"giu");
+function highlightText(value,keys){
+ const source=String(value||""),terms=(keys||[]).filter(k=>k.trim().length>1).sort((a,b)=>b.length-a.length);
+ if(!terms.length)return escapeHTML(source);
+ const pattern=new RegExp(terms.map(k=>k.replace(/[.*+?^$()|[\]\\]/g,"\\$&")).join("|"),"giu");
  let out="",last=0,m;
- while((m=pattern.exec(q.question))!==null){
-  out+=escapeHTML(q.question.slice(last,m.index))+'<mark class="keyword-highlight">'+escapeHTML(m[0])+'</mark>';
+ while((m=pattern.exec(source))!==null){
+  out+=escapeHTML(source.slice(last,m.index))+'<mark class="keyword-highlight">'+escapeHTML(m[0])+'</mark>';
   last=m.index+m[0].length;
  }
- return out+escapeHTML(q.question.slice(last));
+ return out+escapeHTML(source.slice(last));
+}
+function highlightQuestion(q){return highlightText(q.question,getKeywords(q))}
+function renderStudy(){
+ const query=$("studySearch").value.trim().toLocaleLowerCase("vi");
+ const rows=DATA.filter(q=>{
+  const ans=(q.options.find(o=>o.key===q.answer)||{}).text||"";
+  return ("câu "+q.id+" "+q.question+" "+ans).toLocaleLowerCase("vi").includes(query);
+ });
+ $("studyCount").textContent="Đang hiển thị "+rows.length+"/"+DATA.length+" câu";
+ if(!rows.length){$("studyList").innerHTML='<div class="study-empty">Không tìm thấy câu hỏi phù hợp.</div>';return}
+ $("studyList").innerHTML=rows.map(q=>{
+  const ans=(q.options.find(o=>o.key===q.answer)||{}).text||"Chưa có nội dung đáp án";
+  const keys=getKeywords(q);
+  return '<article class="study-card"><div class="study-number">CÂU HỎI SỐ '+q.id+'</div><div class="study-question">'+highlightText(q.question,keys)+'</div><div class="study-answer"><div class="study-answer-label">ĐÁP ÁN ĐÚNG · '+escapeHTML(q.answer)+'</div><p class="study-answer-text">'+highlightText(ans,keys)+'</p></div></article>';
+ }).join("");
 }
 function render(){const q=deck[idx];$("counter").textContent="Câu "+(idx+1)+" / "+deck.length;$("bar").style.width=(idx/deck.length*100)+"%";$("qnum").textContent="CÂU "+q.id;$("question").innerHTML=highlightQuestion(q);$("answers").innerHTML="";$("feedback").className="feedback hidden";$("feedback").textContent="";$("next").disabled=true;$("next").textContent=idx===deck.length-1?"Xem kết quả →":"Câu tiếp theo →";
 q.options.forEach(o=>{const b=document.createElement("button");b.className="answer";b.innerHTML='<span class="letter">'+o.key+'</span><span></span>';b.querySelector("span:last-child").textContent=o.text;if(chosen[q.id]){b.disabled=true;if(o.key===q.answer)b.classList.add("correct");if(chosen[q.id]===o.key&&o.key!==q.answer)b.classList.add("wrong")}b.addEventListener("click",()=>select(o.key));$("answers").appendChild(b)});
@@ -71,5 +88,5 @@ function loadQuestionStats(){try{return JSON.parse(localStorage.getItem("vhvn_qu
 function saveQuestionStats(stats){try{localStorage.setItem("vhvn_question_stats",JSON.stringify(stats))}catch(e){}}
 function renderQuestionStats(){const stats=loadQuestionStats();$("questionStats").innerHTML=DATA.map(q=>{const s=stats[q.id]||{correct:0,wrong:0};return "<tr><td>Câu "+q.id+"</td><td>"+s.correct+"</td><td>"+s.wrong+"</td><td>"+(s.correct+s.wrong)+"</td></tr>"}).join("")}
 function finish(){clearInterval(tick);elapsed=Math.floor((Date.now()-started)/1000);const right=deck.filter(q=>chosen[q.id]===q.answer).length; $("quiz").classList.add("hidden");$("result").classList.remove("hidden");$("score").textContent=right+"/"+deck.length;$("right").textContent=right;$("wrong").textContent=deck.length-right;$("elapsed").textContent=fmt(elapsed);$("summary").textContent="Bạn đạt "+Math.round(right/deck.length*100)+"% số câu trả lời đúng.";$("review").classList.add("hidden");$("review").innerHTML="";deck.forEach((q,i)=>{const d=document.createElement("details");const s=document.createElement("summary");s.textContent="Câu "+q.id+" · "+(chosen[q.id]===q.answer?"Đúng":"Sai / chưa trả lời");d.appendChild(s);const p=document.createElement("p");p.textContent=q.question;d.appendChild(p);q.options.forEach(o=>{const a=document.createElement("p");a.textContent=o.key+". "+o.text+(o.key===q.answer?" ✓ Đáp án đúng":"")+(chosen[q.id]===o.key&&o.key!==q.answer?" · Bạn chọn":"");a.style.color=o.key===q.answer?"var(--green)":chosen[q.id]===o.key?"var(--red)":"var(--muted)";d.appendChild(a)});$("review").appendChild(d)});renderQuestionStats()}
-$("start").onclick=begin;$("next").onclick=()=>{if(idx<deck.length-1){idx++;render()}else finish()};$("quit").onclick=finish;$("again").onclick=()=>{$("result").classList.add("hidden");$("setup").classList.remove("hidden")};$("reviewBtn").onclick=()=> $("review").classList.toggle("hidden");
+$("start").onclick=begin;$("openStudy").onclick=()=>{$("setup").classList.add("hidden");$("quiz").classList.add("hidden");$("result").classList.add("hidden");$("study").classList.remove("hidden");$("studySearch").value="";renderStudy();window.scrollTo({top:0,behavior:"smooth"})};$("backStudy").onclick=()=>{$("study").classList.add("hidden");$("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})};$("studySearch").addEventListener("input",renderStudy);$("next").onclick=()=>{if(idx<deck.length-1){idx++;render()}else finish()};$("quit").onclick=finish;$("again").onclick=()=>{$("result").classList.add("hidden");$("setup").classList.remove("hidden")};$("reviewBtn").onclick=()=> $("review").classList.toggle("hidden");
 </script></body></html>
