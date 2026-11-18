@@ -125,7 +125,7 @@ $("start").onclick=begin;$("openStudy").onclick=()=>{$("setup").classList.add("h
  }
  function setStatus(id,msg,error=false){const el=byId(id);if(el){el.textContent=msg;el.style.color=error?"var(--red)":"var(--muted)"}}
  function openAdmin(){byId("setup").classList.add("hidden");byId("study").classList.add("hidden");byId("quiz").classList.add("hidden");byId("result").classList.add("hidden");byId("adminOnline").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});}
- function closeAdmin(){byId("adminOnline").classList.add("hidden");byId("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth");}
+ function closeAdmin(){byId("adminOnline").classList.add("hidden");byId("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});}
  byId("openAdminOnline").addEventListener("click",openAdmin);
  byId("closeAdminOnline").addEventListener("click",closeAdmin);
  if(!configured){setStatus("adminStatus","Chưa có cấu hình Supabase hợp lệ.",true);return;}
