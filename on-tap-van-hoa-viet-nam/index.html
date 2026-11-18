@@ -104,12 +104,13 @@ function renderQuestionStats(){const stats=loadQuestionStats();$("questionStats"
 function finish(){clearInterval(tick);elapsed=Math.floor((Date.now()-started)/1000);const right=deck.filter(q=>chosen[q.id]===q.answer).length; $("quiz").classList.add("hidden");$("result").classList.remove("hidden");$("score").textContent=right+"/"+deck.length;$("right").textContent=right;$("wrong").textContent=deck.length-right;$("elapsed").textContent=fmt(elapsed);$("summary").textContent="Bạn đạt "+Math.round(right/deck.length*100)+"% số câu trả lời đúng.";$("review").classList.add("hidden");$("review").innerHTML="";deck.forEach((q,i)=>{const d=document.createElement("details");const s=document.createElement("summary");s.textContent="Câu "+q.id+" · "+(chosen[q.id]===q.answer?"Đúng":"Sai / chưa trả lời");d.appendChild(s);const p=document.createElement("p");p.textContent=q.question;d.appendChild(p);q.options.forEach(o=>{const a=document.createElement("p");a.textContent=o.key+". "+o.text+(o.key===q.answer?" ✓ Đáp án đúng":"")+(chosen[q.id]===o.key&&o.key!==q.answer?" · Bạn chọn":"");a.style.color=o.key===q.answer?"var(--green)":chosen[q.id]===o.key?"var(--red)":"var(--muted)";d.appendChild(a)});$("review").appendChild(d)});renderQuestionStats()}
 $("start").onclick=begin;$("openStudy").onclick=()=>{$("setup").classList.add("hidden");$("quiz").classList.add("hidden");$("result").classList.add("hidden");$("study").classList.remove("hidden");$("studySearch").value="";renderStudy();window.scrollTo({top:0,behavior:"smooth"})};$("backStudy").onclick=()=>{$("study").classList.add("hidden");$("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})};$("studySearch").addEventListener("input",renderStudy);$("next").onclick=()=>{if(idx<deck.length-1){idx++;render()}else finish()};$("quit").onclick=finish;$("again").onclick=()=>{$("result").classList.add("hidden");$("setup").classList.remove("hidden")};$("reviewBtn").onclick=()=> $("review").classList.toggle("hidden");
 </script>
+
 <script>
 (()=>{
  const byId=id=>document.getElementById(id);
  const configUrl=window.VHVN_SUPABASE_URL||"";
  const configKey=window.VHVN_SUPABASE_PUBLISHABLE_KEY||"";
- const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(configUrl)&&configKey.startsWith("sb_publishable_");
+ const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(configUrl)&&(/^(sb_publishable_|eyJ)/.test(configKey));
  let client=null,heartbeat=null,refreshTimer=null;
  const sessionStoreKey="vhvn_online_device_session";
  const uuid=()=>crypto.randomUUID?crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==="x"?r:(r&3|8)).toString(16)});
@@ -124,62 +125,39 @@ $("start").onclick=begin;$("openStudy").onclick=()=>{$("setup").classList.add("h
  }
  function setStatus(id,msg,error=false){const el=byId(id);if(el){el.textContent=msg;el.style.color=error?"var(--red)":"var(--muted)"}}
  function openAdmin(){byId("setup").classList.add("hidden");byId("study").classList.add("hidden");byId("quiz").classList.add("hidden");byId("result").classList.add("hidden");byId("adminOnline").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});}
- function closeAdmin(){byId("adminOnline").classList.add("hidden");byId("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});}
+ function closeAdmin(){byId("adminOnline").classList.add("hidden");byId("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth");}
  byId("openAdminOnline").addEventListener("click",openAdmin);
  byId("closeAdminOnline").addEventListener("click",closeAdmin);
- if(!configured){
-  setStatus("adminStatus","Chưa kết nối Supabase. Cần điền Project URL và Publishable key trong config.js sau khi tạo dự án.",true);
-  return;
- }
- if(!window.supabase||!window.supabase.createClient){
-  setStatus("adminStatus","Không tải được thư viện kết nối Supabase. Hãy kiểm tra kết nối mạng.",true);return;
- }
+ if(!configured){setStatus("adminStatus","Chưa có cấu hình Supabase hợp lệ.",true);return;}
+ if(!window.supabase||!window.supabase.createClient){setStatus("adminStatus","Không tải được thư viện Supabase.",true);return;}
  client=window.supabase.createClient(configUrl,configKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
- async function getOrCreateVisitor(){
-  let {data:{session},error}=await client.auth.getSession();
-  if(error)throw error;
-  if(!session){
-   const result=await client.auth.signInAnonymously();
-   if(result.error)throw result.error;
-   session=result.data.session;
-  }
-  if(!session?.user?.is_anonymous)return null;
-  return session.user;
- }
  async function heartbeatOnce(){
-  const user=await getOrCreateVisitor();
-  if(!user)return;
   let sessionId=sessionStorage.getItem(sessionStoreKey);
   if(!sessionId){sessionId=uuid();sessionStorage.setItem(sessionStoreKey,sessionId);}
   const device=detectDevice();
-  const {error}=await client.from("online_devices").upsert({
-   session_id:sessionId,user_id:user.id,device_name:device.device_name,os_name:device.os_name,browser_name:device.browser_name,last_seen:new Date().toISOString()
-  },{onConflict:"session_id"});
+  const {error}=await client.functions.invoke("online-heartbeat",{body:{session_id:sessionId,...device}});
   if(error)throw error;
-  await client.from("online_devices").delete().eq("user_id",user.id).lt("last_seen",new Date(Date.now()-2*60*60*1000).toISOString());
  }
  async function startVisitorTracking(){
-  try{
-   await heartbeatOnce();
-   heartbeat=setInterval(()=>heartbeatOnce().catch(()=>{}),20000);
-  }catch(e){console.warn("Online device tracking:",e.message||e);}
+  try{await heartbeatOnce();heartbeat=setInterval(()=>heartbeatOnce().catch(e=>console.warn("Heartbeat:",e.message||e)),20000);}
+  catch(e){console.warn("Online tracking unavailable:",e.message||e);}
  }
  function renderDevices(rows){
   byId("onlineCount").textContent=String(rows.length);
   if(!rows.length){byId("onlineDevices").innerHTML='<div class="online-empty">Hiện chưa có thiết bị nào được ghi nhận đang online.</div>';return;}
   byId("onlineDevices").innerHTML=rows.map(row=>{
-   const icon=/iPhone|Android|iPad/i.test(row.device_name)?"smartphone":/Máy tính bảng/i.test(row.device_name)?"tablet":"monitor";
+   const icon=/iPhone|Android|iPad/i.test(row.device_name)?"📱":/Máy tính bảng/i.test(row.device_name)?"▣":"💻";
    const time=new Date(row.last_seen).toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-   return '<article class="online-device"><span class="icon-placeholder">'+(icon==="smartphone"?"📱":icon==="tablet"?"▣":"💻")+'</span><div class="online-device-main"><div class="online-device-name">'+escapeHtml(row.device_name)+'</div><div class="online-device-meta">'+escapeHtml(row.browser_name)+' · '+escapeHtml(row.os_name)+'</div></div><div class="online-time">Hoạt động '+time+'</div></article>';
+   return '<article class="online-device"><span class="icon-placeholder">'+icon+'</span><div class="online-device-main"><div class="online-device-name">'+escapeHtml(row.device_name)+'</div><div class="online-device-meta">'+escapeHtml(row.browser_name)+' · '+escapeHtml(row.os_name)+'</div></div><div class="online-time">Hoạt động '+time+'</div></article>';
   }).join("");
  }
  async function refreshDevices(){
   setStatus("onlineStatus","Đang cập nhật danh sách...");
   const cutoff=new Date(Date.now()-60000).toISOString();
   const {data,error}=await client.from("online_devices").select("session_id,device_name,os_name,browser_name,last_seen").gte("last_seen",cutoff).order("last_seen",{ascending:false});
-  if(error){setStatus("onlineStatus","Không đọc được danh sách. Hãy kiểm tra bảng và quyền quản trị Supabase.",true);return;}
+  if(error){setStatus("onlineStatus","Không đọc được danh sách. Hãy kiểm tra tài khoản đã được cấp quyền quản trị.",true);return;}
   renderDevices(data||[]);
-  setStatus("onlineStatus","Tự động cập nhật mỗi 10 giây · Chỉ tính hoạt động trong 60 giây gần nhất.");
+  setStatus("onlineStatus","Tự động cập nhật mỗi 10 giây · Thiết bị online khi có hoạt động trong 60 giây gần nhất.");
  }
  async function stopAdminRefresh(){if(refreshTimer){clearInterval(refreshTimer);refreshTimer=null;}}
  byId("adminSignIn").addEventListener("click",async()=>{
@@ -187,23 +165,16 @@ $("start").onclick=begin;$("openStudy").onclick=()=>{$("setup").classList.add("h
   if(!email||!password){setStatus("adminStatus","Nhập email và mật khẩu quản trị.",true);return;}
   const button=byId("adminSignIn");button.disabled=true;button.textContent="Đang đăng nhập...";
   try{
-   const {data,error}=await client.auth.signInWithPassword({email,password});
-   if(error)throw error;
-   const user=data.user;
-   const {data:grant,error:grantError}=await client.from("online_admins").select("user_id").eq("user_id",user.id).maybeSingle();
-   if(grantError||!grant){
-    await client.auth.signOut();
-    throw new Error("Tài khoản này chưa được cấp quyền quản trị. Hãy thêm user ID vào bảng online_admins theo hướng dẫn SQL.");
-   }
+   const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;
+   const {data:grant,error:grantError}=await client.from("online_admins").select("user_id").eq("user_id",data.user.id).maybeSingle();
+   if(grantError||!grant){await client.auth.signOut();throw new Error("Tài khoản chưa được cấp quyền quản trị. Hãy thêm user ID vào bảng online_admins.");}
    byId("adminLoginPane").classList.add("hidden");byId("adminDashboard").classList.remove("hidden");
    await refreshDevices();await stopAdminRefresh();refreshTimer=setInterval(()=>refreshDevices().catch(()=>{}),10000);
   }catch(e){setStatus("adminStatus",e.message||"Đăng nhập thất bại.",true);}
   finally{button.disabled=false;button.textContent="Đăng nhập";}
  });
  byId("adminRefresh").addEventListener("click",()=>refreshDevices());
- byId("adminLogout").addEventListener("click",async()=>{
-  await stopAdminRefresh();await client.auth.signOut();byId("adminDashboard").classList.add("hidden");byId("adminLoginPane").classList.remove("hidden");byId("adminPassword").value="";setStatus("adminStatus","Đã đăng xuất.");
- });
+ byId("adminLogout").addEventListener("click",async()=>{await stopAdminRefresh();await client.auth.signOut();byId("adminDashboard").classList.add("hidden");byId("adminLoginPane").classList.remove("hidden");byId("adminPassword").value="";setStatus("adminStatus","Đã đăng xuất.");});
  if(window.location.protocol==="https:"||window.location.hostname==="localhost")startVisitorTracking();
 })();
 </script>
