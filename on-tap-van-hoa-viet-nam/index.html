@@ -32,13 +32,13 @@ function begin(){const n=+$("count").value;deck=[...DATA];if($("order").value===
 function getKeywords(q){
  const s=q.question, found=[];
  const add=v=>{v=(v||"").trim().replace(/[“”"']/g,"");if(v.length>1&&!found.some(x=>x.toLowerCase()===v.toLowerCase()))found.push(v)};
- (s.match(/\\b(?:năm\\s*)?(?:1[0-9]{3}|20[0-9]{2})\\b/gi)||[]).forEach(add);
- (s.match(/\\b\\d+\\s*(?:năm|thế kỷ|tháng|ngày|giờ|tuổi|triệu|nghìn)\\b/gi)||[]).forEach(add);
+ (s.match(/\b(?:năm\s*)?(?:1[0-9]{3}|20[0-9]{2})\b/gi)||[]).forEach(add);
+ (s.match(/\b\d+\s*(?:năm|thế kỷ|tháng|ngày|giờ|tuổi|triệu|nghìn)\b/gi)||[]).forEach(add);
  (s.match(/[“"]([^”"]{3,65})[”"]/g)||[]).forEach(x=>add(x));
- const proper=s.match(/\\b[A-ZÀ-ỸĐ][a-zà-ỹđ]+(?:[ -][A-ZÀ-ỸĐ][a-zà-ỹđ]+){0,3}/g)||[];
+ const proper=s.match(/\b[A-ZÀ-ỸĐ][a-zà-ỹđ]+(?:[ -][A-ZÀ-ỸĐ][a-zà-ỹđ]+){0,3}/g)||[];
  proper.forEach(add);
- const stop=new Set("đâu là của và trong theo nào những các một được cho biết sau đây gì vì sao tại sao thế nào có phải hay không với từ đến về giữa bởi khi mà đã đang sẽ được".split(" "));
- const words=s.replace(/[^\\p{L}\\p{N} -]/gu," ").split(/\\s+/).filter(w=>w.length>=5&&!stop.has(w.toLowerCase()));
+ const stop=new Set("đâu là của và trong theo nào những các một được cho biết sau đây gì vì sao tại sao thế nào có phải hay không với từ đến về giữa bởi khi mà đã đang sẽ".split(" "));
+ const words=s.replace(/[^\p{L}\p{N}\s-]/gu," ").split(/\s+/).filter(w=>w.length>=5&&!stop.has(w.toLowerCase()));
  words.forEach(w=>{if(found.length<6)add(w)});
  return found.slice(0,6);
 }
@@ -46,7 +46,7 @@ function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;","
 function highlightQuestion(q){
  const keys=getKeywords(q).filter(k=>k.trim().length>1).sort((a,b)=>b.length-a.length);
  if(!keys.length)return escapeHTML(q.question);
- const pattern=new RegExp(keys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|"),"giu");
+ const pattern=new RegExp(keys.map(k=>k.replace(/[.*+?^\${}()|[\]\\]/g,"\\$&")).join("|"),"giu");
  let out="",last=0,m;
  while((m=pattern.exec(q.question))!==null){
   out+=escapeHTML(q.question.slice(last,m.index))+'<mark class="keyword-highlight">'+escapeHTML(m[0])+'</mark>';
