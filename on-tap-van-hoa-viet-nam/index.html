@@ -31,14 +31,18 @@ const $=id=>document.getElementById(id), fmt=s=>String(Math.floor(s/60)).padStar
 function begin(){const n=+$("count").value;deck=[...DATA];if($("order").value==="random")deck.sort(()=>Math.random()-.5);deck=deck.slice(0,n);idx=0;chosen={};mode=$("mode").value;started=Date.now();$("setup").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");clearInterval(tick);tick=setInterval(()=>$("timer").textContent=fmt(Math.floor((Date.now()-started)/1000)),1000);render()}
 function getKeywords(q){
  const s=q.question, found=[];
- const add=v=>{v=(v||"").trim().replace(/[“”"']/g,"");if(v.length>1&&!found.some(x=>x.toLowerCase()===v.toLowerCase()))found.push(v)};
+ const add=v=>{
+  v=(v||"").trim().replace(/[“”"']/g,"");
+  if(v.length>1&&!found.some(x=>x.toLocaleLowerCase("vi")===v.toLocaleLowerCase("vi")))found.push(v);
+ };
  (s.match(/\b(?:năm\s*)?(?:1[0-9]{3}|20[0-9]{2})\b/gi)||[]).forEach(add);
  (s.match(/\b\d+\s*(?:năm|thế kỷ|tháng|ngày|giờ|tuổi|triệu|nghìn)\b/gi)||[]).forEach(add);
- (s.match(/[“"]([^”"]{3,65})[”"]/g)||[]).forEach(x=>add(x));
- const proper=s.match(/\b[A-ZÀ-ỸĐ][a-zà-ỹđ]+(?:[ -][A-ZÀ-ỸĐ][a-zà-ỹđ]+){0,3}/g)||[];
- proper.forEach(add);
- const stop=new Set("đâu là của và trong theo nào những các một được cho biết sau đây gì vì sao tại sao thế nào có phải hay không với từ đến về giữa bởi khi mà đã đang sẽ".split(" "));
- const words=s.replace(/[^\p{L}\p{N}\s-]/gu," ").split(/\s+/).filter(w=>w.length>=5&&!stop.has(w.toLowerCase()));
+ (s.match(/[“"]([^”"]{3,65})[”"]/g)||[]).forEach(add);
+ const stop=new Set(("đâu là của và trong theo nào những các một được cho biết sau đây gì vì sao tại sao thế nào có phải hay không với từ đến về giữa bởi khi mà đã đang sẽ "+
+ "nội dung đặc trưng chức năng yếu tố nhận định quan điểm biểu hiện nguyên nhân tác động khái niệm loại hình văn hóa").split(/\s+/));
+ const words=s.replace(/[^\p{L}\p{N}\s-]/gu," ").split(/\s+/)
+  .filter(w=>w.length>=4&&!stop.has(w.toLocaleLowerCase("vi")));
+ words.sort((x,y)=>y.length-x.length);
  words.forEach(w=>{if(found.length<6)add(w)});
  return found.slice(0,6);
 }
