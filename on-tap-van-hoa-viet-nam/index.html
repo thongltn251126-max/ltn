@@ -33,7 +33,7 @@ button{cursor:pointer;border:0;border-radius:11px;padding:13px 18px;font:700 15p
  <div id="adminLoginPane" class="admin-box">
   <h3>Đăng nhập quản trị</h3><p class="muted">Chỉ tài khoản quản trị được cấp quyền mới xem được danh sách thiết bị.</p>
   <div class="admin-fields"><div><label for="adminEmail">Email quản trị</label><input id="adminEmail" type="email" autocomplete="username" placeholder="Email quản trị"></div><div><label for="adminPassword">Mật khẩu</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Mật khẩu"></div></div>
-  <div class="actions"><button id="adminSignIn" class="primary">Đăng nhập</button></div><div id="adminStatus" class="admin-status">Đang chờ cấu hình kết nối dữ liệu.</div>
+  <div class="actions"><button id="adminSignIn" class="primary">Đăng nhập</button></div><div id="adminStatus" class="admin-status">Đang chờ cấu hình kết nối dữ liệu.</div><p class="range-note"><a href="./ONLINE-DEVICES-SETUP.md" target="_blank" rel="noopener">Mở hướng dẫn cấu hình Supabase và cấp quyền quản trị</a></p>
  </div>
  <div id="adminDashboard" class="hidden">
   <div class="admin-box"><div class="admin-head"><div><div class="tag">Đang hoạt động</div><div id="onlineCount" class="online-total">0</div><div class="muted">thiết bị trực tuyến</div></div><div class="admin-actions"><button id="adminRefresh" class="secondary">↻ Cập nhật</button><button id="adminLogout" class="danger">Đăng xuất</button></div></div><div id="onlineStatus" class="admin-status">Đang tải danh sách...</div></div>
